@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using MedliSystem;
+using Medli.System;
 using Medli.Applications;
 
 namespace Medli.Applications
@@ -78,11 +78,11 @@ namespace Medli.Applications
             {
                 if (command.Remove(0, 6) == "critical")
                 {
-                    ErrorHandler.Init(0, "Cocoa Kernel received the 'panic critical' command , Nothings gonna happen", true, "User-invoked panic");
+                    ErrorHandler.Init(0, "Medli received the 'panic critical' command , Nothings gonna happen", true, "User-invoked panic");
                 }
                 else
                 {
-                    ErrorHandler.Init(1, "Cocoa Kernel received the 'panic' command, Nothing's gonna happen.", false, "");
+                    ErrorHandler.Init(1, "Medli received the 'panic' command, Nothing's gonna happen.", false, "");
                 }
             }
             else if (command.StartsWith("mkdir "))

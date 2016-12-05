@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ChocolateNGHardware</RootNamespace>
-    <AssemblyName>ChocolateNGHardware</AssemblyName>
+    <AssemblyName>Medli.Hardware</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetFrameworkProfile />
@@ -52,9 +52,9 @@
     <Compile Include="Power.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChocolateNGCore\MedliCore.csproj">
+    <ProjectReference Include="..\MedliCore\Medli.Core.csproj">
       <Project>{9559f4dc-24be-4f1a-8f42-5c32f7803f4a}</Project>
-      <Name>MedliCore</Name>
+      <Name>Medli.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

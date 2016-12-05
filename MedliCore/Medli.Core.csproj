@@ -8,8 +8,8 @@
     <ProjectGuid>{9559F4DC-24BE-4F1A-8F42-5C32F7803F4A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ChocolateNGCore</RootNamespace>
-    <AssemblyName>ChocolateNGCore</AssemblyName>
+    <RootNamespace>Medli.Core</RootNamespace>
+    <AssemblyName>Medli.Core</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetFrameworkProfile />

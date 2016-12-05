@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Cosmos.Core;
 
-namespace MedliHardware
+namespace Medli.Hardware
 {
     public class machine
     {

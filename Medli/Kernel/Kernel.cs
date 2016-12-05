@@ -4,7 +4,7 @@ using System.Text;
 using Cosmos.System.FileSystem.VFS;
 using Sys = Cosmos.System;
 using System.IO;
-using MedliSystem;
+using Medli.System;
 using Medli.Applications;
 
 namespace Medli
@@ -36,12 +36,10 @@ namespace Medli
     //
     public class OSVars
     {
-        public static double ver_no = 2.2;
-        public static int build_no = 7;
-        public static string build_name = "Golf";
-        public static string wlcm1 = "Medli " + OSVars.ver_no;
-        public static string wlcm2 = "(C) All Rights Reserved - CaveSponge";
-        public static string wlcm3 = "The next gen version of the original Chocolate";
+        public static double ver_no = 0.1;
+        public static string wlcm1 = "Medli  - Version " + OSVars.ver_no;
+        public static string wlcm2 = "-=A free and open-source operating system=-";
+        public static string wlcm3 = "Maintained by CaveSponge under the MIT License";
         public static void ver()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;

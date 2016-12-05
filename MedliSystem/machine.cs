@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cosmos.Core;
-using MedliHardware;
+using Medli.Hardware;
 
-namespace MedliSystem
+namespace Medli.System
 {
     public class machineinfo
     {

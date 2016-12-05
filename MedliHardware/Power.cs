@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using Cosmos.Core;
 
-namespace MedliHardware
+namespace Medli.Hardware
 {
     public unsafe class ACPI
     {

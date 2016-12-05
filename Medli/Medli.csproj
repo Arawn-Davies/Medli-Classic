@@ -42,6 +42,12 @@
     <Reference Include="Cosmos.Debug.Kernel.Plugs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=MSIL" />
     <Reference Include="Cosmos.HAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=MSIL" />
     <Reference Include="Cosmos.System.Plugs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=MSIL" />
+    <Reference Include="Medli.Core">
+      <HintPath>..\MedliCore\bin\Debug\Medli.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Medli.System">
+      <HintPath>..\MedliSystem\bin\Debug\Medli.System.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -59,16 +65,6 @@
     <Compile Include="Kernel\getHelp.cs" />
     <Compile Include="Kernel\Kernel.cs" />
     <Compile Include="AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ChocolateNGCore\MedliCore.csproj">
-      <Project>{9559f4dc-24be-4f1a-8f42-5c32f7803f4a}</Project>
-      <Name>MedliCore</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ChocolateNGSystem\MedliSystem.csproj">
-      <Project>{e7981599-55cd-4953-beac-2d0719babda6}</Project>
-      <Name>MedliSystem</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

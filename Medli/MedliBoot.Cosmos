@@ -85,7 +85,7 @@
     <Reference Include="Cosmos.Debug.Kernel.Plugs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChocolateNG\Medli.csproj">
+    <ProjectReference Include="..\Medli\Medli.csproj">
       <Name>Medli</Name>
       <Project>{e74c3299-99bb-43b8-a25f-488d53d764bd}</Project>
       <Private>True</Private>

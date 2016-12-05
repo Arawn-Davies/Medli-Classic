@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ChocolateNGSystem</RootNamespace>
-    <AssemblyName>ChocolateNGSystem</AssemblyName>
+    <AssemblyName>Medli.System</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetFrameworkProfile />
@@ -51,9 +51,9 @@
     <Compile Include="machine.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChocolateNGHardware\MedliHardware.csproj">
+    <ProjectReference Include="..\MedliHardware\Medli.Hardware.csproj">
       <Project>{1ae59427-97de-48b0-86fd-679333d27885}</Project>
-      <Name>MedliHardware</Name>
+      <Name>Medli.Hardware</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

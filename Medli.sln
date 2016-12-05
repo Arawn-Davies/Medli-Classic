@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medli", "ChocolateNG\Medli.csproj", "{E74C3299-99BB-43B8-A25F-488D53D764BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medli", "Medli\Medli.csproj", "{E74C3299-99BB-43B8-A25F-488D53D764BD}"
 EndProject
-Project("{471EC4BB-E47E-4229-A789-D1F5F83B52D4}") = "MedliBoot", "ChocolateNG\MedliBoot.Cosmos", "{750175B2-5105-4939-AA1D-624E67E853A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medli.Core", "MedliCore\Medli.Core.csproj", "{9559F4DC-24BE-4F1A-8F42-5C32F7803F4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedliHardware", "ChocolateNGHardware\MedliHardware.csproj", "{1AE59427-97DE-48B0-86FD-679333D27885}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medli.Hardware", "MedliHardware\Medli.Hardware.csproj", "{1AE59427-97DE-48B0-86FD-679333D27885}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedliCore", "ChocolateNGCore\MedliCore.csproj", "{9559F4DC-24BE-4F1A-8F42-5C32F7803F4A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medli.System", "MedliSystem\Medli.System.csproj", "{E7981599-55CD-4953-BEAC-2D0719BABDA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedliSystem", "ChocolateNGSystem\MedliSystem.csproj", "{E7981599-55CD-4953-BEAC-2D0719BABDA6}"
+Project("{471EC4BB-E47E-4229-A789-D1F5F83B52D4}") = "MedliBoot", "Medli\MedliBoot.Cosmos", "{750175B2-5105-4939-AA1D-624E67E853A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,22 +23,22 @@ Global
 		{E74C3299-99BB-43B8-A25F-488D53D764BD}.Debug|x86.Build.0 = Debug|x86
 		{E74C3299-99BB-43B8-A25F-488D53D764BD}.Release|x86.ActiveCfg = Release|x86
 		{E74C3299-99BB-43B8-A25F-488D53D764BD}.Release|x86.Build.0 = Release|x86
-		{750175B2-5105-4939-AA1D-624E67E853A2}.Debug|x86.ActiveCfg = Debug|x86
-		{750175B2-5105-4939-AA1D-624E67E853A2}.Debug|x86.Build.0 = Debug|x86
-		{750175B2-5105-4939-AA1D-624E67E853A2}.Release|x86.ActiveCfg = Debug|x86
-		{750175B2-5105-4939-AA1D-624E67E853A2}.Release|x86.Build.0 = Debug|x86
-		{1AE59427-97DE-48B0-86FD-679333D27885}.Debug|x86.ActiveCfg = Debug|x86
-		{1AE59427-97DE-48B0-86FD-679333D27885}.Debug|x86.Build.0 = Debug|x86
-		{1AE59427-97DE-48B0-86FD-679333D27885}.Release|x86.ActiveCfg = Release|x86
-		{1AE59427-97DE-48B0-86FD-679333D27885}.Release|x86.Build.0 = Release|x86
 		{9559F4DC-24BE-4F1A-8F42-5C32F7803F4A}.Debug|x86.ActiveCfg = Debug|x86
 		{9559F4DC-24BE-4F1A-8F42-5C32F7803F4A}.Debug|x86.Build.0 = Debug|x86
 		{9559F4DC-24BE-4F1A-8F42-5C32F7803F4A}.Release|x86.ActiveCfg = Release|x86
 		{9559F4DC-24BE-4F1A-8F42-5C32F7803F4A}.Release|x86.Build.0 = Release|x86
+		{1AE59427-97DE-48B0-86FD-679333D27885}.Debug|x86.ActiveCfg = Debug|x86
+		{1AE59427-97DE-48B0-86FD-679333D27885}.Debug|x86.Build.0 = Debug|x86
+		{1AE59427-97DE-48B0-86FD-679333D27885}.Release|x86.ActiveCfg = Release|x86
+		{1AE59427-97DE-48B0-86FD-679333D27885}.Release|x86.Build.0 = Release|x86
 		{E7981599-55CD-4953-BEAC-2D0719BABDA6}.Debug|x86.ActiveCfg = Debug|x86
 		{E7981599-55CD-4953-BEAC-2D0719BABDA6}.Debug|x86.Build.0 = Debug|x86
 		{E7981599-55CD-4953-BEAC-2D0719BABDA6}.Release|x86.ActiveCfg = Release|x86
 		{E7981599-55CD-4953-BEAC-2D0719BABDA6}.Release|x86.Build.0 = Release|x86
+		{750175B2-5105-4939-AA1D-624E67E853A2}.Debug|x86.ActiveCfg = Debug|x86
+		{750175B2-5105-4939-AA1D-624E67E853A2}.Debug|x86.Build.0 = Debug|x86
+		{750175B2-5105-4939-AA1D-624E67E853A2}.Release|x86.ActiveCfg = Debug|x86
+		{750175B2-5105-4939-AA1D-624E67E853A2}.Release|x86.Build.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
