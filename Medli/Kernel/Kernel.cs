@@ -10,30 +10,10 @@ using Medli.Applications;
 namespace Medli
 {
     /// <summary>
-    /// version 2.2.7/golf
+    /// version 0.1
     /// Changelog:
-    /// Fixed commands not being implemented fully, still W.I.P (can't believe there was no 'echo' command c':)
-    /// Get OS version function added, saves having to retype the same thing over and over again
-    /// 
-    /// 
-    /// How about 'Cocoa' as a name for the kernel? - 
-    /// Cocoashell exists but is not developed and NGShell has surpassed it by a 
-    /// fair bit so I can always remove the repo
-    /// 
-    /// I wonder what to do with Chocolate also...
+    /// First version!
     /// </summary>
-
-
-    //    
-    //Update on versioning!
-    //
-    //Because I'm ridiculous with versioning, I thought of a new versioning system, so we can get rid of the mess that was the old one. 
-    //Half of it is a typical Major.Minor numbering scheme but the last build number goes upto 25, so one can use the 
-    //alpha/beta/charlie names. A very limited graphical representation of this is the following:
-    //
-    // Major  . Minor .   Build
-    //   ∞    .   ∞   .  Up to 25
-    //
     public class OSVars
     {
         public static double ver_no = 0.1;
