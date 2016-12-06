@@ -50,6 +50,7 @@ namespace Medli.Applications
             Console.ForegroundColor = ConsoleColor.Green;
             
             Console.Write(" $ ");
+            Console.ForegroundColor = ConsoleColor.White;
             cmd(Console.ReadLine());
         }
         public static void cmd(string input)

@@ -9,11 +9,6 @@ using Medli.Applications;
 
 namespace Medli
 {
-    /// <summary>
-    /// version 0.1
-    /// Changelog:
-    /// First version!
-    /// </summary>
     public class OSVars
     {
         public static double ver_no = 0.1;
@@ -64,37 +59,40 @@ namespace Medli
             if (!File.Exists(Kernel.current_dir + "pcinfo.sys"))
             {
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Medli Installer:");
-                Console.WriteLine(" ");
+                Console.WriteLine(" "); 
                 Console.WriteLine("Press any key and let's get started!");
                 Console.ReadKey(true);
                 Console.WriteLine("");
                 Console.WriteLine("Please enter a machine name:");
                 machinename = Console.ReadLine();
                 File.Create(Kernel.current_dir + "pcinfo.sys");
+                File.WriteAllText(Kernel.current_dir + "pcinfo.sys", machinename);
                 Console.WriteLine("Excellent! Please enter who this copy of Medli is registered to:");
                 regname = Console.ReadLine();
-                File.WriteAllText(Kernel.current_dir + "pcinfo.sys", machinename + Environment.NewLine + regname);
+                File.Create(Kernel.current_dir + "reginfo.sys");
+                File.WriteAllText(Kernel.current_dir + "reginfo.sys", regname);
                 Console.WriteLine("");
                 Console.WriteLine("Awesome - you're all set!");
                 Console.WriteLine("Press any key to start Medli!");
                 Console.ReadKey(true);
                 Console.Clear();
             }
-            else if (File.Exists(Kernel.current_dir + "pcinfo.sys"))
+            else if (File.Exists(Kernel.current_dir + "pcinfo.sys") || File.Exists(Kernel.current_dir + "regname.sys"))
             {
                 try
                 {
-                    /*
-                    string[] lines = File.ReadAllLines(Kernel.current_dir + "pcname.sys");
-                    machinename = lines[0];
-                    regname = lines[1];
-                    */
-
-                    StreamReader objstream = new StreamReader(Kernel.current_dir + "pcinfo.sys");
-                    string[] linesnew = objstream.ReadToEnd().Split(new char[] { '\n' });
-                    machinename = linesnew[0];
-                    regname = linesnew[1];
+                    string[] lines = File.ReadAllLines(Kernel.current_dir + "regname.sys");
+                    foreach (string line in lines)
+                    {
+                        regname = line;
+                    }
+                    string[] pcnames = File.ReadAllLines(Kernel.current_dir + "pcinfo.sys");
+                    foreach (string pcname in pcnames)
+                    {
+                        machinename = pcname;
+                    }
                 }
                 catch (Exception ex)
                 {
