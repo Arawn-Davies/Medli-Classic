@@ -44,11 +44,12 @@ namespace Medli.Applications
         }
         public static void prompt()
         {
+            Console.Write(Kernel.current_dir + " ");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Write(Kernel.machinename);
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(Kernel.current_dir);
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write(" />");
+            
+            Console.Write(" $ ");
             cmd(Console.ReadLine());
         }
         public static void cmd(string input)
@@ -58,8 +59,9 @@ namespace Medli.Applications
             {
                 fsfunctions.cd(command);
             }
-            else if (command == "getram")
+            else if (command == "sysinfo")
             {
+                Console.WriteLine("");
                 Console.WriteLine("Amount of RAM installed: " + machineinfo.getRam() + " megabytes");
             }
             else if (command.StartsWith("dir"))
