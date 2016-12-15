@@ -20,10 +20,17 @@ namespace Medli.Applications
         {
             try
             {
-                string[] lines = File.ReadAllLines(Kernel.current_dir + file);
-                foreach (string line in lines)
+                if (File.Exists(Kernel.current_dir + file))
                 {
-                    Console.WriteLine(line);
+                    string[] lines = File.ReadAllLines(Kernel.current_dir + file);
+                    foreach (string line in lines)
+                    {
+                        Console.WriteLine(line);
+                    }
+                }
+                else if (!File.Exists(Kernel.current_dir + file))
+                {
+                    ngshell.invalidCommand(file, 2);
                 }
             }
             catch (Exception ex)

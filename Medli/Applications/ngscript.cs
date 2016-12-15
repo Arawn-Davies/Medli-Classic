@@ -23,7 +23,7 @@ namespace Medli.Applications
             }
             else
             {
-                Console.WriteLine("Not a valid Cocoascript file.");
+                Console.WriteLine("Not a valid Midnascript file.");
             }
         }
     }

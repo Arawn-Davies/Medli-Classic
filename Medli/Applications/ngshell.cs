@@ -44,12 +44,11 @@ namespace Medli.Applications
         }
         public static void prompt()
         {
-            Console.Write(Kernel.current_dir + " ");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write(Kernel.machinename);
             Console.ForegroundColor = ConsoleColor.Green;
-            
-            Console.Write(" $ ");
+            Console.Write(OSVars.pcname + ":");
+            Console.Write(Kernel.current_dir);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("$ ");
             cmd(Console.ReadLine());
         }
         public static void cmd(string input)
@@ -68,9 +67,18 @@ namespace Medli.Applications
             {
                 fsfunctions.dir();
             }
+            else if (command == "miv")
+            {
+                MIV.StartMIV();
+            }
             else if (command == "easteregg")
             {
                 Tests.Test();
+            }
+            else if (command == "reboot")
+            {
+                Cosmos.System.Power.Reboot();
+                //machineinfo.reboot();
             }
             else if (command == "shutdown")
             {
