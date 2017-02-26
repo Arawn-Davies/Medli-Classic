@@ -17,9 +17,9 @@ namespace Medli
         public static string pcname;
         public static double version;
         public static double ver_no = 0.2;
-        public static string wlcm1 = "Medli  - Version " + OSVars.ver_no;
+        public static string wlcm1 = "Medli-core - Version " + OSVars.ver_no;
         public static string wlcm2 = "Maintained by Arawn Davies under the MIT License";
-        public static string wlcm3 = "This copy of Medli is registered to: ";
+        public static string wlcm3 = "This copy of Medli-core is registered to: ";
 
         public static void ver()
         {
