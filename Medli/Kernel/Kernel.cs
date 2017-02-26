@@ -15,9 +15,10 @@ namespace Medli
         public static string reginfo = Kernel.root_dir + "reginfo.sys";
         public static string regname;
         public static string pcname;
-        public static double ver_no = 0.1;
+        public static double version;
+        public static double ver_no = 0.2;
         public static string wlcm1 = "Medli  - Version " + OSVars.ver_no;
-        public static string wlcm2 = "Maintained by CaveSponge under the MIT License";
+        public static string wlcm2 = "Maintained by Arawn Davies under the MIT License";
         public static string wlcm3 = "This copy of Medli is registered to: ";
 
         public static void ver()

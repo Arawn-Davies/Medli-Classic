@@ -19,10 +19,10 @@ give up all hope. If this screen appears again, follow these steps:
 Throw away this computer.
 If this is a new installation, ask your hardware or software manufacturer
 what's the point in buying Microsoft Windows products are.
-If problems continue, don't bother using a computer. 
+If problems continue, don't bother using computers. 
 Get rid of memories such as who you are or your bank account PIN.
-If you need to use a computer, to look at porn, buy porno mags and
-press F8 on an imaginary keyboard to look like an absolute fool, and then select 'I'm a cretin'.
+If you need to use a computer to look at dank memes,
+press F8 on an imaginary keyboard to look like an absolute fool, and then select 'Why am I alive?'.
 Not-so Technical information:
 *** STOP: H4ck3rT1m3 (0xNeverGonnaGive,0xYouUp,0xNeverGonnaLet,0xYouDown)
 ***  POKEMON.SYS - Address lastase at FUCKm333, DateStamp DayAfterYesterday";

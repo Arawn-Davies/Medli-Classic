@@ -58,6 +58,10 @@ namespace Medli.Applications
             {
                 fsfunctions.cd(command);
             }
+            else if (command.StartsWith("run"))
+            {
+                ngscript.Execute(command.Remove(0, 4));
+            }
             else if (command == "sysinfo")
             {
                 Console.WriteLine("");
@@ -117,13 +121,6 @@ namespace Medli.Applications
             {
                 cpview.ViewFile(command.Remove(0, 3));
             }
-            /*
-            Not yet implemented!
-            else if (command.StartsWith("ngscript "))
-            {
-
-            }
-            */
             else if (command == "")
             {
 
