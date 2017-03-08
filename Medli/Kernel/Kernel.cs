@@ -16,7 +16,7 @@ namespace Medli
         public static string regname;
         public static string pcname;
         public static double version;
-        public static double ver_no = 0.2;
+        public static double ver_no = 0.3;
         public static string wlcm1 = "Medli-core - Version " + OSVars.ver_no;
         public static string wlcm2 = "Maintained by Arawn Davies under the MIT License";
         public static string wlcm3 = "This copy of Medli-core is registered to: ";
@@ -69,16 +69,36 @@ namespace Medli
             //This is why initializing the filesystem is vital before executing this code.
             if (File.Exists(OSVars.reginfo))
             {
-                    string[] lines = File.ReadAllLines(OSVars.reginfo);
+                string[] lines = File.ReadAllLines(OSVars.reginfo);
+                foreach (string line in lines)
+                {
+                    OSVars.regname = line;
+                }
+                string[] pcnames = File.ReadAllLines(OSVars.pcinfo);
+                foreach (string pcname in pcnames)
+                {
+                    OSVars.pcname = pcname;
+                }
+            }
+            else if (File.Exists(Kernel.current_dir + "pcinfo.sys") || File.Exists(Kernel.current_dir + "regname.sys"))
+            {
+                try
+                {
+                    string[] lines = File.ReadAllLines(Kernel.current_dir + "regname.sys");
                     foreach (string line in lines)
                     {
                         OSVars.regname = line;
                     }
-                    string[] pcnames = File.ReadAllLines(OSVars.pcinfo);
+                    string[] pcnames = File.ReadAllLines(Kernel.current_dir + "pcinfo.sys");
                     foreach (string pcname in pcnames)
                     {
                         OSVars.pcname = pcname;
                     }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
             else
             {
@@ -90,19 +110,19 @@ namespace Medli
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Medli Installer:");
-                Console.WriteLine(" "); 
+                Console.WriteLine(" ");
                 Console.WriteLine("Press any key and let's get started!");
                 Console.ReadKey(true);
                 Console.WriteLine("");
                 Console.WriteLine("Please enter a machine name:");
 
-                machinename = Console.ReadLine();
+                OSVars.pcname = Console.ReadLine();
                 File.Create(Kernel.current_dir + "pcinfo.sys");
-                File.WriteAllText(Kernel.current_dir + "pcinfo.sys", machinename);
+                File.WriteAllText(Kernel.current_dir + "pcinfo.sys", OSVars.pcname);
                 Console.WriteLine("Excellent! Please enter who this copy of Medli is registered to:");
-                regname = Console.ReadLine();
+                OSVars.regname = Console.ReadLine();
                 File.Create(Kernel.current_dir + "reginfo.sys");
-                File.WriteAllText(Kernel.current_dir + "reginfo.sys", regname);
+                File.WriteAllText(Kernel.current_dir + "reginfo.sys", OSVars.regname);
 
                 OSVars.pcname = Console.ReadLine();
                 File.Create(OSVars.pcinfo);
@@ -118,39 +138,13 @@ namespace Medli
                 Console.ReadKey(true);
                 Console.Clear();
             }
-
-            else if (File.Exists(Kernel.current_dir + "pcinfo.sys") || File.Exists(Kernel.current_dir + "regname.sys"))
-            {
-                try
-                {
-                    string[] lines = File.ReadAllLines(Kernel.current_dir + "regname.sys");
-                    foreach (string line in lines)
-                    {
-                        regname = line;
-                    }
-                    string[] pcnames = File.ReadAllLines(Kernel.current_dir + "pcinfo.sys");
-                    foreach (string pcname in pcnames)
-                    {
-                        machinename = pcname;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-            
-
-
             #endregion
             Console.Clear();
             OSVars.ver();
         }
-
         protected override void Run()
         {
             ngshell.prompt();
         }
-        
     }
 }
