@@ -95,7 +95,7 @@ namespace Medli
                 Console.ReadKey(true);
                 Console.WriteLine("");
                 Console.WriteLine("Please enter a machine name:");
-<<<<<<< HEAD
+
                 machinename = Console.ReadLine();
                 File.Create(Kernel.current_dir + "pcinfo.sys");
                 File.WriteAllText(Kernel.current_dir + "pcinfo.sys", machinename);
@@ -103,7 +103,7 @@ namespace Medli
                 regname = Console.ReadLine();
                 File.Create(Kernel.current_dir + "reginfo.sys");
                 File.WriteAllText(Kernel.current_dir + "reginfo.sys", regname);
-=======
+
                 OSVars.pcname = Console.ReadLine();
                 File.Create(OSVars.pcinfo);
                 File.WriteAllText(OSVars.pcinfo, OSVars.pcname);
@@ -111,14 +111,14 @@ namespace Medli
                 OSVars.regname = Console.ReadLine();
                 File.Create(OSVars.reginfo);
                 File.WriteAllText(OSVars.reginfo, OSVars.regname);
->>>>>>> origin/master
+
                 Console.WriteLine("");
                 Console.WriteLine("Awesome - you're all set!");
                 Console.WriteLine("Press any key to start Medli!");
                 Console.ReadKey(true);
                 Console.Clear();
             }
-<<<<<<< HEAD
+
             else if (File.Exists(Kernel.current_dir + "pcinfo.sys") || File.Exists(Kernel.current_dir + "regname.sys"))
             {
                 try
@@ -140,8 +140,8 @@ namespace Medli
                 }
             }
             
-=======
->>>>>>> origin/master
+
+
             #endregion
             Console.Clear();
             OSVars.ver();

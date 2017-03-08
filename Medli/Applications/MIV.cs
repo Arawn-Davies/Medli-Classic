@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+﻿
 using System;
 using Sys = Cosmos.System;
 
@@ -6,7 +6,7 @@ namespace Medli.Applications
 {
     public class MIV
     {
-=======
+
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +19,7 @@ namespace Medli.Applications
     class MIV
     {
         public static string file;
->>>>>>> origin/master
+
         public static void printMIVStartScreen()
         {
             Console.Clear();
@@ -32,14 +32,14 @@ namespace Medli.Applications
             Console.WriteLine("~");
             Console.WriteLine("~                               MIV - MInimalistic Vi");
             Console.WriteLine("~");
-<<<<<<< HEAD
+
             Console.WriteLine("~                                  version 1.0");
             Console.WriteLine("~                             by Denis Bartashevich");
-=======
+
             Console.WriteLine("~                                  version 1.2");
             Console.WriteLine("~                             by Denis Bartashevich");
             Console.WriteLine("~                            Minor additions by CaveSponge");
->>>>>>> origin/master
+
             Console.WriteLine("~                    MIV is open source and freely distributable");
             Console.WriteLine("~");
             Console.WriteLine("~                     type :help<Enter>          for information");
@@ -52,10 +52,10 @@ namespace Medli.Applications
             Console.WriteLine("~");
             Console.WriteLine("~");
             Console.WriteLine("~");
-<<<<<<< HEAD
+
             Console.WriteLine("~");
-=======
->>>>>>> origin/master
+
+
             Console.Write("~");
         }
 
@@ -176,13 +176,13 @@ namespace Medli.Applications
                             }
                             else if (infoBar == ":q")
                             {
-<<<<<<< HEAD
+
                                 Console.Clear();
                                 Applications.ngshell.prompt();
-=======
+
                                 return null;
 
->>>>>>> origin/master
+
                             }
                             else if (infoBar == ":help")
                             {
@@ -295,7 +295,7 @@ namespace Medli.Applications
         {
             for (int i = 0; i < time; i++) ;
         }
-<<<<<<< HEAD
+
         public static void Start()
         {
             String x = miv(null);
@@ -303,7 +303,7 @@ namespace Medli.Applications
             Console.WriteLine(x);
             Console.WriteLine("--- Press any key to write again! ---");
             ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-=======
+
         public static void StartMIV()
         {
             Console.WriteLine("Enter file's filename to open:");
@@ -347,7 +347,7 @@ namespace Medli.Applications
             }
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey(true);
->>>>>>> origin/master
+
         }
     }
 }

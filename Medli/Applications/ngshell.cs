@@ -45,16 +45,14 @@ namespace Medli.Applications
         public static void prompt()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-<<<<<<< HEAD
             
             Console.Write(" $ ");
             Console.ForegroundColor = ConsoleColor.White;
-=======
+
             Console.Write(OSVars.pcname + ":");
             Console.Write(Kernel.current_dir);
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("$ ");
->>>>>>> origin/master
             cmd(Console.ReadLine());
         }
         public static void cmd(string input)
@@ -64,15 +62,13 @@ namespace Medli.Applications
             {
                 fsfunctions.cd(command);
             }
-<<<<<<< HEAD
             else if (command == "miv")
             {
                 Applications.MIV.Start();
-=======
+            }
             else if (command.StartsWith("run"))
             {
                 ngscript.Execute(command.Remove(0, 4));
->>>>>>> origin/master
             }
             else if (command == "sysinfo")
             {
