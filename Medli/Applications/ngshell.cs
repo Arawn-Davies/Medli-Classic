@@ -44,13 +44,17 @@ namespace Medli.Applications
         }
         public static void prompt()
         {
-            Console.Write(Kernel.current_dir + " ");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write(Kernel.machinename);
             Console.ForegroundColor = ConsoleColor.Green;
+<<<<<<< HEAD
             
             Console.Write(" $ ");
             Console.ForegroundColor = ConsoleColor.White;
+=======
+            Console.Write(OSVars.pcname + ":");
+            Console.Write(Kernel.current_dir);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("$ ");
+>>>>>>> origin/master
             cmd(Console.ReadLine());
         }
         public static void cmd(string input)
@@ -60,9 +64,15 @@ namespace Medli.Applications
             {
                 fsfunctions.cd(command);
             }
+<<<<<<< HEAD
             else if (command == "miv")
             {
                 Applications.MIV.Start();
+=======
+            else if (command.StartsWith("run"))
+            {
+                ngscript.Execute(command.Remove(0, 4));
+>>>>>>> origin/master
             }
             else if (command == "sysinfo")
             {
@@ -73,9 +83,18 @@ namespace Medli.Applications
             {
                 fsfunctions.dir();
             }
+            else if (command == "miv")
+            {
+                MIV.StartMIV();
+            }
             else if (command == "easteregg")
             {
                 Tests.Test();
+            }
+            else if (command == "reboot")
+            {
+                Cosmos.System.Power.Reboot();
+                //machineinfo.reboot();
             }
             else if (command == "shutdown")
             {
@@ -114,13 +133,6 @@ namespace Medli.Applications
             {
                 cpview.ViewFile(command.Remove(0, 3));
             }
-            /*
-            Not yet implemented!
-            else if (command.StartsWith("ngscript "))
-            {
-
-            }
-            */
             else if (command == "")
             {
 

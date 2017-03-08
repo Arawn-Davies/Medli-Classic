@@ -11,19 +11,29 @@ namespace Medli.Applications
     {
         public static void Execute(string scriptname)
         {
-            if (scriptname.EndsWith(".ngs"))
+            if (scriptname.EndsWith(".txt"))
             {
                 string[] lines = File.ReadAllLines(scriptname);
                 foreach (string line in lines)
                 {
                     ngshell.cmd(line);
                     Console.WriteLine("");
-                    ngshell.prompt();
                 }
+                ngshell.prompt();
+            }
+            else if (scriptname.EndsWith(".mds"))
+                {
+                    string[] lines = File.ReadAllLines(scriptname);
+                    foreach (string line in lines)
+                    {
+                        ngshell.cmd(line);
+                        Console.WriteLine("");
+                    }
+                    ngshell.prompt();
             }
             else
             {
-                Console.WriteLine("Not a valid Cocoascript file.");
+                Console.WriteLine("Not a valid Midnascript file.");
             }
         }
     }
