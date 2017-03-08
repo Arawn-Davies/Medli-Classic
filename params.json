@@ -1,0 +1,6 @@
+{
+  "name": "Medli",
+  "tagline": "Medli, an attractive free and open-source operating system",
+  "body": "# Medli\r\n\r\n##Welcome to Medli, an attractive free and open successor to the original Chocolate OS.\r\n\r\n###FAQ\r\nDue to the current lack of LFN writing one can only use filenames with the texteditor\r\nthat have 255 digits in the title and 3 letter extensions. \r\n\r\nThe text editor can currently view any file with 3 letter extensions formatted as a text file.\r\n\r\nUse the command 'help' to view a list of commands and use 'help <command>' for more help on specific commands.\r\n\r\n\r\n###Currently Medli has the following:\r\nError Handling\r\n\r\nFAT File System\r\n\r\nSimple Terminal/Shell\r\n\r\nText Editor and Viewer\r\n\r\n\r\n###Work In Progress:\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}

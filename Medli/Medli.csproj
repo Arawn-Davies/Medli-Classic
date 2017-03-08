@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Applications\cocoaedit.cs" />
     <Compile Include="Applications\cocoaview.cs" />
+    <Compile Include="Applications\MIV.cs" />
     <Compile Include="Applications\ngscript.cs" />
     <Compile Include="Applications\ngshell.cs" />
     <Compile Include="Applications\Tests.cs" />

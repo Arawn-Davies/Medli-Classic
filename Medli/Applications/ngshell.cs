@@ -60,6 +60,10 @@ namespace Medli.Applications
             {
                 fsfunctions.cd(command);
             }
+            else if (command == "miv")
+            {
+                Applications.MIV.Start();
+            }
             else if (command == "sysinfo")
             {
                 Console.WriteLine("");
