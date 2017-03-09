@@ -1,13 +1,4 @@
-﻿
-using System;
-using Sys = Cosmos.System;
-
-namespace Medli.Applications
-{
-    public class MIV
-    {
-
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,14 +23,9 @@ namespace Medli.Applications
             Console.WriteLine("~");
             Console.WriteLine("~                               MIV - MInimalistic Vi");
             Console.WriteLine("~");
-
-            Console.WriteLine("~                                  version 1.0");
-            Console.WriteLine("~                             by Denis Bartashevich");
-
             Console.WriteLine("~                                  version 1.2");
             Console.WriteLine("~                             by Denis Bartashevich");
-            Console.WriteLine("~                            Minor additions by CaveSponge");
-
+            Console.WriteLine("~                            Minor additions by Arawn Davies");
             Console.WriteLine("~                    MIV is open source and freely distributable");
             Console.WriteLine("~");
             Console.WriteLine("~                     type :help<Enter>          for information");
@@ -52,13 +38,9 @@ namespace Medli.Applications
             Console.WriteLine("~");
             Console.WriteLine("~");
             Console.WriteLine("~");
-
             Console.WriteLine("~");
-
-
             Console.Write("~");
         }
-
         public static String stringCopy(String value)
         {
             String newString = String.Empty;
@@ -70,7 +52,6 @@ namespace Medli.Applications
 
             return newString;
         }
-
         public static void printMIVScreen(char[] chars, int pos, String infoBar, Boolean editMode)
         {
             int countNewLine = 0;
@@ -303,7 +284,7 @@ namespace Medli.Applications
             Console.WriteLine(x);
             Console.WriteLine("--- Press any key to write again! ---");
             ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-
+        }
         public static void StartMIV()
         {
             Console.WriteLine("Enter file's filename to open:");
