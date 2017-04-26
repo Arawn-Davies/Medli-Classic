@@ -59,7 +59,7 @@
     <Compile Include="Applications\cocoaview.cs" />
     <Compile Include="Applications\MIV.cs" />
     <Compile Include="Applications\ngscript.cs" />
-    <Compile Include="Applications\ngshell.cs" />
+    <Compile Include="Applications\mshell.cs" />
     <Compile Include="Applications\Tests.cs" />
     <Compile Include="Kernel\ErrorHandler.cs" />
     <Compile Include="Kernel\fsfunctions.cs" />

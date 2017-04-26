@@ -16,20 +16,20 @@ namespace Medli.Applications
                 string[] lines = File.ReadAllLines(scriptname);
                 foreach (string line in lines)
                 {
-                    ngshell.cmd(line);
+                    mshell.cmd(line);
                     Console.WriteLine("");
                 }
-                ngshell.prompt();
+                mshell.prompt();
             }
             else if (scriptname.EndsWith(".mds"))
                 {
                     string[] lines = File.ReadAllLines(scriptname);
                     foreach (string line in lines)
                     {
-                        ngshell.cmd(line);
+                        mshell.cmd(line);
                         Console.WriteLine("");
                     }
-                    ngshell.prompt();
+                    mshell.prompt();
             }
             else
             {

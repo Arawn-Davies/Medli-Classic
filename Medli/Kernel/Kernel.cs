@@ -144,7 +144,7 @@ namespace Medli
         }
         protected override void Run()
         {
-            ngshell.prompt();
+            mshell.prompt();
         }
     }
 }

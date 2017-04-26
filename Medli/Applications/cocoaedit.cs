@@ -36,12 +36,12 @@ namespace Medli.Applications
                         File.WriteAllText(Kernel.current_dir + file, text);
                         savedtext = text;
                         running = false;
-                        ngshell.prompt();
+                        mshell.prompt();
                     }
                     else if (notsaved == "n")
                     {
                         running = false;
-                        ngshell.prompt();
+                        mshell.prompt();
                     }
                 }
                 if (line == "save")
@@ -50,7 +50,7 @@ namespace Medli.Applications
                     File.WriteAllText(Kernel.current_dir + file, text);
                     savedtext = text;
                     running = false;
-                    ngshell.prompt();
+                    mshell.prompt();
                 }
                 text = text + (Environment.NewLine + line);
             }

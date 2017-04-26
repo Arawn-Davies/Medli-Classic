@@ -30,7 +30,7 @@ namespace Medli.Applications
                 }
                 else if (!File.Exists(Kernel.current_dir + file))
                 {
-                    ngshell.invalidCommand(file, 2);
+                    mshell.invalidCommand(file, 2);
                 }
             }
             catch (Exception ex)

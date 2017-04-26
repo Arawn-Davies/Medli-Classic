@@ -159,7 +159,7 @@ namespace Medli.Applications
                             {
 
                                 Console.Clear();
-                                Applications.ngshell.prompt();
+                                mshell.prompt();
 
                                 return null;
 

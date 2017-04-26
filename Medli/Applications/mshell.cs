@@ -10,7 +10,7 @@ using Medli.Applications;
 namespace Medli.Applications
 {
 
-    class ngshell
+    class mshell
     {
         public static void invalidCommand(string args, int errorlvl)
         {
