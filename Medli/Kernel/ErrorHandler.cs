@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Medli.System;
 using System.Threading.Tasks;
+using Medli.System;
 
 namespace Medli
 {
@@ -22,11 +22,11 @@ What's happend? ";
             public static void Init(int errlvl, string errdsc, string err)
             {
 
-                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                Console.BackgroundColor = ConsoleColor.DarkRed;
                 Console.Clear();
                 Console.WriteLine(Msg + err);
                 Console.WriteLine("This means that: " + errdsc);
-                Console.WriteLine("Press any key to restart :/");
+                Console.WriteLine("Press any key to restart.");
                 Console.ReadKey(true);
                 machineinfo.reboot();
             }
@@ -39,7 +39,12 @@ What's happend? ";
             }
             else if (critical == false)
             {
-
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.Clear();
+                Applications.Cowsay.Main(@"whoops, you've encountered an error.
+                This means that: " + errdsc);
+                Console.WriteLine("Press any key to return to shell");
+                Console.ReadKey(true);
             }
         }
 

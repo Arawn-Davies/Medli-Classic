@@ -139,6 +139,7 @@ namespace Medli
                 Console.Clear();
             }
             #endregion
+
             Console.Clear();
             OSVars.ver();
         }

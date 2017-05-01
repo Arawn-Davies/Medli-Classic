@@ -46,7 +46,7 @@ namespace Medli.Applications
         {
             Console.ForegroundColor = ConsoleColor.Green;
             
-            Console.Write(" $ ");
+            Console.Write("$ ");
             Console.ForegroundColor = ConsoleColor.White;
 
             Console.Write(OSVars.pcname + ":");
@@ -96,16 +96,24 @@ namespace Medli.Applications
             {
                 machineinfo.shutdown();
             }
+            else if (command == "panic")
+            {
+                ErrorHandler.Init(1, "Medli received the 'panic' command, Nothing's gonna happen.", false, "");
+            }
             else if (command.StartsWith("panic"))
             {
                 if (command.Remove(0, 6) == "critical")
                 {
                     ErrorHandler.Init(0, "Medli received the 'panic critical' command , Nothings gonna happen", true, "User-invoked panic");
                 }
-                else
+                else if (command.Remove(0, 6) == "userlvl")
                 {
-                    ErrorHandler.Init(1, "Medli received the 'panic' command, Nothing's gonna happen.", false, "");
+                    ErrorHandler.Init(1, "Medli received the 'panic userlvl' command, Nothing's gonna happen.", false, "");
                 }
+            }
+            else if (command.StartsWith("cowsay"))
+            {
+                Cowsay.Main(input.Remove(0, 7));
             }
             else if (command.StartsWith("mkdir "))
             {
@@ -137,7 +145,7 @@ namespace Medli.Applications
             {
                 try
                 {
-                    Console.WriteLine(command.Remove(0, 5));
+                    Console.WriteLine(input.Remove(0, 5));
                 }
                 catch (Exception ex)
                 {
