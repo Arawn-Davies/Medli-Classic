@@ -21,13 +21,14 @@ OOOOO  H  H    SSSSS  H  H  I    T      M M M  A   A    T    EEEEE
 What's happend? ";
             public static void Init(int errlvl, string errdsc, string err)
             {
-
                 Console.BackgroundColor = ConsoleColor.DarkRed;
                 Console.Clear();
                 Console.WriteLine(Msg + err);
                 Console.WriteLine("This means that: " + errdsc);
                 Console.WriteLine("Press any key to restart.");
                 Console.ReadKey(true);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.Black;
                 machineinfo.reboot();
             }
         }
@@ -41,10 +42,13 @@ What's happend? ";
             {
                 Console.BackgroundColor = ConsoleColor.Blue;
                 Console.Clear();
-                Applications.Cowsay.Main(@"whoops, you've encountered an error.
-                This means that: " + errdsc);
-                Console.WriteLine("Press any key to return to shell");
+                Applications.Cowsay.Main("Whoops!");
+                Console.WriteLine("You've encountered an error. This means that: " + errdsc);
+                Console.WriteLine("Press any key to return to shell.");
                 Console.ReadKey(true);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.Clear();
             }
         }
 

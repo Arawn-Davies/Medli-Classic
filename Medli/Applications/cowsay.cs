@@ -26,7 +26,6 @@ namespace Medli.Applications
             (__)\       )\/\
                 ||----w |
                 ||     ||");
-            Console.ReadKey(true);
         }
     }
 }
