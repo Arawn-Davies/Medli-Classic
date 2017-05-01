@@ -12,13 +12,8 @@ namespace Medli
         public class BlueScreen
         {
             public static string Msg = @"
-OOOOO  H  H    SSSSS  H  H  i  TTTTT    MMMMM  AAAAA  TTTTT  EEEEE 
-O   O  H  H    S      H  H  I    T      M M M  A   A    T    E
-O   O  HHHH    SSSSS  HHHH  I    T      M M M  AAAAA    T    EEEEE
-O   O  H  H        S  H  H  I    T      M M M  A   A    T    E
-OOOOO  H  H    SSSSS  H  H  I    T      M M M  A   A    T    EEEEE
 
-What's happend? ";
+What's happened now?! ";
             public static void Init(int errlvl, string errdsc, string err)
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
