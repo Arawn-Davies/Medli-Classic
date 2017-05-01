@@ -12,6 +12,11 @@ namespace Medli
         public class BlueScreen
         {
             public static string Msg = @"
+                '||            ||    
+                 ||      ''    ||    
+.|''|,    (''''  ||''|,  ||  ''||''  
+||  ||     `'')  ||  ||  ||    ||    
+`|..|'    `...' .||  || .||.   `|..'
 
 What's happened now?! ";
             public static void Init(int errlvl, string errdsc, string err)
