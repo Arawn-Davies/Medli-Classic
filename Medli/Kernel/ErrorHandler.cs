@@ -12,6 +12,7 @@ namespace Medli
         public class BlueScreen
         {
             public static string Msg = @"
+
                 '||            ||    
                  ||      ''    ||    
 .|''|,    (''''  ||''|,  ||  ''||''  
