@@ -119,8 +119,6 @@ namespace Medli.Applications
             else if (command == "clear")
             {
                 Console.Clear();
-                OSVars.ver();
-
             }
             else if (command.StartsWith("cp "))
             {
