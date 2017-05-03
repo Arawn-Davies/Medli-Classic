@@ -24,15 +24,14 @@ namespace Medli
         public static double version;
         public static double ver_no = 0.5;
         public static string logo = @"
-::::    ::::  :::::::::: :::::::::  :::        ::::::::::: 
-+:+:+: :+:+:+ :+:        :+:    :+: :+:            :+:     
-+:+ +:+:+ +:+ +:+        +:+    +:+ +:+            +:+     
-+#+  +:+  +#+ +#++:++#   +#+    +:+ +#+            +#+     
-+#+       +#+ +#+        +#+    +#+ +#+            +#+     
-#+#       #+# #+#        #+#    #+# #+#            #+#     
-###       ### ########## #########  ########## ########### "
-+ OSVars.ver_no +@"  Powered by the C# Open Source Managed Operating System
-";
+   ::::     :::::::::: :::::::::  :::        ::::::::::: 
+  ::::::    :+:        :+:    :+: :+:            :+:     
+ ++ :+  ++  +:+        +:+    +:+ +:+            +:+     
+++  ++   ++ +#++:++#   +#+    +:+ +#+            +#+     
+++       ++ +#+        +#+    +#+ +#+            +#+     
+##       ## #+#        #+#    #+# #+#            #+#     
+##       ## ########## #########  ########## ###########";
+        
         public static string wlcm1 = "Medli - Version " + OSVars.ver_no;
         public static string wlcm2 = "Maintained by Arawn Davies under the MIT License";
         //public static string wlcm3 = "This copy of Medli-core is registered to: ";
@@ -48,7 +47,7 @@ namespace Medli
 
             //Update 0.5 - Registration has been disabled because it's not production and in early stages,
             //plus this is an open-source project so having registration is a bit of a joke :P
-            
+
             #region regsetup
             /*
             //Insert total asshattery here >>>
@@ -69,6 +68,9 @@ namespace Medli
             */
             #endregion
 
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(OSVars.logo);
+            Console.WriteLine("Powered by the C# Open Source Managed Operating System");
             Console.ForegroundColor = ConsoleColor.White;
 
 
@@ -86,10 +88,9 @@ namespace Medli
             VFSManager.RegisterVFS(fs);
             fs.Initialize();
             Console.Clear();
-            Console.WriteLine(OSVars.logo);
             OSVars.ver();
 
-            #region MNinit
+                #region MNinit
             //This is just to identify the users machine, much later in Medli will this have any usage however
             //i.e. not until networking is set up, FS Permissions are working etc...
             //If it wasn't able to find a machinename file, then it will try and create one.
@@ -114,6 +115,7 @@ namespace Medli
                     {
                         OSVars.pcname = pcname;
                         Console.WriteLine("Welcome back, " + OSVars.pcname + @"!");
+                        Console.ReadKey(true);
                     }
                 }
                 catch (Exception ex)
@@ -123,6 +125,7 @@ namespace Medli
             }
             else
             {
+                #region setup
                 Console.WriteLine("Medli was unable to find any info regarding your PC.");
                 Console.WriteLine("The Medli installer will now run.");
                 Console.WriteLine("Press any key to continue...");
@@ -147,6 +150,7 @@ namespace Medli
                 Console.WriteLine("Press any key to start Medli!");
                 Console.ReadKey(true);
                 Console.Clear();
+                #endregion
             }
             #endregion
 
