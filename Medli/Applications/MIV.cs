@@ -298,8 +298,20 @@ namespace Medli.Applications
                 }
                 else if (!File.Exists(@"0:\" + MIV.file))
                 {
-                    Console.WriteLine("Creating file!");
-                    File.Create(@"0:\" + MIV.file);
+                    mshell.invalidCommand(MIV.file, 2);
+                    Console.WriteLine("Would you like to create this file?");
+                    Console.WriteLine("Y = Yes, N = No");
+                    var answer = Console.ReadKey();
+                    if (answer.Key == ConsoleKey.Y)
+                    {
+                        Console.WriteLine("Creating file!");
+                        File.Create(@"0:\" + MIV.file);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Abort - file " + MIV.file + "not created");
+                        
+                    }
                 }
                 Console.Clear();
             }

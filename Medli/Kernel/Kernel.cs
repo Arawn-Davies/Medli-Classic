@@ -24,13 +24,13 @@ namespace Medli
         public static double version;
         public static double ver_no = 0.5;
         public static string logo = @"
-   ::::     :::::::::: :::::::::  :::        ::::::::::: 
-  ::::::    :+:        :+:    :+: :+:            :+:     
- ++ :+  ++  +:+        +:+    +:+ +:+            +:+     
-++  ++   ++ +#++:++#   +#+    +:+ +#+            +#+     
-++       ++ +#+        +#+    +#+ +#+            +#+     
-##       ## #+#        #+#    #+# #+#            #+#     
-##       ## ########## #########  ########## ###########";
+ ::::::::    ::::::::: :::::::::  :::        ::::::::::: 
+::  ::  ::  :+:        :+:    :+: :+:            :+:     
+++  :+  ++  +:+        +:+    +:+ +:+            +:+     
+++  ++  ++  +#++:++#   +#+    +:+ +#+            +#+     
+++      ++  +#+        +#+    +#+ +#+            +#+     
+##      ##  +#+        #+#    #+# #+#            #+#     
+##      ##   ######### #########   ######### ###########";
         
         public static string wlcm1 = "Medli - Version " + OSVars.ver_no;
         public static string wlcm2 = "Maintained by Arawn Davies under the MIT License";

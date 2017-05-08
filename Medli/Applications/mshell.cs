@@ -37,6 +37,7 @@ namespace Medli.Applications
             }
             else if (errorlvl == 4)
             {
+                Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkRed;
             }
             
@@ -59,13 +60,16 @@ namespace Medli.Applications
             {
                 fsfunctions.cd(command);
             }
-            else if (command == "miv")
-            {
-                Applications.MIV.Start();
-            }
             else if (command.StartsWith("run"))
             {
-                ngscript.Execute(command.Remove(0, 4));
+                if (!File.Exists(Kernel.current_dir + command.Remove(0, 4)))
+                {
+                    mshell.invalidCommand(command.Remove(0, 4), 2);
+                }
+                else
+                {
+                    ngscript.Execute(command.Remove(0, 4));
+                }
             }
             else if (command == "sysinfo")
             {
@@ -76,7 +80,7 @@ namespace Medli.Applications
             {
                 fsfunctions.dir();
             }
-            else if (command == "miv")
+            else if (command.StartsWith("miv"))
             {
                 MIV.StartMIV();
             }
