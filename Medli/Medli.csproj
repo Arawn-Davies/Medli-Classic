@@ -67,6 +67,7 @@
     <Compile Include="Kernel\getHelp.cs" />
     <Compile Include="Kernel\Kernel.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Kernel\Shell.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -120,6 +120,11 @@ namespace Medli.Applications
             {
                 fsfunctions.mkdir(command.Remove(0, 6));
             }
+            else if (command == "shell2")
+            {
+                Shell.Run();
+                Console.Clear();
+            }
             else if (command == "clear")
             {
                 Console.Clear();
