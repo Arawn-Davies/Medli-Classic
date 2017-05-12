@@ -8,23 +8,48 @@ namespace Medli
 {
     public class getHelp
     {
+        /*
+         * A very primitive paging system (not RAM paging, I mean manpages etc...)
+         * Tidied up a bit, might avoid the text-spilling-onto-next-line issue but certainly doesn't eliminate it
+         * That's an issue which needs sorting, probs leave it until we go .NET Core
+         */
+        public static void pages(int pageno)
+        {
+            if (pageno == 1)
+            {
+                Console.WriteLine("mkdir\tMakes a directory");
+                Console.WriteLine("echo\tPrints text to the console");
+                Console.WriteLine("getram\tGets the amount of system RAM in megabytes");
+                Console.WriteLine("mkdir\tMakes a directory");
+                Console.WriteLine("dir\tPrints a list of directories in the current directory");
+                Console.WriteLine("cd\tChanges the current directory");
+                Console.WriteLine("clear\tClears the screen");
+                Console.WriteLine("panic\tStarts a harmless kernel panic");
+                Console.Write("Help page 1 - Press any key..."); Console.ReadKey(true);
+            }
+            else if (pageno == 2)
+            {
+                Console.WriteLine("panic critical\tStarts a critical yet harmless kernel panic");
+                Console.WriteLine("cv <file>\tPrints the contents of a file onto the screen.");
+                Console.WriteLine("cp <file>\tLaunches the text editor");
+                Console.WriteLine("miv\tLaunches the MIV advanced text editor");
+                Console.WriteLine("reboot\tReboots the system");
+                Console.WriteLine("shutdown\tCloses applications and powers down the system.");
+                Console.WriteLine("shell2\tLaunches the new shell (W.I.P)");
+                Console.WriteLine("cowsay <text>\tA little *nix easter egg ;)");
+                Console.Write("Help page 2 - Press any key..."); Console.ReadKey(true);
+            }
+            else
+            {
+                Console.Clear();
+                pages(1);
+                pages(2);
+            }
+        }
         public static void full()
         {
-            Console.WriteLine("mkdir\tMakes a directory");
-            Console.WriteLine("echo\tPrints text to the console");
-            Console.WriteLine("getram\tGets the amount of system RAM in megabytes");
-            Console.WriteLine("mkdir\tMakes a directory");
-            Console.WriteLine("dir\tPrints a list of directories in the current directory");
-            Console.WriteLine("cd\tChanges the current directory");
-            Console.WriteLine("clear\tClears the screen");
-            Console.WriteLine("panic\tStarts a harmless kernel panic");
-            Console.WriteLine("panic critical\tStarts a critical yet harmless kernel panic");
-            Console.WriteLine("cv <file>\tPrints the contents of a file onto the screen.");
-            Console.WriteLine("cp <file>\tLaunches the text editor");
-            Console.WriteLine("miv\tLaunches the MIV advanced text editor");
-            Console.WriteLine("reboot\tReboots the system");
-            Console.WriteLine("shutdown\tCloses applications and powers down the system.");
-            Console.WriteLine("shell2\tLaunches the new shell (W.I.P)");
+            pages(1);
+            pages(2);
         }
         public static void specific(string topic)
         {
@@ -36,6 +61,10 @@ namespace Medli
             {
                 Console.WriteLine("panic\tStarts a harmless kernel panic");
                 Console.WriteLine("panic critical\tStarts a critical yet harmless kernel panic");
+            }
+            else if (topic == "cowsay")
+            {
+                Console.WriteLine("cowsay <text>\tA little *nix easter egg ;)");
             }
             else if (topic == "cv")
             {

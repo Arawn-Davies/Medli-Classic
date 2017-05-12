@@ -17,10 +17,11 @@ namespace Medli.Applications
         public static void Main(string args)
         {
 
-            Console.Write("/-"); print(args); Console.WriteLine(@"-\");
-            Console.WriteLine("|-" + args + @"-|");
-            Console.Write(@"\-"); print(args); Console.Write(@"-/");
+            Console.Write("/--"); print(args); Console.WriteLine(@"--\");
+            Console.WriteLine("|- " + args + @" -|");
+            Console.Write(@"\--"); print(args); Console.Write(@"--/");
             Console.WriteLine(@"
+       \
         \   ^__^
          \  (oo)\_______
             (__)\       )\/\
