@@ -1,8 +1,7 @@
 ﻿/*
 Changelog?
-0.5 - Created logo, disabled registration setup and file.
-        Remaining registration code is in a bit of a mess,
-        so best to leave this alone and tidy it up so it's set to machine name stuff only.
+0.8 -   Updated logo, added new shell amongst other fixes and edits
+        close to becoming version 1.0!
 */
 using System;
 using System.Collections.Generic;
@@ -22,15 +21,15 @@ namespace Medli
         public static string regname;
         public static string pcname;
         public static double version;
-        public static double ver_no = 0.5;
+        public static double ver_no = 0.8;
         public static string logo = @"
- ::::::::    ::::::::: :::::::::  :::        ::::::::::: 
-::  ::  ::  :+:        :+:    :+: :+:            :+:     
-++  :+  ++  +:+        +:+    +:+ +:+            +:+     
-++  ++  ++  +#++:++#   +#+    +:+ +#+            +#+     
-++      ++  +#+        +#+    +#+ +#+            +#+     
-##      ##  +#+        #+#    #+# #+#            #+#     
-##      ##   ######### #########   ######### ###########";
+ /------\   /-------- /------\  ||        ---------- 
+/|  ||  |\  ||        ||    ||  ||            ||     
+||  ||  ||  ||        ||    ||  ||            ||     
+||  ||  ||  |------   ||    ||  ||            ||     
+||      ||  ||        ||    ||  ||            ||     
+||      ||  ||        ||    ||  ||            ||     
+||      ||  \-------- \------/  \-------- ----------";
         
         public static string wlcm1 = "Medli - Version " + OSVars.ver_no;
         public static string wlcm2 = "Maintained by Arawn Davies under the MIT License";

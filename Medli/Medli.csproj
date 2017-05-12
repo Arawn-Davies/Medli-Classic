@@ -63,7 +63,8 @@
     <Compile Include="Applications\mshell.cs" />
     <Compile Include="Applications\Tests.cs" />
     <Compile Include="Kernel\ErrorHandler.cs" />
-    <Compile Include="Kernel\fsfunctions.cs" />
+    <Compile Include="Kernel\fsfunc.cs" />
+    <Compile Include="Kernel\sysfunc.cs" />
     <Compile Include="Kernel\getHelp.cs" />
     <Compile Include="Kernel\Kernel.cs" />
     <Compile Include="AssemblyInfo.cs" />

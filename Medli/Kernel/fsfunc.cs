@@ -8,9 +8,10 @@ using Sys = Cosmos.System;
 
 namespace Medli
 {
-    class fsfunctions
+    class FSfunc
     {
         public static Sys.FileSystem.CosmosVFS fs;
+
         public static void dir()
         {
             try
@@ -69,47 +70,45 @@ namespace Medli
         public static void cd(string input)
         {
             string path = input.Remove(0, 3); //cd <- 2 chars
-            try
+            if (path == "..")
             {
-                if (path == "..")
+                try
                 {
-                    try
+                    var dir = fs.GetDirectory(Kernel.current_dir);
+                    string p = dir.mParent.mName;
+                    if (!string.IsNullOrEmpty(p))
                     {
-                        var dir = fs.GetDirectory(Kernel.current_dir);
-                        string p = dir.mParent.mName;
-                        if (!string.IsNullOrEmpty(p))
-                        {
-                            Kernel.current_dir = p;
-                        }
-                        /*
-                        if (Kernel.current_dir == Kernel.root_dir)
-                        {
-                            Console.WriteLine("Cannot go up any more levels!");
-                        }
-                        else
-                        {
-                            var pos = Kernel.current_dir.LastIndexOf('\\');
-                            if (pos >= 0)
-                            Kernel.current_dir = Kernel.current_dir.Substring(0, pos);
-                        }
-                        */
+                        Kernel.current_dir = p;
                     }
-                    catch (Exception ex)
+                    /*
+                    if (Kernel.current_dir == Kernel.root_dir)
                     {
-                        Console.WriteLine(ex.Message);
+                        Console.WriteLine("Cannot go up any more levels!");
                     }
+                    else
+                    {
+                        var pos = Kernel.current_dir.LastIndexOf('\\');
+                        if (pos >= 0)
+                        Kernel.current_dir = Kernel.current_dir.Substring(0, pos);
+                    }
+                    */
                 }
-                else if (Directory.Exists(Kernel.current_dir + path))
-                    Kernel.current_dir = Kernel.current_dir + path;
-                else if (Directory.Exists(path))
-                    Kernel.current_dir = path;
-                
-                else
-                    Console.WriteLine("Folder does not exist " + Kernel.current_dir + path);
+                catch (Exception ex)
+                {
+                    ErrorHandler.Init(0, ex.Message, false, "");
+                }
             }
-            catch (Exception e)
+            else if (Directory.Exists(Kernel.current_dir + path))
             {
-                Console.WriteLine(e.Message);
+                Kernel.current_dir = Kernel.current_dir + path;
+            }
+            else if (Directory.Exists(path))
+            {
+                Kernel.current_dir = path;
+            }
+            else
+            {
+                Console.WriteLine("Folder does not exist " + Kernel.current_dir + path);
             }
         }
     }

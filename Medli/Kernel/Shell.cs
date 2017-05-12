@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using Medli.System;
+using Medli.Applications;
 
 namespace Medli.Applications
 {
@@ -12,13 +15,14 @@ namespace Medli.Applications
         {
             Console.Clear();
             Console.BackgroundColor = ConsoleColor.Blue;
-            Console.WriteLine(@"╔══════════════════════════════════════════════════════╗
-║                   Welcome to NuShell                 ║
-║   Type help to display a list of accepted commands.  ║
-║    Or go to this project's documentation for a more  ║
-║        complete list of commands and actions.        ║
-║                                                      ║
-╚══════════════════════════════════════════════════════╝");
+            Console.WriteLine(@"
+                                                       
+                    Welcome to NuShell                 
+    Type help to display a list of accepted commands.  
+     Or go to this project's documentation for a more  
+         complete list of commands and actions.        
+                                                       
+                                                        ");
             bool running = true;
             while (running == true)
             {
@@ -28,18 +32,22 @@ namespace Medli.Applications
                 if (input == "help")
                 {
                     Console.BackgroundColor = ConsoleColor.DarkGreen;
-                    Console.WriteLine(@"╔═══════════════════════════════════════════════════════╗
-║Help  - displays this message                          ║
-║Echo  - displays userinput onto the console            ║
-║Clear - Clears the console                             ║
-║Exit  - exits the prompt                               ║
-║lock  - Locks the system from accepting any user       ║
-║        input until a correct password/code is inputted║
-╚═══════════════════════════════════════════════════════╝");
+                    Console.WriteLine(@"                                                         
+ Help  - displays this message                           
+ Echo  - displays userinput onto the console             
+ Clear - Clears the console                              
+ Exit  - exits the prompt                                
+ Lock  - Locks the system from accepting any user        
+         input until a correct password/code is inputted 
+ Halt  - Shuts down the system.                          ");
                 }
                 else if (input == "clear")
                 {
                     Console.Clear();
+                }
+                else if (input == "halt")
+                {
+                    machineinfo.shutdown();
                 }
                 else if (input == "lock")
                 {

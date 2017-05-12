@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using Medli.System;
-using Medli.Applications;
 
 namespace Medli.Applications
 {
@@ -58,27 +53,26 @@ namespace Medli.Applications
             var command = input.ToLower();
             if (command.StartsWith("cd "))
             {
-                fsfunctions.cd(command);
+                FSfunc.cd(command);
             }
             else if (command.StartsWith("run"))
             {
                 if (!File.Exists(Kernel.current_dir + command.Remove(0, 4)))
                 {
-                    mshell.invalidCommand(command.Remove(0, 4), 2);
+                    invalidCommand(command.Remove(0, 4), 2);
                 }
                 else
                 {
                     ngscript.Execute(command.Remove(0, 4));
                 }
             }
-            else if (command == "sysinfo")
+            else if (command == "getram")
             {
-                Console.WriteLine("");
-                Console.WriteLine("Amount of RAM installed: " + machineinfo.getRam() + " megabytes");
+                Sysfunc.ram();
             }
             else if (command.StartsWith("dir"))
             {
-                fsfunctions.dir();
+                FSfunc.dir();
             }
             else if (command.StartsWith("miv"))
             {
@@ -90,8 +84,7 @@ namespace Medli.Applications
             }
             else if (command == "reboot")
             {
-                Cosmos.System.Power.Reboot();
-                //machineinfo.reboot();
+                machineinfo.reboot();
             }
             else if (command == "shutdown")
             {
@@ -118,7 +111,7 @@ namespace Medli.Applications
             }
             else if (command.StartsWith("mkdir "))
             {
-                fsfunctions.mkdir(command.Remove(0, 6));
+                FSfunc.mkdir(command.Remove(0, 6));
             }
             else if (command == "shell2")
             {
@@ -127,7 +120,7 @@ namespace Medli.Applications
             }
             else if (command == "clear")
             {
-                Console.Clear();
+                Sysfunc.clearScreen();
             }
             else if (command.StartsWith("cp "))
             {
