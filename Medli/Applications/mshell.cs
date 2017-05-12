@@ -55,7 +55,7 @@ namespace Medli.Applications
             {
                 FSfunc.cd(command);
             }
-            else if (command.StartsWith("run"))
+            else if (command.StartsWith("run "))
             {
                 if (!File.Exists(Kernel.current_dir + command.Remove(0, 4)))
                 {
@@ -63,7 +63,7 @@ namespace Medli.Applications
                 }
                 else
                 {
-                    ngscript.Execute(command.Remove(0, 4));
+                    mdscript.Execute(command.Remove(0, 4));
                 }
             }
             else if (command == "getram")

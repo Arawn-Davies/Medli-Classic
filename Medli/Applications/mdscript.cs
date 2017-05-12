@@ -7,21 +7,11 @@ using System.IO;
 
 namespace Medli.Applications
 {
-    class ngscript
+    class mdscript
     {
         public static void Execute(string scriptname)
         {
-            if (scriptname.EndsWith(".txt"))
-            {
-                string[] lines = File.ReadAllLines(scriptname);
-                foreach (string line in lines)
-                {
-                    mshell.cmd(line);
-                    Console.WriteLine("");
-                }
-                mshell.prompt();
-            }
-            else if (scriptname.EndsWith(".mds"))
+            if (scriptname.EndsWith(".mds"))
                 {
                     string[] lines = File.ReadAllLines(scriptname);
                     foreach (string line in lines)
@@ -29,7 +19,6 @@ namespace Medli.Applications
                         mshell.cmd(line);
                         Console.WriteLine("");
                     }
-                    mshell.prompt();
             }
             else
             {
