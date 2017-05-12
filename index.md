@@ -19,24 +19,24 @@ Use the command 'help' to view a list of commands and use 'help <command>' for m
 
 
 ### Currently Medli has the following:
-- Error Handling
+* Error Handling
 
-- FAT File System
+* FAT File System
 
-- Simple Terminal/Shell
+* Simple Terminal/Shell
 
-- Text Editor and Viewer, now with the advanced MIV text editor!
+* Text Editor and Viewer, now with the advanced MIV text editor!
 
-- A little Linux easteregg by the name of cowsay ;)
+* A little Linux easteregg by the name of cowsay ;)
 			- only one cowfile though atm
 
 
 
 ### Work In Progress:
-- manpages documentation
+* manpages documentation
 
-- Tidying stuff up...
+* Tidying stuff up...
 
-- 'cd ..' command is currently useless, so that needs implementing properly
+* 'cd ..' command is currently useless, so that needs implementing properly
 
-- ngscript/midnascript needs fixing/implementing/whatever, ain't been updated for quite a long time
+* ngscript/midnascript needs fixing/implementing/whatever, ain't been updated for quite a long time
