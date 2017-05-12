@@ -1,6 +1,6 @@
 # Medli
 
-##Welcome to Medli, an attractive free and open successor to the original Chocolate OS.
+## Welcome to Medli, an attractive free and open successor to the original Chocolate OS.
 Medli has come a long way since the early days of Cosmos, with it's roots going back to the old Milestone days with
 Visual C# Express 2008 being the IDE. Medli originally started off as Aza-DOS back in late 2010, a very basic non-DOS 
 'DOS' without any filesystem functionality - we tended to place DOS at the end of things which weren't even capable of using disks. 
@@ -9,7 +9,7 @@ and guidance from people over time, Medli wouldn't be what it is now without the
 any way at all. Here's to many more years and progress with Medli. 
 
 
-###FAQ
+### FAQ
 Due to the current lack of LFN writing one can only use filenames with the texteditor
 that have 255 digits in the title and 3 letter extensions. 
 
@@ -18,7 +18,7 @@ The text editor can currently view any file with 3 letter extensions formatted a
 Use the command 'help' to view a list of commands and use 'help <command>' for more help on specific commands.
 
 
-###Currently Medli has the following:
+### Currently Medli has the following:
 Error Handling
 
 FAT File System
@@ -32,7 +32,7 @@ A little Linux easteregg by the name of cowsay ;)
 
 
 
-###Work In Progress:
+### Work In Progress:
 manpages documentation
 
 Tidying stuff up...
