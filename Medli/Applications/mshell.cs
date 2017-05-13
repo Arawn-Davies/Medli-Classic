@@ -40,6 +40,7 @@ namespace Medli.Applications
         }
         public static void prompt()
         {
+            Console.SetCursorPosition(0, 24);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write(OSVars.pcname + ":");
             Console.ForegroundColor = ConsoleColor.Red;
@@ -155,7 +156,18 @@ namespace Medli.Applications
             }
             else if (command.StartsWith("help "))
             {
-                getHelp.specific(command.Remove(0, 5));
+                if (command == "help 1")
+                {
+                    getHelp.pages(1);
+                }
+                else if (command == "help 2")
+                {
+                    getHelp.pages(2);
+                }
+                else
+                {
+                    getHelp.specific(command.Remove(0, 5));
+                }
             }
             else if (command == "ver")
             {

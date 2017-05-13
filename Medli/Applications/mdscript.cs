@@ -11,19 +11,27 @@ namespace Medli.Applications
     {
         public static void Execute(string scriptname)
         {
-            if (scriptname.EndsWith(".mds"))
+            try
+            {
+                if (scriptname.EndsWith(".mds"))
                 {
                     string[] lines = File.ReadAllLines(scriptname);
                     foreach (string line in lines)
                     {
                         mshell.cmd(line);
-                        Console.WriteLine("");
+                        //Console.WriteLine("");
                     }
+                }
+                else
+                {
+                    Console.WriteLine("Not a valid Midnascript file.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Not a valid Midnascript file.");
+                Console.WriteLine(ex.Message);
             }
+            
         }
     }
 }

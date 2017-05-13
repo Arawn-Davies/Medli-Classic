@@ -24,11 +24,14 @@ namespace Medli
                 Console.WriteLine("dir\tPrints a list of directories in the current directory");
                 Console.WriteLine("cd\tChanges the current directory");
                 Console.WriteLine("clear\tClears the screen");
-                Console.WriteLine("panic\tStarts a harmless kernel panic");
-                Console.Write("Help page 1 - Press any key..."); Console.ReadKey(true);
+                Console.WriteLine("cowsay <text>\tA little *nix easter egg ;)");
+                Console.WriteLine("Help page 1 - Press any key...");
+                Console.ReadKey(true);
+                Console.WriteLine(" ");
             }
             else if (pageno == 2)
             {
+                Console.WriteLine("panic\tStarts a harmless kernel panic");
                 Console.WriteLine("panic critical\tStarts a critical yet harmless kernel panic");
                 Console.WriteLine("cv <file>\tPrints the contents of a file onto the screen.");
                 Console.WriteLine("cp <file>\tLaunches the text editor");
@@ -36,8 +39,9 @@ namespace Medli
                 Console.WriteLine("reboot\tReboots the system");
                 Console.WriteLine("shutdown\tCloses applications and powers down the system.");
                 Console.WriteLine("shell2\tLaunches the new shell (W.I.P)");
-                Console.WriteLine("cowsay <text>\tA little *nix easter egg ;)");
-                Console.Write("Help page 2 - Press any key..."); Console.ReadKey(true);
+                Console.WriteLine("Help page 2 - Press any key...");
+                Console.ReadKey(true);
+                Console.WriteLine(" ");
             }
             else
             {
