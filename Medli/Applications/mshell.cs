@@ -40,13 +40,12 @@ namespace Medli.Applications
         }
         public static void prompt()
         {
-            Console.SetCursorPosition(0, 24);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write(OSVars.pcname + ":");
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(Kernel.current_dir);
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Write(" $");
+            Console.Write("$");
             cmd(Console.ReadLine());
         }
         public static void cmd(string input)
