@@ -15,7 +15,7 @@ namespace Medli.Applications
             {
                 if (scriptname.EndsWith(".mds"))
                 {
-                    string[] lines = File.ReadAllLines(Kernel.current_dir + scriptname);
+                    string[] lines = File.ReadAllLines(scriptname);
                     foreach (string line in lines)
                     {
                         mshell.cmd(line);

@@ -52,10 +52,41 @@ namespace Medli.Applications
         public static void cmd(string input)
         {
             var command = input.ToLower();
-            if (command.StartsWith("cd "))
+            if (command == "cd ..")
+            {
+                try
+                {
+                    if (Kernel.current_dir == Kernel.root_dir)
+                    {
+                        Console.WriteLine("Cannot go up any more levels!");
+                    }
+                    else
+                    {
+                        var pos = Kernel.current_dir.LastIndexOf('\\');
+                        if (pos >= 0)
+                        {
+                            Kernel.current_dir = Kernel.current_dir.Substring(0, pos) + @"\";
+                        }
+                        /*                        
+                        var dir = FSfunc.fs.GetDirectory(Kernel.current_dir);
+                        string p = dir.mParent.mName;
+                        if (!string.IsNullOrEmpty(p))
+                        {
+                            Kernel.current_dir = p;
+                        }
+                        */
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ErrorHandler.Init(0, ex.Message, false, "");
+                }
+            }
+            else if (command.StartsWith("cd "))
             {
                 FSfunc.cd(command);
             }
+            
             else if (command.StartsWith("run "))
             {
                 if (!File.Exists(Kernel.current_dir + command.Remove(0, 4)))
@@ -64,7 +95,7 @@ namespace Medli.Applications
                 }
                 else
                 {
-                    mdscript.Execute(command.Remove(0, 4));
+                    mdscript.Execute(Kernel.current_dir + command.Remove(0, 4));
                 }
             }
             else if (command == "getram")
