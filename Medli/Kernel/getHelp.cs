@@ -17,13 +17,13 @@ namespace Medli
         {
             if (pageno == 1)
             {
-                Console.WriteLine("mkdir\tMakes a directory");
-                Console.WriteLine("echo\tPrints text to the console");
+                Console.WriteLine("mkdir \tMakes a directory");
+                Console.WriteLine("echo  \tPrints text to the console");
                 Console.WriteLine("getram\tGets the amount of system RAM in megabytes");
-                Console.WriteLine("mkdir\tMakes a directory");
-                Console.WriteLine("dir\tPrints a list of directories in the current directory");
-                Console.WriteLine("cd\tChanges the current directory");
-                Console.WriteLine("clear\tClears the screen");
+                Console.WriteLine("mkdir \tMakes a directory");
+                Console.WriteLine("dir   \tPrints a list of directories in the current directory");
+                Console.WriteLine("cd    \tChanges the current directory");
+                Console.WriteLine("clear \tClears the screen");
                 Console.WriteLine("cowsay <text>\tA little *nix easter egg ;)");
                 Console.WriteLine("Help page 1 - Press any key...");
                 Console.ReadKey(true);
