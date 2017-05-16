@@ -126,23 +126,25 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
             Console.CursorTop = 7;
             try
             {
-                Console.Write("Creating user directory..."); Directory.CreateDirectory(Kernel.root_dir + "/" + username); Console.WriteLine("\t\tDone!");
+                Console.ForegroundColor = defaultcol; Console.Write("Creating user directory... "); Directory.CreateDirectory(Kernel.root_dir + "/" + username); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
                 Console.CursorLeft = 20;
                 Console.CursorTop = 8;
-                Console.Write("Creating users file..."); File.Create(Kernel.current_dir + "usrinfo.sys"); Console.WriteLine("\t\tDone!");
+                Console.ForegroundColor = defaultcol; Console.Write("Creating users file...     "); File.Create(Kernel.current_dir + "usrinfo.sys"); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
                 Console.CursorLeft = 20;
                 Console.CursorTop = 9;
-                Console.Write("Writing username to file..."); File.WriteAllText(Kernel.current_dir + "usrinfo.sys", username); Console.WriteLine("\t\tDone!");
+                Console.ForegroundColor = defaultcol; Console.Write("Writing username to file..."); File.WriteAllText(Kernel.current_dir + "usrinfo.sys", username); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
             }
             catch
             {
                 ErrorHandler.BlueScreen.Init(5, @"The Installer was unable to create the user directory and other files. 
 This may be due to an unformatted hard drive or some other error", "FAT Error");
             }
+            Console.ForegroundColor = defaultcol;
             Console.CursorLeft = 20;
             Console.CursorTop = 10;
-
             Console.WriteLine("All set! Press any key to continue...");
+            Console.CursorLeft = 0;
+            Console.CursorTop = 24;
             Console.ReadKey(true);
             Console.Clear();
         }
