@@ -37,6 +37,6 @@ Use the command 'help' to view a list of commands and use 'help <command>' for m
 
 * Tidying stuff up...
 
-* 'cd ..' command is currently useless, so that needs implementing properly
+* ~~'cd ..' command is currently useless, so that needs implementing properly~~ Working!
 
-* ngscript/midnascript needs fixing/implementing/whatever, ain't been updated for quite a long time
+* ~~ngscript/midnascript needs fixing/implementing/whatever, ain't been updated for quite a long time~~ Working!
