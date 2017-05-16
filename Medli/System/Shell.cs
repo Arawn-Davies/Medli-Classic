@@ -5,9 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Medli.System;
-using Medli.Applications;
 
-namespace Medli.Applications
+namespace Medli
 {
     class Shell
     {

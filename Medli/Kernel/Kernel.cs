@@ -14,67 +14,7 @@ using Medli.Applications;
 
 namespace Medli
 {
-    public class OSVars
-    {
-        public static string pcinfo = Kernel.root_dir + "pcinfo.sys";
-        //public static string reginfo = Kernel.root_dir + "reginfo.sys";
-        public static string regname;
-        public static string pcname;
-        public static double version;
-        public static double ver_no = 0.8;
-        public static string logo = @"
- /------\   /-------- /------\  ||        ---------- 
-/|  ||  |\  ||        ||    ||  ||            ||     
-||  ||  ||  ||        ||    ||  ||            ||     
-||  ||  ||  |------   ||    ||  ||            ||     
-||      ||  ||        ||    ||  ||            ||     
-||      ||  ||        ||    ||  ||            ||     
-||      ||  \-------- \------/  \-------- ----------";
-        
-        public static string wlcm1 = "Medli - Version " + OSVars.ver_no;
-        public static string wlcm2 = "Maintained by Arawn Davies under the MIT License";
-        //public static string wlcm3 = "This copy of Medli-core is registered to: ";
-
-        public static void ver()
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(wlcm1);
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine(wlcm2);
-            //Console.ForegroundColor = ConsoleColor.Red;
-            //Console.WriteLine(wlcm3);
-
-            //Update 0.5 - Registration has been disabled because it's not production and in early stages,
-            //plus this is an open-source project so having registration is a bit of a joke :P
-
-            #region regsetup
-            /*
-            //Insert total asshattery here >>>
-            if (File.Exists(OSVars.reginfo))
-            {
-                string[] lines = File.ReadAllLines(OSVars.reginfo);
-                foreach (string line in lines)
-                {
-                    //     \/ Gotta be careful here hehehe \/
-                    Console.Write(line + "\n");
-                }
-            }
-            else
-            {
-                Console.Write("-=UNREGISTERED=-\n");
-            }
-            
-            */
-            #endregion
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(OSVars.logo);
-            Console.WriteLine("Powered by the C# Open Source Managed Operating System");
-            Console.ForegroundColor = ConsoleColor.White;
-
-
-        }
-    }
+    
     public class Kernel : Sys.Kernel
     {
         
@@ -105,7 +45,7 @@ namespace Medli
                 }
                 */
             
-            if (File.Exists(Kernel.current_dir + "pcinfo.sys")  /*|| File.Exists(Kernel.current_dir + "regname.sys")*/)
+            if (File.Exists(Kernel.current_dir + "pcinfo.sys"))
             {
                 try
                 {
@@ -113,45 +53,40 @@ namespace Medli
                     foreach (string pcname in pcnames)
                     {
                         OSVars.pcname = pcname;
-                        Console.WriteLine("Welcome back, " + OSVars.pcname + @"!");
-                        Console.ReadKey(true);
                     }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
+                #endregion
+            }
+            if (File.Exists(Kernel.current_dir + "usrinfo.sys"))
+            {
+                try
+                {
+                    string[] usernames = File.ReadAllLines(OSVars.usrinfo);
+                    foreach (string username in usernames)
+                    {
+                        OSVars.username = username;
+                        Console.WriteLine("Welcome back, " + OSVars.username + @"!");
+                        Console.ReadKey(true);
+                    }
+                }
+                catch
+                {
+
+                }
             }
             else
             {
+                //Installer.InitScreen(ConsoleColor.Black);
+                //Installer.Run();
                 #region setup
-                Console.WriteLine("Medli was unable to find any info regarding your PC.");
-                Console.WriteLine("The Medli installer will now run.");
-                Console.WriteLine("Press any key to continue...");
-                Console.ReadKey(true);
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Medli Installer:");
-                Console.WriteLine(" ");
-                Console.WriteLine("Press any key and let's get started!");
-                Console.ReadKey(true);
-                Console.WriteLine("Please enter a machine name:");
-                OSVars.pcname = Console.ReadLine();
-                File.Create(Kernel.current_dir + "pcinfo.sys");
-                File.WriteAllText(Kernel.current_dir + "pcinfo.sys", OSVars.pcname);
-                //Console.WriteLine("Excellent! Please enter who this copy of Medli is registered to:");
-                //OSVars.regname = Console.ReadLine();
-                //File.Create(Kernel.current_dir + "reginfo.sys");
-                //File.WriteAllText(Kernel.current_dir + "reginfo.sys", OSVars.regname);
-
-                Console.WriteLine("");
-                Console.WriteLine("Awesome - you're all set!");
-                Console.WriteLine("Press any key to start Medli!");
-                Console.ReadKey(true);
-                Console.Clear();
+                Installer.MInit();
                 #endregion
             }
-            #endregion
+            
 
             Console.Clear();
             OSVars.ver();
@@ -160,5 +95,6 @@ namespace Medli
         {
             mshell.prompt();
         }
+        
     }
 }

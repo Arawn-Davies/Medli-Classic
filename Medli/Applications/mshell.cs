@@ -41,7 +41,7 @@ namespace Medli.Applications
         public static void prompt()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(OSVars.pcname + ":");
+            Console.Write(OSVars.username+ "@" +OSVars.pcname + ":");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(Kernel.current_dir);
             Console.ForegroundColor = ConsoleColor.White;
@@ -85,7 +85,29 @@ namespace Medli.Applications
             {
                 FSfunc.cd(command);
             }
-            
+            /*
+            else if (command == "reinstall")
+            {
+                try
+                {
+                    Kernel.current_dir = Kernel.root_dir;
+                    
+                    Directory.Delete(Kernel.root_dir + "/" + OSVars.username);
+                    File.Delete(OSVars.pcinfo);
+                    File.Delete(OSVars.usrinfo);
+                }
+                catch (Exception ex)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Reinstallation failed!");
+                    Console.WriteLine("Reason: " + ex.Message);
+                }
+                Console.WriteLine("Press any key to reboot...");
+                Console.ReadKey(true);
+                Sysfunc.reboot();
+
+            }
+            */
             else if (command.StartsWith("run "))
             {
                 if (!File.Exists(Kernel.current_dir + command.Remove(0, 4)))
@@ -95,6 +117,30 @@ namespace Medli.Applications
                 else
                 {
                     mdscript.Execute(Kernel.current_dir + command.Remove(0, 4));
+                }
+            }
+            else if (command.StartsWith("rmf "))
+            {
+                try
+                {
+                    FSfunc.delfile(command.Remove(0, 4));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    invalidCommand(command.Remove(0, 4), 2);
+                }
+            }
+            else if (command.StartsWith("rmd "))
+            {
+                try
+                {
+                    FSfunc.deldir(command.Remove(0, 4));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    invalidCommand(command.Remove(0, 4), 2);
                 }
             }
             else if (command == "getram")

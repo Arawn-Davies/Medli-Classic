@@ -41,6 +41,7 @@ What's happened now?! ";
             }
             else if (critical == false)
             {
+                if (errlvl == 5)
                 Console.BackgroundColor = ConsoleColor.Blue;
                 Console.Clear();
                 Applications.Cowsay.Main("Whoops!");

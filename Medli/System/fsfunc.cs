@@ -83,5 +83,13 @@ namespace Medli
                 Console.WriteLine("Folder does not exist " + Kernel.current_dir + "/" + path);
             }
         }
+        public static void deldir(string dirname)
+        {
+            Directory.Delete(Kernel.current_dir + "/" + dirname);
+        }
+        public static void delfile(string filename)
+        {
+            File.Delete(Kernel.current_dir + "/" + filename);
+        }
     }
 }

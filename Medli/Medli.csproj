@@ -62,14 +62,17 @@
     <Compile Include="Applications\mdscript.cs" />
     <Compile Include="Applications\mshell.cs" />
     <Compile Include="Applications\Tests.cs" />
+    <Compile Include="Installer\Installer.cs" />
     <Compile Include="Kernel\ErrorHandler.cs" />
-    <Compile Include="Kernel\fsfunc.cs" />
-    <Compile Include="Kernel\sysfunc.cs" />
+    <Compile Include="System\fsfunc.cs" />
+    <Compile Include="System\OSVars.cs" />
+    <Compile Include="System\sysfunc.cs" />
     <Compile Include="Kernel\getHelp.cs" />
     <Compile Include="Kernel\Kernel.cs" />
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Kernel\Shell.cs" />
+    <Compile Include="System\Shell.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
