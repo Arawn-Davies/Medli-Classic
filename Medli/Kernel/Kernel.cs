@@ -13,11 +13,9 @@ using Medli.System;
 using Medli.Applications;
 
 namespace Medli
-{
-    
+{ 
     public class Kernel : Sys.Kernel
     {
-        
         public static string current_dir = "0:\\";
         public static string root_dir = "0:\\";
         Sys.FileSystem.CosmosVFS fs;
@@ -28,8 +26,6 @@ namespace Medli
             fs.Initialize();
             Console.Clear();
             OSVars.ver();
-
-                #region MNinit
             //This is just to identify the users machine, much later in Medli will this have any usage however
             //i.e. not until networking is set up, FS Permissions are working etc...
             //If it wasn't able to find a machinename file, then it will try and create one.
@@ -44,7 +40,19 @@ namespace Medli
                     OSVars.regname = line;
                 }
                 */
+
+            PreInit();
             
+
+            Console.Clear();
+            OSVars.ver();
+        }
+        protected override void Run()
+        {
+            mshell.prompt();
+        }
+        public static void PreInit()
+        {
             if (File.Exists(Kernel.current_dir + "pcinfo.sys"))
             {
                 try
@@ -59,7 +67,7 @@ namespace Medli
                 {
                     Console.WriteLine(ex.Message);
                 }
-                #endregion
+                
             }
             if (File.Exists(Kernel.current_dir + "usrinfo.sys"))
             {
@@ -79,22 +87,9 @@ namespace Medli
                 }
             }
             else
-            {
-                //Installer.InitScreen(ConsoleColor.Black);
-                //Installer.Run();
-                #region setup
+            { 
                 Installer.MInit();
-                #endregion
             }
-            
-
-            Console.Clear();
-            OSVars.ver();
         }
-        protected override void Run()
-        {
-            mshell.prompt();
-        }
-        
     }
 }

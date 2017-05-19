@@ -3,41 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Medli;
 using System.IO;
 
-namespace Medli
+namespace Medli.Installer
 {
-    class Installer
+    public class Vars
     {
-
-        public static void InitScreen(ConsoleColor color)
-        {
-
-            Console.BackgroundColor = color;
-            Console.Clear();
-            Console.BackgroundColor = ConsoleColor.Gray;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Medli Installer");
-            Console.BackgroundColor = defaultcol;
-            Console.CursorLeft = 7;
-            Console.CursorTop = 7;
-        }
+        public static string pcname;
+        public static string username;
+    }
+    public class Install
+    { 
         public static void PAKTC()
         {
             Console.CursorTop = 24;
             Console.ReadKey(true);
-            Console.CursorTop = 7;
-            Console.CursorLeft = 7;
         }
         public static ConsoleColor defaultcol = ConsoleColor.Black;
         public static ConsoleColor color;
-        public static string username;
-        
+        public static string username
+
         public static void MInit()
         {
-            InitScreen(defaultcol);
             Console.WriteLine("Medli was unable to find any info regarding your PC.");
-            Console.CursorLeft = 7;
             Console.WriteLine("The Medli installer will now run.");
             PAKTC();
             Console.Clear();
@@ -46,8 +35,6 @@ namespace Medli
             InitScreen(defaultcol);
             Console.WriteLine("Press any key and let's get started!");
             PAKTC();
-            Console.Clear();
-            InitScreen(defaultcol);
             Console.WriteLine("Please enter a machine name:");
             Console.CursorTop = 24;
             OSVars.pcname = Console.ReadLine();
@@ -73,26 +60,39 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
             Console.Clear();
             InitScreen(defaultcol);
             Console.WriteLine("Awesome - you're all set!");
-            Console.CursorLeft = 7;
             Console.WriteLine("Press any key to start Medli!");
             PAKTC();
             Console.Clear();
         }
 
+        public static void InitScreen(ConsoleColor color)
+        {
+
+            Console.BackgroundColor = color;
+            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Medli Installer");
+            Console.BackgroundColor = defaultcol;
+            Console.CursorLeft = 10;
+            Console.CursorTop = 7;
+        }
         public static void Run()
         {
             InitScreen(defaultcol);
             Console.WriteLine("Welcome to the Medli installer.");
+            Console.CursorLeft = 20;
             Console.WriteLine("Press any key to get started!");
             PAKTC();
             InitScreen(ConsoleColor.Black);
             Console.WriteLine("Choose a background colour to use with Medli:");
 
-            Console.CursorLeft = 7; Console.BackgroundColor = ConsoleColor.Yellow; Console.Write("Yellow, ");
-            Console.BackgroundColor = ConsoleColor.Cyan;  Console.Write("Cyan,"); Console.BackgroundColor = defaultcol; Console.Write(" ");
+            Console.CursorLeft = 20; Console.BackgroundColor = ConsoleColor.Yellow; Console.Write("Yellow, ");
+            Console.BackgroundColor = ConsoleColor.Cyan; Console.Write("Cyan,"); Console.BackgroundColor = defaultcol; Console.Write(" ");
             Console.BackgroundColor = ConsoleColor.Green; Console.Write("Green,"); Console.BackgroundColor = defaultcol; Console.Write(" ");
             Console.BackgroundColor = ConsoleColor.Blue; Console.Write("Blue,"); Console.BackgroundColor = defaultcol; Console.Write(" ");
-            Console.BackgroundColor = ConsoleColor.Red; Console.WriteLine("Red,"); Console.BackgroundColor = defaultcol; Console.Write(" "); Console.BackgroundColor = defaultcol; Console.Write("Black");
+            Console.BackgroundColor = ConsoleColor.Red; Console.WriteLine("Red,"); Console.BackgroundColor = defaultcol; Console.Write(" ");
+            Console.BackgroundColor = defaultcol; Console.Write("Black");
             Console.CursorTop = 24;
             string bgcolor = Console.ReadLine();
             if (bgcolor == "yellow")
@@ -134,13 +134,11 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
             InitScreen(color);
             try
             {
-                Console.CursorLeft = 7;
-                Console.CursorTop = 7;
                 Console.ForegroundColor = ConsoleColor.White; Console.Write("Creating user directory... "); Directory.CreateDirectory(Kernel.root_dir + "/" + username); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
-                Console.CursorLeft = 7;
+                Console.CursorLeft = 20;
                 Console.CursorTop = 8;
                 Console.ForegroundColor = ConsoleColor.White; Console.Write("Creating users file...     "); File.Create(Kernel.current_dir + "usrinfo.sys"); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
-                Console.CursorLeft = 7;
+                Console.CursorLeft = 20;
                 Console.CursorTop = 9;
                 Console.ForegroundColor = ConsoleColor.White; Console.Write("Writing username to file..."); File.WriteAllText(Kernel.current_dir + "usrinfo.sys", username); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -150,13 +148,12 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
                 ErrorHandler.BlueScreen.Init(5, @"The Installer was unable to create the user directory and other files. 
 This may be due to an unformatted hard drive or some other error", "FAT Error");
             }
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = defaultcol;
             Console.CursorLeft = 20;
             Console.CursorTop = 10;
             Console.WriteLine("All set! Press any key to continue...");
             Console.CursorLeft = 0;
             PAKTC();
-            OSVars.username = username;
             Console.Clear();
         }
     }
