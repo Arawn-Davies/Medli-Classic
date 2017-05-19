@@ -1,4 +1,5 @@
-# Medli
+# Medli2
+Medli 'translated' to .NET Core
 
 ## Welcome to Medli, an attractive free and open successor to the original Chocolate OS.
 Medli has come a long way since the early days of Cosmos, with it's roots going back to the old Milestone days with
