@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.Net.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.5</TargetFramework>
+    <AssemblyName>Medli2</AssemblyName>
+    <PackageId>Medli2</PackageId>
+    <ProjectGuid>{25942050-a68f-4026-a9b1-e731a1426647}</ProjectGuid>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Medli2Boot.Cosmos" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Cosmos.Debug.Kernel" Version="1.0.0-*" />
+    <PackageReference Include="Cosmos.System" Version="1.0.0-*" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Medli.Hardware\Medli.Hardware.csproj" />
+    <ProjectReference Include="..\Medli.System\Medli.System.csproj" />
+  </ItemGroup>
+
+</Project>

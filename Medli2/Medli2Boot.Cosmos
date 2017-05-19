@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.Net.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net462</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <BinFormat>elf</BinFormat>
+    <Profile>VMware</Profile>
+    <DebugEnabled>true</DebugEnabled>
+    <DebugMode>Source</DebugMode>
+    <TraceMode>User</TraceMode>
+    <EnableGDB>False</EnableGDB>
+    <StartCosmosGDB>false</StartCosmosGDB>
+    <VMWareEdition>Player</VMWareEdition>
+    <OutputPath>bin\Debug\</OutputPath>
+    <Description>Use VMware Player or Workstation to deploy and debug.</Description>
+    <Deployment>ISO</Deployment>
+    <Launch>VMware</Launch>
+    <VisualStudioDebugPort>Pipe: Cosmos\Serial</VisualStudioDebugPort>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="*" />
+    <Compile Remove="*" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Medli.Hardware\Medli.Hardware.csproj">
+      <Name>Medli.Hardware</Name>
+      <Project>{20e8a6b0-5698-4912-a619-8c5676ef2854}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Medli.System\Medli.System.csproj">
+      <Name>Medli.System</Name>
+      <Project>{432c7434-31e3-4c41-8e36-c0caeb15d66f}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include=".\Medli2.csproj">
+      <Name>Medli2</Name>
+      <Project>{25942050-a68f-4026-a9b1-e731a1426647}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Cosmos.Core.Plugs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
+    <Reference Include="Cosmos.Core.Plugs.Asm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
+    <Reference Include="Cosmos.Debug.Kernel.Plugs.Asm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
+    <Reference Include="Cosmos.System.Plugs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Applications\" />
+    <Folder Include="Installer\" />
+    <Folder Include="Kernel\" />
+    <Folder Include="System\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Cosmos\Cosmos.targets" />
+</Project>
