@@ -156,7 +156,10 @@ color: #77f442; }
 h1 { font-size: 28px;
  }
 
-
+code {
+	color: #77f442;
+}
+ 
 h3, h4, h5, h6 { color: #77f442; }
 
 a { color: red; text-decoration: none; }
