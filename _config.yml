@@ -1,8 +1,1 @@
-title: Medli
-description: Medli, an attractive free and open-source operating system
-google_analytics: 
-show_downloads: true
-theme: jekyll-theme-midnight
-
-gems:
-  - jekyll-mentions
+theme: jekyll-theme-minimal
