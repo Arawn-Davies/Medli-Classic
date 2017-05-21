@@ -172,8 +172,13 @@ pre{
 
 .highlight { background-color: #f8f8f8; }
 
-body { background-color:#393635;
-	color:white; padding: 50px; font: 14px/1.5 "monospace"; color: #77f442; font-weight: 400; }
+body { 
+	background-color:#393635;
+	color:white; 
+	padding: 50px; 
+	font: 14px/1.5 "monospace"; 
+	color: #77f442; 
+	font-weight: 400; }
 
 h1, h2, h3, h4, h5, h6 { color: #222; margin: 0 0 20px; }
 
