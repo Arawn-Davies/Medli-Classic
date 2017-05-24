@@ -5,8 +5,8 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="chrome=1">
 		<!-- InstanceBeginEditable name="doctitle" -->
-<title>Medli OS Homepage</title>
-<!-- InstanceEndEditable -->
+		<title>Medli OS Homepage</title>
+		<!-- InstanceEndEditable -->
 		<link rel="stylesheet" href="css/font.css" type="text/css">
 		<link rel="stylesheet" href="css/style.css" type="text/css">
 		<script src="/assets/js/scale.fix.js"></script>
@@ -27,14 +27,15 @@
 				<h1 id="medli2">Medli2</h1>
 				<p>Medli ‘translated’ to .NET Core</p>
 				<!-- InstanceBeginEditable name="Content" -->
-<h2 id="welcome-to-medli-an-attractive-free-and-open-successor-to-the-original-chocolate-os">Welcome to Medli, an attractive free and open successor to the original Chocolate OS.</h2>
-<p>Medli has come a long way since the early days of Cosmos, with it’s roots going back to the old Milestone days with
-Visual C# Express 2008 being the IDE. Medli originally started off as Aza-DOS back in late 2010, a very basic non-DOS 
-‘DOS’ without any filesystem functionality - we tended to place DOS at the end of things which weren’t even capable of using disks. 
-Over the years, Aza-DOS has evolved and changed to be what it is now, Medli OS. Developed by Arawn Davies, with some assistance 
-and guidance from people over time, Medli wouldn’t be what it is now without them, so thank you so much to everyone who’s helped in 
-any way at all. Here’s to many more years and progress with Medli.</p>
-<!-- InstanceEndEditable -->
+					<h2 id="welcome-to-medli-an-attractive-free-and-open-successor-to-the-original-chocolate-os">Help</h2>
+<p>
+Medli's <code>help</code> command allows you to view what commands are accepted in Medli's shell.
+As more commands are implemented, this list will be updated.
+Currently, Medli is aiming to have a BASH-like shell which will allow you to store variables and use them in scripts later.
+</p>
+<p>This is how the help command is implemented, with the shell sending the command as a string, and then this function parsing that argument and seeing if the command is listed.</p>
+<script src="https://gist.github.com/Arawn-Davies/5ed8695de11021734a9f64f5a647b89a.js"></script>
+				<!-- InstanceEndEditable -->
 			</section>
 			<footer>
 				<div w3-include-html="footer.html"></div> 
