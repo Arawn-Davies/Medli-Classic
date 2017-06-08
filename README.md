@@ -1,5 +1,5 @@
 # Medli2
-## Welcome to Medli, an attractive free and open successor to the original Chocolate OS.
+### Welcome to Medli, an attractive free and open successor to the original Chocolate OS.
 Medli has come a long way since the early days of Cosmos, with it's roots going back to the old Milestone days with
 Visual C# Express 2008 being the IDE. Medli originally started off as Aza-DOS back in late 2010, a very basic non-DOS 
 'DOS' without any filesystem functionality - we tended to place DOS at the end of things which weren't even capable of using disks. 
