@@ -243,6 +243,6 @@ footer { width: 170px; float: left; position: fixed; bottom: 10px; padding-left:
 @media print { body { padding: 0.4in; font-size: 12pt; color: #444; } }
 
 body {
-    background-image: url("bgimg.png");
+    background-image: url("../bgimg.png");
     background-color: #cccccc;
 }
