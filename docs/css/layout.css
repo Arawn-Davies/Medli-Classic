@@ -2,7 +2,7 @@
 /* CSS Document */
 body {
 	font-family: 'Black Ops One', cursive;
-	background-color: #C7FFFA;	
+	background-image: url("bgimg.png");	
 }
 /* Use a different font family for search results */
     .gs-title, .gs-snippet {
