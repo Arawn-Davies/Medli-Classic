@@ -1,10 +1,8 @@
 ﻿<Project Sdk="Microsoft.Net.Sdk">
 
-  <PropertyGroup>
+    <PropertyGroup>
     <TargetFramework>netstandard1.5</TargetFramework>
-    <AssemblyName>Medli2</AssemblyName>
-    <PackageId>Medli2</PackageId>
-    <ProjectGuid>{25942050-a68f-4026-a9b1-e731a1426647}</ProjectGuid>
+    <ProjectGuid>{04da9f1a-7f34-4bc0-9ea1-27fbef5c8434}</ProjectGuid>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,8 +10,8 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Cosmos.Debug.Kernel" Version="1.0.0-*" />
-    <PackageReference Include="Cosmos.System" Version="1.0.0-*" />
+    <PackageReference Include="Cosmos.Debug.Kernel" Version="1.0.*" />
+    <PackageReference Include="Cosmos.System" Version="1.0.*" />
   </ItemGroup>
   
   <ItemGroup>

@@ -17,56 +17,6 @@
     <Launch>VMware</Launch>
     <VisualStudioDebugPort>Pipe: Cosmos\Serial</VisualStudioDebugPort>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <Profile>VMware</Profile>
-    <Description>Use VMware Player or Workstation to deploy and debug.</Description>
-    <Deployment>ISO</Deployment>
-    <Launch>VMware</Launch>
-    <DebugEnabled>False</DebugEnabled>
-    <DebugMode>Source</DebugMode>
-    <VisualStudioDebugPort>Pipe: Cosmos\Serial</VisualStudioDebugPort>
-    <VMwareEdition>Workstation</VMwareEdition>
-    <OutputPath>bin\Debug\net462\</OutputPath>
-    <EnableGDB>False</EnableGDB>
-    <StartCosmosGDB>false</StartCosmosGDB>
-    <PxeInterface>192.168.73.1</PxeInterface>
-    <VMware_Description>Use VMware Player or Workstation to deploy and debug.</VMware_Description>
-    <VMware_Deployment>ISO</VMware_Deployment>
-    <VMware_Launch>VMware</VMware_Launch>
-    <VMware_DebugEnabled>False</VMware_DebugEnabled>
-    <VMware_DebugMode>Source</VMware_DebugMode>
-    <VMware_VisualStudioDebugPort>Pipe: Cosmos\Serial</VMware_VisualStudioDebugPort>
-    <VMware_PxeInterface>192.168.73.1</VMware_PxeInterface>
-    <VMware_VMwareEdition>Workstation</VMware_VMwareEdition>
-    <VMware_OutputPath>bin\Debug\net462\</VMware_OutputPath>
-    <VMware_EnableGDB>False</VMware_EnableGDB>
-    <VMware_StartCosmosGDB>false</VMware_StartCosmosGDB>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <Profile>VMware</Profile>
-    <Description>Use VMware Player or Workstation to deploy and debug.</Description>
-    <Deployment>ISO</Deployment>
-    <Launch>VMware</Launch>
-    <DebugEnabled>False</DebugEnabled>
-    <DebugMode>Source</DebugMode>
-    <VisualStudioDebugPort>Pipe: Cosmos\Serial</VisualStudioDebugPort>
-    <VMwareEdition>Workstation</VMwareEdition>
-    <OutputPath>bin\Debug\net462\</OutputPath>
-    <EnableGDB>False</EnableGDB>
-    <StartCosmosGDB>false</StartCosmosGDB>
-    <PxeInterface>192.168.73.1</PxeInterface>
-    <VMware_Description>Use VMware Player or Workstation to deploy and debug.</VMware_Description>
-    <VMware_Deployment>ISO</VMware_Deployment>
-    <VMware_Launch>VMware</VMware_Launch>
-    <VMware_DebugEnabled>False</VMware_DebugEnabled>
-    <VMware_DebugMode>Source</VMware_DebugMode>
-    <VMware_VisualStudioDebugPort>Pipe: Cosmos\Serial</VMware_VisualStudioDebugPort>
-    <VMware_PxeInterface>192.168.73.1</VMware_PxeInterface>
-    <VMware_VMwareEdition>Workstation</VMware_VMwareEdition>
-    <VMware_OutputPath>bin\Debug\net462\</VMware_OutputPath>
-    <VMware_EnableGDB>False</VMware_EnableGDB>
-    <VMware_StartCosmosGDB>false</VMware_StartCosmosGDB>
-  </PropertyGroup>
   <ItemGroup>
     <None Remove="*" />
     <Compile Remove="*" />
@@ -82,16 +32,11 @@
       <Project>{432c7434-31e3-4c41-8e36-c0caeb15d66f}</Project>
       <Private>True</Private>
     </ProjectReference>
-    <ProjectReference Include=".\Medli2.csproj">
+    <ProjectReference Include="..\Medli2\Medli2.csproj">
       <Name>Medli2</Name>
-      <Project>{25942050-a68f-4026-a9b1-e731a1426647}</Project>
+      <Project>{04da9f1a-7f34-4bc0-9ea1-27fbef5c8434}</Project>
+      <Private>True</Private>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Cosmos.Core.Plugs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
-    <Reference Include="Cosmos.Core.Plugs.Asm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
-    <Reference Include="Cosmos.Debug.Kernel.Plugs.Asm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
-    <Reference Include="Cosmos.System.Plugs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Applications\" />
@@ -99,5 +44,11 @@
     <Folder Include="Kernel\" />
     <Folder Include="System\" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Cosmos\Cosmos.targets" />
+  <ItemGroup>
+    <Reference Include="Cosmos.Core.Plugs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
+    <Reference Include="Cosmos.Core.Plugs.Asm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
+    <Reference Include="Cosmos.Debug.Kernel.Plugs.Asm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
+    <Reference Include="Cosmos.System.Plugs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
+  </ItemGroup>
+  <Import Project="$(AppData)\Cosmos User Kit\Build\VSIP\Cosmos.targets" />
 </Project>
