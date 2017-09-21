@@ -1,0 +1,116 @@
+\hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i}{}\section{Medli.\+Hardware.\+A\+C\+PI Class Reference}
+\label{class_medli_1_1_hardware_1_1_a_c_p_i}\index{Medli.\+Hardware.\+A\+C\+PI@{Medli.\+Hardware.\+A\+C\+PI}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_medli_1_1_hardware_1_1_a_c_p_i_1_1_f_a_c_p}{F\+A\+CP}
+\item 
+struct \hyperlink{struct_medli_1_1_hardware_1_1_a_c_p_i_1_1_r_s_d_ptr}{R\+S\+D\+Ptr}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a50d69c770a9d01ee5d5362da55c01526}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a50d69c770a9d01ee5d5362da55c01526}} 
+static int {\bfseries Enable} ()
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a08bd2d9feb9ae1deca34a498b0ed232f}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a08bd2d9feb9ae1deca34a498b0ed232f}} 
+static void {\bfseries Disable} ()
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a5d3cd56ccafda017569f882283493fe9}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a5d3cd56ccafda017569f882283493fe9}} 
+static int {\bfseries Init} ()
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_af5c63cc3b56453f706f22001c72e412e}\label{class_medli_1_1_hardware_1_1_a_c_p_i_af5c63cc3b56453f706f22001c72e412e}} 
+static void {\bfseries Reboot} ()
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a61301f225813ae5c92a515e99f4785ae}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a61301f225813ae5c92a515e99f4785ae}} 
+static void {\bfseries Outb} (ushort port, byte data)
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a2ab49b57ca91a4e03c343484d24e390e}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a2ab49b57ca91a4e03c343484d24e390e}} 
+static byte {\bfseries Inb} (ushort port)
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a083e2c4928b114a6279fb6723e19d6de}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a083e2c4928b114a6279fb6723e19d6de}} 
+static void {\bfseries Shutdown} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a90d1ff2d0ddc6664eda4fa1afb6a7868}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a90d1ff2d0ddc6664eda4fa1afb6a7868}} 
+static int {\bfseries Compare} (string c1, byte $\ast$c2)
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_ae626ea548fea35fc19dc9e95cd1b84b7}\label{class_medli_1_1_hardware_1_1_a_c_p_i_ae626ea548fea35fc19dc9e95cd1b84b7}} 
+static int $\ast$ {\bfseries facpget} (int number)
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a30556337039f6908dfd7b1bcdfed1cf7}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a30556337039f6908dfd7b1bcdfed1cf7}} 
+static byte {\bfseries facpbget} (int number)
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a9d277d9a5be3853f271db5d99ad58b12}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a9d277d9a5be3853f271db5d99ad58b12}} 
+static uint $\ast$ {\bfseries acpi\+Check\+R\+S\+D\+Ptr} (uint $\ast$ptr)
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_af9d88efe6417e593b8d1863a56932095}\label{class_medli_1_1_hardware_1_1_a_c_p_i_af9d88efe6417e593b8d1863a56932095}} 
+static unsafe uint {\bfseries R\+S\+D\+P\+Address} ()
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a1f8a16f0f5797e5dca35dec07de7c4cd}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a1f8a16f0f5797e5dca35dec07de7c4cd}} 
+static int {\bfseries acpi\+Check\+Header} (byte $\ast$ptr, string sig)
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_aa125d05f82cd4397ab41e20dd8a391c9}\label{class_medli_1_1_hardware_1_1_a_c_p_i_aa125d05f82cd4397ab41e20dd8a391c9}} 
+static bool {\bfseries Check\+\_\+\+R\+SD} (uint address)
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a18d271021e84327c1ef0afbdaa576635}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a18d271021e84327c1ef0afbdaa576635}} 
+static int $\ast$ {\bfseries S\+M\+I\+\_\+\+C\+MD}
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_aa1de841181ae281e4ed2707dd310c462}\label{class_medli_1_1_hardware_1_1_a_c_p_i_aa1de841181ae281e4ed2707dd310c462}} 
+static byte {\bfseries A\+C\+P\+I\+\_\+\+E\+N\+A\+B\+LE}
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a0a9fee4900a21e06d0e180544cebfcff}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a0a9fee4900a21e06d0e180544cebfcff}} 
+static byte {\bfseries A\+C\+P\+I\+\_\+\+D\+I\+S\+A\+B\+LE}
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a72c735c0f297a45d47cfa989034ef75a}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a72c735c0f297a45d47cfa989034ef75a}} 
+static int $\ast$ {\bfseries P\+M1a\+\_\+\+C\+NT}
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a875e92d03ec105a3bbc16432b2dc4417}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a875e92d03ec105a3bbc16432b2dc4417}} 
+static int $\ast$ {\bfseries P\+M1b\+\_\+\+C\+NT}
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a2255bdff3ab517b49bd5bf2aabbc22e0}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a2255bdff3ab517b49bd5bf2aabbc22e0}} 
+static short {\bfseries S\+L\+P\+\_\+\+T\+Y\+Pa}
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a79ab5762424ac0151eae00abdd6c1649}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a79ab5762424ac0151eae00abdd6c1649}} 
+static short {\bfseries S\+L\+P\+\_\+\+T\+Y\+Pb}
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_ac3fb36f24439d920c95502b9f10d6f23}\label{class_medli_1_1_hardware_1_1_a_c_p_i_ac3fb36f24439d920c95502b9f10d6f23}} 
+static short {\bfseries S\+L\+P\+\_\+\+EN}
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a3e1ed2cabd0c41268d47b1cb28a241fe}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a3e1ed2cabd0c41268d47b1cb28a241fe}} 
+static short {\bfseries S\+C\+I\+\_\+\+EN}
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a09237fd1fd6c181d1a7065d91c77a80a}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a09237fd1fd6c181d1a7065d91c77a80a}} 
+static byte {\bfseries P\+M1\+\_\+\+C\+N\+T\+\_\+\+L\+EN}
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a8e172474e0d7f07f670260ec5315cbac}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a8e172474e0d7f07f670260ec5315cbac}} 
+static byte $\ast$ {\bfseries Facp} = null
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a9eb1eb29bb25b5a357f96a7a192fe667}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a9eb1eb29bb25b5a357f96a7a192fe667}} 
+static Cosmos.\+Core.\+Common.\+I\+O\+Port {\bfseries smi\+IO}
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a10b4220f4298cc64aa54d98da0aa883d}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a10b4220f4298cc64aa54d98da0aa883d}} 
+static Cosmos.\+Core.\+Common.\+I\+O\+Port {\bfseries pm1a\+IO}
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_ac7108ef14eea1995561acbe03d39e1a3}\label{class_medli_1_1_hardware_1_1_a_c_p_i_ac7108ef14eea1995561acbe03d39e1a3}} 
+static Cosmos.\+Core.\+Common.\+I\+O\+Port {\bfseries pm1b\+IO}
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_aaaddd7d02824285da01997f0f6f94e88}\label{class_medli_1_1_hardware_1_1_a_c_p_i_aaaddd7d02824285da01997f0f6f94e88}} 
+static Cosmos.\+Core.\+Common.\+I\+O\+Port {\bfseries io} = new Cosmos.\+Core.\+Common.\+I\+O\+Port(0)
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_afd0a959065d129b395452f1613c74937}\label{class_medli_1_1_hardware_1_1_a_c_p_i_afd0a959065d129b395452f1613c74937}} 
+static int {\bfseries PP} = 0
+\item 
+\mbox{\Hypertarget{class_medli_1_1_hardware_1_1_a_c_p_i_a1326e97a1cbce4d754a1ead5889bb09c}\label{class_medli_1_1_hardware_1_1_a_c_p_i_a1326e97a1cbce4d754a1ead5889bb09c}} 
+static int {\bfseries D} = 0
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Medli.\+Hardware/Power.\+cs\end{DoxyCompactItemize}
