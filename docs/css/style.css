@@ -14,15 +14,15 @@
 
 .highlight .err { color: #a61717; background-color: #e3d2d2; }
 
-.highlight .gd { color: #FFFFFF; background-color: #ffdddd; }
+.highlight .gd { color: #000000; background-color: #ffdddd; }
 
-.highlight .ge { color: #FFFFFF; font-style: italic; }
+.highlight .ge { color: #000000; font-style: italic; }
 
 .highlight .gr { color: #aa0000; }
 
 .highlight .gh { color: #999999; }
 
-.highlight .gi { color: #FFFFFF; background-color: #ddffdd; }
+.highlight .gi { color: #000000; background-color: #ddffdd; }
 
 .highlight .go { color: #888888; }
 
@@ -34,19 +34,19 @@
 
 .highlight .gt { color: #aa0000; }
 
-.highlight .kc { color: #FFFFFF; font-weight: bold; }
+.highlight .kc { color: #000000; font-weight: bold; }
 
-.highlight .kd { color: #FFFFFF; font-weight: bold; }
+.highlight .kd { color: #000000; font-weight: bold; }
 
-.highlight .kn { color: #FFFFFF; font-weight: bold; }
+.highlight .kn { color: #000000; font-weight: bold; }
 
-.highlight .kp { color: #FFFFFF; font-weight: bold; }
+.highlight .kp { color: #000000; font-weight: bold; }
 
-.highlight .kr { color: #FFFFFF; font-weight: bold; }
+.highlight .kr { color: #000000; font-weight: bold; }
 
 .highlight .kt { color: #445588; font-weight: bold; }
 
-.highlight .k, .highlight .kv { color: #FFFFFF; font-weight: bold; }
+.highlight .k, .highlight .kv { color: #000000; font-weight: bold; }
 
 .highlight .mf { color: #009999; }
 
@@ -116,9 +116,9 @@
 
 .highlight .nv { color: #008080; }
 
-.highlight .ow { color: #FFFFFF; font-weight: bold; }
+.highlight .ow { color: #000000; font-weight: bold; }
 
-.highlight .o { color: #FFFFFF; font-weight: bold; }
+.highlight .o { color: #000000; font-weight: bold; }
 
 .highlight .w { color: #bbbbbb; }
 
