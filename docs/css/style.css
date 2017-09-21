@@ -245,4 +245,7 @@ footer { width: 170px; float: left; position: fixed; bottom: 10px; padding-left:
 body {
     background-image: url("../bgimg.png");
     background-color: #cccccc;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
 }
