@@ -17,13 +17,11 @@ namespace Medli
         {
             if (pageno == 1)
             {
-                Console.WriteLine("mkdir \tMakes a directory");
-                Console.WriteLine("echo  \tPrints text to the console");
-                Console.WriteLine("getram\tGets the amount of system RAM in megabytes");
-                Console.WriteLine("mkdir \tMakes a directory");
-                Console.WriteLine("dir   \tPrints a list of directories in the current directory");
-                Console.WriteLine("cd    \tChanges the current directory");
-                Console.WriteLine("clear \tClears the screen");
+                Console.WriteLine("echo         \tPrints text to the console");
+                Console.WriteLine("mkdir        \tMakes a directory");
+                Console.WriteLine("dir          \tPrints a list of directories in the current directory");
+                Console.WriteLine("cd           \tChanges the current directory");
+                Console.WriteLine("clear        \tClears the screen");
                 Console.WriteLine("cowsay <text>\tA little *nix easter egg ;)");
                 Console.WriteLine("Help page 1 - Press any key...");
                 Console.ReadKey(true);
@@ -31,29 +29,36 @@ namespace Medli
             }
             else if (pageno == 2)
             {
-                Console.WriteLine("panic\tStarts a harmless kernel panic");
-                Console.WriteLine("panic critical\tStarts a critical yet harmless kernel panic");
-                Console.WriteLine("cv <file>\tPrints the contents of a file onto the screen.");
-                Console.WriteLine("cp <file>\tLaunches the text editor");
-                Console.WriteLine("miv\tLaunches the MIV advanced text editor");
-                Console.WriteLine("reboot\tReboots the system");
-                Console.WriteLine("shutdown\tCloses applications and powers down the system.");
-                Console.WriteLine("shell2\tLaunches the new shell (W.I.P)");
+                Console.WriteLine("cv <file>    \tPrints the contents of a file onto the screen.");
+                Console.WriteLine("cp <file>    \tLaunches the text editor");
+                Console.WriteLine("miv          \tLaunches the MIV advanced text editor");
+                Console.WriteLine("reboot       \tReboots the system");
+                Console.WriteLine("shutdown     \tCloses applications and powers down the system.");
+                Console.WriteLine("shell2       \tLaunches the new shell (W.I.P)");
                 Console.WriteLine("Help page 2 - Press any key...");
+                Console.ReadKey(true);
+                Console.WriteLine(" ");
+            }
+            else if (pageno == 3)
+            {
+                Console.WriteLine("run <file>   \tExecutes the script passed as <file>");
+                Console.WriteLine("getram       \tGets the amount of system RAM in megabytes");
+                Console.WriteLine("panic        \tStarts a harmless kernel panic");
+                Console.WriteLine("Help page 3 - Press any key...");
                 Console.ReadKey(true);
                 Console.WriteLine(" ");
             }
             else
             {
                 Console.Clear();
-                pages(1);
-                pages(2);
+                full();
             }
         }
         public static void full()
         {
             pages(1);
             pages(2);
+            pages(3);
         }
         public static void specific(string topic)
         {

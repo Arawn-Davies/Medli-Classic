@@ -81,6 +81,10 @@ namespace Medli.Applications
                     ErrorHandler.Init(0, ex.Message, false, "");
                 }
             }
+            else if (command == "install")
+            {
+                Installer.MInit();
+            }
             else if (command.StartsWith("cd "))
             {
                 FSfunc.cd(command);
@@ -238,6 +242,10 @@ namespace Medli.Applications
                 else if (command == "help 2")
                 {
                     getHelp.pages(2);
+                }
+                else if (command == "help 3")
+                {
+                    getHelp.pages(3);
                 }
                 else
                 {

@@ -301,8 +301,8 @@ namespace Medli.Applications
                     mshell.invalidCommand(MIV.file, 2);
                     Console.WriteLine("Would you like to create this file?");
                     Console.WriteLine("Y = Yes, N = No");
-                    var answer = Console.ReadKey();
-                    if (answer.Key == ConsoleKey.Y)
+                    var canswer = Console.ReadKey();
+                    if (canswer.Key == ConsoleKey.Y)
                     {
                         Console.WriteLine("Creating file!");
                         File.Create(@"0:\" + MIV.file);
@@ -321,8 +321,9 @@ namespace Medli.Applications
             }
 
             String text = String.Empty;
-            Console.WriteLine("Do you want to open " + MIV.file + " content? (Yes/No)");
-            if (Console.ReadLine().ToLower() == "yes" || Console.ReadLine().ToLower() == "y")
+            Console.WriteLine("Do you want to open " + MIV.file + " content? (y/n)");
+            var answer = Console.ReadKey();
+            if (answer.Key == ConsoleKey.Y)
             {
                 text = miv(File.ReadAllText(@"0:\" + MIV.file));
             }
@@ -330,7 +331,6 @@ namespace Medli.Applications
             {
                 text = miv(null);
             }
-
             Console.Clear();
 
             if (text != null)

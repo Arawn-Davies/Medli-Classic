@@ -1,7 +1,8 @@
 ﻿/*
-Changelog?
-0.8 -   Updated logo, added new shell amongst other fixes and edits
-        close to becoming version 1.0!
+Changelog
+0.9 - Updated project dependencies, general fixes so it works on the userkit, can start developing again!
+      Will start making the documentation for Medli, makes it easier to understand the source code for 
+      what's going on with the internals, describing what methods do etc.
 */
 using System;
 using System.Collections.Generic;
@@ -78,6 +79,7 @@ namespace Medli
                     {
                         OSVars.username = username;
                         Console.WriteLine("Welcome back, " + OSVars.username + @"!");
+                        Console.WriteLine("Press any key to continue...");
                         Console.ReadKey(true);
                     }
                 }

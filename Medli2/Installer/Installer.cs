@@ -8,7 +8,17 @@ using System.IO;
 namespace Medli
 {
     class Installer
-    { 
+    {
+        public static void InstallerWrite(string text)
+        {
+            Console.CursorLeft = 7;
+            Console.Write(text);
+        }
+        public static void InstallerWriteLine(string text)
+        {
+            Console.CursorLeft = 7;
+            Console.WriteLine(text);
+        }
         public static void PAKTC()
         {
             Console.CursorTop = 24;
@@ -22,15 +32,15 @@ namespace Medli
         {
             InitScreen(defaultcol);
             Console.WriteLine("Medli was unable to find any info regarding your PC.");
-            Console.WriteLine("The Medli installer will now run.");
+            InstallerWriteLine("The Medli installer will now run.");
             PAKTC();
             Console.Clear();
             InitScreen(defaultcol);
             Run();
             InitScreen(defaultcol);
-            Console.WriteLine("Press any key and let's get started!");
+            InstallerWriteLine("Press any key and let's get started!");
             PAKTC();
-            Console.WriteLine("Please enter a machine name:");
+            InstallerWriteLine("Please enter a machine name:");
             Console.CursorTop = 24;
             OSVars.pcname = Console.ReadLine();
             InitScreen(defaultcol);
@@ -54,8 +64,8 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
             Console.WriteLine("");
             Console.Clear();
             InitScreen(defaultcol);
-            Console.WriteLine("Awesome - you're all set!");
-            Console.WriteLine("Press any key to start Medli!");
+            InstallerWriteLine("Awesome - you're all set!");
+            InstallerWriteLine("Press any key to start Medli!");
             PAKTC();
             Console.Clear();
         }
@@ -75,8 +85,8 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
         public static void Run()
         {
             InitScreen(defaultcol);
-            Console.WriteLine("Welcome to the Medli installer.");
-            Console.WriteLine("Press any key to get started!");
+            InstallerWriteLine("Welcome to the Medli installer.");
+            InstallerWriteLine("Press any key to get started!");
             PAKTC();
             InitScreen(ConsoleColor.Black);
             Console.WriteLine("Choose a background colour to use with Medli:");
@@ -85,8 +95,10 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
             Console.BackgroundColor = ConsoleColor.Cyan;  Console.Write("Cyan,"); Console.BackgroundColor = defaultcol; Console.Write(" ");
             Console.BackgroundColor = ConsoleColor.Green; Console.Write("Green,"); Console.BackgroundColor = defaultcol; Console.Write(" ");
             Console.BackgroundColor = ConsoleColor.Blue; Console.Write("Blue,"); Console.BackgroundColor = defaultcol; Console.Write(" ");
-            Console.BackgroundColor = ConsoleColor.Red; Console.WriteLine("Red,"); Console.BackgroundColor = defaultcol; Console.Write(" "); Console.BackgroundColor = defaultcol; Console.Write("Black");
+            Console.BackgroundColor = ConsoleColor.Red; Console.WriteLine("Red,"); Console.BackgroundColor = defaultcol; Console.Write(" ");
+            Console.BackgroundColor = defaultcol; Console.Write("Black");
             Console.CursorTop = 24;
+            Console.CursorLeft = 0;
             string bgcolor = Console.ReadLine();
             if (bgcolor == "yellow")
             {
@@ -120,7 +132,7 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
                 Console.BackgroundColor = color;
             }
             InitScreen(color);
-            Console.WriteLine("Enter a username for Medli:");
+            InstallerWriteLine("Enter a username for Medli:");
             Console.CursorTop = 24;
             Console.CursorLeft = 0;
             username = Console.ReadLine();
@@ -129,13 +141,13 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
             {
                 Console.CursorLeft = 20;
                 Console.CursorTop = 7;
-                Console.ForegroundColor = ConsoleColor.White; Console.Write("Creating user directory... "); Directory.CreateDirectory(Kernel.root_dir + "/" + username); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
+                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating user directory... "); Directory.CreateDirectory(Kernel.root_dir + "/" + username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.CursorLeft = 20;
                 Console.CursorTop = 8;
-                Console.ForegroundColor = ConsoleColor.White; Console.Write("Creating users file...     "); File.Create(Kernel.current_dir + "usrinfo.sys"); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
+                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating users file...     "); File.Create(Kernel.current_dir + "usrinfo.sys"); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
                 Console.CursorLeft = 20;
                 Console.CursorTop = 9;
-                Console.ForegroundColor = ConsoleColor.White; Console.Write("Writing username to file..."); File.WriteAllText(Kernel.current_dir + "usrinfo.sys", username); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
+                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Writing username to file..."); File.WriteAllText(Kernel.current_dir + "usrinfo.sys", username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             catch
@@ -146,7 +158,7 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
             Console.ForegroundColor = ConsoleColor.White;
             Console.CursorLeft = 20;
             Console.CursorTop = 10;
-            Console.WriteLine("All set! Press any key to continue...");
+            InstallerWriteLine("All set! Press any key to continue...");
             Console.CursorLeft = 0;
             PAKTC();
             OSVars.username = username;
