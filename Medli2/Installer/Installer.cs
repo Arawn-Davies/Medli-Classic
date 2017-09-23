@@ -12,7 +12,7 @@ namespace Medli
         /// <summary>
         /// Custom Write method for the installer console, sets the cursor position
         /// </summary>
-        /// <param name="InstallerWrite"></param>
+        /// <param name="text"></param>
         public static void InstallerWrite(string text)
         {
             Console.CursorLeft = 7;
@@ -21,7 +21,7 @@ namespace Medli
         /// <summary>
         /// Custom WriteLine method for the installer console, sets the cursor position
         /// </summary>
-        /// <param name="InstallerWriteLine"></param>
+        /// <param name="text"></param>
         public static void InstallerWriteLine(string text)
         {
             Console.CursorLeft = 7;
@@ -52,7 +52,6 @@ namespace Medli
         /// Initializes the installer and allows the user to choose a machine name
         /// Sets the machine name as a variable and writes it to the disk
         /// </summary>
-        /// <param name="MInit"></param>
         public static void MInit()
         {
             InitScreen(defaultcol);
@@ -114,7 +113,6 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
         /// <summary>
         /// Main installer method, choose colour of installer, choose desired username and reports if a FAT error occurs
         /// </summary>
-        /// <param name="Main installer init"></param>
         public static void Run()
         {
             InitScreen(defaultcol);
