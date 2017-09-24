@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medli2", "Medli2\Medli2.csproj", "{04DA9F1A-7F34-4BC0-9EA1-27FBEF5C8434}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medli", "Medli2\Medli.csproj", "{04DA9F1A-7F34-4BC0-9EA1-27FBEF5C8434}"
 EndProject
-Project("{471EC4BB-E47E-4229-A789-D1F5F83B52D4}") = "Medli2Boot", "Medli2\Medli2Boot.Cosmos", "{8FFE3F64-1774-4F90-8786-923AF0AA1C88}"
+Project("{471EC4BB-E47E-4229-A789-D1F5F83B52D4}") = "MedliBoot", "Medli2\MedliBoot.Cosmos", "{8FFE3F64-1774-4F90-8786-923AF0AA1C88}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medli.System", "Medli.System\Medli.System.csproj", "{432C7434-31E3-4C41-8E36-C0CAEB15D66F}"
 EndProject

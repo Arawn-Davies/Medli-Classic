@@ -10,8 +10,17 @@ namespace Medli
 {
     class FSfunc
     {
+        /// <summary>
+        /// Declares the variable 'fs' to be the Virtual Filesystem
+        /// Required assignment due to this class containing the file system functions
+        /// </summary>
         public static Sys.FileSystem.CosmosVFS fs;
 
+        /// <summary>
+        /// dir() lists the contents of the current working directory
+        /// Lists directories first with the tag <Directory>,
+        /// then lists files by extension
+        /// </summary>
         public static void dir()
         {
             try
@@ -49,6 +58,13 @@ namespace Medli
                 Console.WriteLine(ex.Message);
             }
         }
+
+        /// <summary>
+        /// Creates a directory with the parameter being 'dirname'
+        /// 'dirname' is passed as an argument with it being the desired
+        /// directory name to be created in the current working directory
+        /// </summary>
+        /// <param name="dirname"></param>
         public static void mkdir(string dirname)
         {
             try
@@ -63,6 +79,14 @@ namespace Medli
                 Console.WriteLine("mkdir: " + ex.Message);
             }
         }
+
+        /// <summary>
+        /// Changes the current working directory to 'input'
+        /// Passing '..' as a directory name will change the
+        /// current working directory to it's parent, 
+        /// unless already at the root
+        /// </summary>
+        /// <param name="input"></param>
         public static void cd(string input)
         {
             string path = input.Remove(0, 3); //cd <- 2 chars
@@ -79,10 +103,20 @@ namespace Medli
                 Console.WriteLine("Folder does not exist " + Kernel.current_dir + "/" + path);
             }
         }
+
+        /// <summary>
+        /// Deletes a directory, with the chosen directory name passed as 'dirname'
+        /// </summary>
+        /// <param name="dirname"></param>
         public static void deldir(string dirname)
         {
             Directory.Delete(Kernel.current_dir + "/" + dirname);
         }
+
+        /// <summary>
+        /// Deletes a file, with the chosen filename passed as 'filename'
+        /// </summary>
+        /// <param name="filename"></param>
         public static void delfile(string filename)
         {
             File.Delete(Kernel.current_dir + "/" + filename);

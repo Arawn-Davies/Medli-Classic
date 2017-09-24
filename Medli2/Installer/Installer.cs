@@ -7,6 +7,9 @@ using System.IO;
 
 namespace Medli
 {
+    /// <summary>
+    /// Class for the Medli installer
+    /// </summary>
     class Installer
     {
         /// <summary>

@@ -7,8 +7,18 @@ using System.IO;
 
 namespace Medli.Applications
 {
+    /// <summary>
+    /// Class for Medliscript (mdscript),
+    /// a simple scripting language for the Medli command line shell
+    /// </summary>
     class mdscript
     {
+        /// <summary>
+        /// Executes a script passed to the application,
+        /// parsing the commands listed in a valid text file
+        /// that has the extension '.mds'
+        /// </summary>
+        /// <param name="scriptname"></param>
         public static void Execute(string scriptname)
         {
             try
@@ -24,7 +34,7 @@ namespace Medli.Applications
                 }
                 else
                 {
-                    Console.WriteLine("Not a valid Midnascript file.");
+                    Console.WriteLine("Not a valid Medliscript file.");
                 }
             }
             catch (Exception ex)

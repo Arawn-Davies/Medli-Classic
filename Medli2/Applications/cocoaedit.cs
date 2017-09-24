@@ -7,11 +7,30 @@ using System.IO;
 
 namespace Medli.Applications
 {
+    /// <summary>
+    /// Cocoapad Editor class
+    /// contains methods needed for the editor to function
+    /// </summary>
     class cpedit
     {
+        /// <summary>
+        /// The current text inside the editor is stored in a string
+        /// It gets transferred to the 'savedtext' string when saved.
+        /// </summary>
         public static string text = "";
+        /// <summary>
+        /// Saved text is stored in a string
+        /// </summary>
         public static string savedtext = "";
+        /// <summary>
+        /// Boolean to see whether Cocoapad is running or not
+        /// </summary>
         public static bool running = true;
+        /// <summary>
+        /// Main method for the Cocoapad edit
+        /// Originally from Chocolate OS (pre-Medli) but won't rename this application
+        /// </summary>
+        /// <param name="file"></param>
         public static void Run(string file)
         {
             Console.WriteLine("--|:Welcome to Cocoapad Editor:|--");
