@@ -1,3 +1,6 @@
+# Medli-gen3
+W.I.P Medli build for Gen3 kernel of Cosmos
+
 # Medli
 ### Welcome to Medli, an attractive free and open successor to the original Chocolate OS.
 Medli has come a long way since the early days of Cosmos, with it's roots going back to the old Milestone days with
@@ -32,4 +35,3 @@ Use the command 'help' to view a list of commands and use 'help <command>' for m
 * Documentation!
 
 ### Work In Progress:
-

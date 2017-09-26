@@ -143,7 +143,7 @@ namespace Medli.Hardware
 
             return (sum == 0);
         }
-        private static Cosmos.Core.Common.IOPort smiIO, pm1aIO, pm1bIO;
+        private static Cosmos.Core.IOPort smiIO, pm1aIO, pm1bIO;
         public static int Enable()
         {
             // check if acpi is enabled
@@ -282,9 +282,9 @@ namespace Medli.Hardware
 
                                     SLP_EN = 1 << 13;
                                     SCI_EN = 1;
-                                    smiIO = new Cosmos.Core.Common.IOPort((ushort)SMI_CMD);
-                                    pm1aIO = new Cosmos.Core.Common.IOPort((ushort)PM1a_CNT);
-                                    pm1bIO = new Cosmos.Core.Common.IOPort((ushort)PM1b_CNT);
+                                    smiIO = new Cosmos.Core.IOPort((ushort)SMI_CMD);
+                                    pm1aIO = new Cosmos.Core.IOPort((ushort)PM1a_CNT);
+                                    pm1bIO = new Cosmos.Core.IOPort((ushort)PM1b_CNT);
                                     return 0;
                                 }
                                 else
@@ -325,12 +325,12 @@ namespace Medli.Hardware
             Cosmos.Core.Global.CPU.Halt();
         }
 
-        static Cosmos.Core.Common.IOPort io = new Cosmos.Core.Common.IOPort(0);
+        static Cosmos.Core.IOPort io = new Cosmos.Core.IOPort(0);
         static int PP = 0, D = 0;
         public static void Outb(ushort port, byte data)
         {
             if (io.Port != port)
-                io = new Cosmos.Core.Common.IOPort(port);
+                io = new Cosmos.Core.IOPort(port);
             io.Byte = data;
             PP = port;
             D = data;
@@ -339,7 +339,7 @@ namespace Medli.Hardware
         public static byte Inb(ushort port)
         {
             if (io.Port != port)
-                io = new Cosmos.Core.Common.IOPort(port);
+                io = new Cosmos.Core.IOPort(port);
             return io.Byte;
 
         }

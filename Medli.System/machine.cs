@@ -10,8 +10,8 @@ namespace Medli.System
     public class machineinfo
     {
         public static uint getRam() { return machine.getRam(); }
-        public static void reboot() { Cosmos.HAL.Power.Reboot(); }
+        public static void reboot() { Cosmos.HAL.Power.CPUReboot(); }
         public static void shutdown() { machine.ShutDown(); }
-        public static void enableACPI() { if (ACPI.Init() >= 0) ACPI.Enable(); }
+        //public static void enableACPI() { if (ACPI.Init() >= 0) ACPI.Enable(); }
     }
 }

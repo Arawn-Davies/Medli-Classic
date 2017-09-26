@@ -9,7 +9,7 @@ namespace Medli.Hardware
 {
     public class machine
     {
-        public static uint getRam() { return Cosmos.Core.Common.CPU.GetAmountOfRAM(); }
+        public static uint getRam() { return Cosmos.Core.CPU.GetAmountOfRAM(); }
         public static void ShutDown()
         {
         ACPI.Shutdown();

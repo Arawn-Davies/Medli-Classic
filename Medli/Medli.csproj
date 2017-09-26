@@ -2,13 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Medli.System</AssemblyName>
-    <PackageId>Medli.System</PackageId>
-    <ProjectGuid>{432c7434-31e3-4c41-8e36-c0caeb15d66f}</ProjectGuid>
+    <ProjectGuid>{8906715f-d090-4688-8a0d-553850861e2e}</ProjectGuid>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Medli.SystemBoot.Cosmos" />
+    <None Remove="CosmosOSBoot.Cosmos" />
   </ItemGroup>
   
   <ItemGroup>
@@ -18,6 +16,11 @@
   
   <ItemGroup>
     <ProjectReference Include="..\Medli.Hardware\Medli.Hardware.csproj" />
+    <ProjectReference Include="..\Medli.System\Medli.System.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="UserManagement\" />
   </ItemGroup>
 
 </Project>

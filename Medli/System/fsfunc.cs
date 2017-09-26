@@ -8,7 +8,7 @@ using Sys = Cosmos.System;
 
 namespace Medli
 {
-    class FSfunc
+    class Fsfunc
     {
         /// <summary>
         /// Declares the variable 'fs' to be the Virtual Filesystem
@@ -72,6 +72,25 @@ namespace Medli
                 if (!Directory.Exists(Kernel.current_dir + "/" + dirname))
                 {
                     Directory.CreateDirectory(Kernel.current_dir + "/" + dirname);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("mkdir: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Another similar mkdir() function, will simply but this is for the Installer, where current_dir isn't assigned
+        /// </summary>
+        /// <param name="dirname"></param>
+        public static void mksysdir(string dirname)
+        {
+            try
+            {
+                if (!Directory.Exists(dirname))
+                {
+                    Directory.CreateDirectory(dirname);
                 }
             }
             catch (Exception ex)

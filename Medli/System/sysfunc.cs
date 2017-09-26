@@ -23,6 +23,6 @@ namespace Medli
             Console.WriteLine("");
             Console.WriteLine("Amount of RAM installed: " + getram + " megabytes");
         }
-        public static void enableACPI() { machineinfo.enableACPI(); }
+        //public static void enableACPI() { machineinfo.enableACPI(); }
     }
 }
