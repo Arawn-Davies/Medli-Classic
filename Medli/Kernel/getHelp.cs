@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Medli
 {
+    /// <summary>
+    /// Help class, called by mshell
+    /// </summary>
     public class getHelp
     {
         /*
@@ -13,6 +16,11 @@ namespace Medli
          * Tidied up a bit, might avoid the text-spilling-onto-next-line issue but certainly doesn't eliminate it
          * That's an issue which needs sorting, probs leave it until we go .NET Core
          */
+         /// <summary>
+         /// Creates multiple pages of 'help' so its not listed out in one go,
+         /// makes for easier reading of available commands
+         /// </summary>
+         /// <param name="pageno"></param>
         public static void pages(int pageno)
         {
             if (pageno == 1)
@@ -54,12 +62,19 @@ namespace Medli
                 full();
             }
         }
+        /// <summary>
+        /// prints out all help pages after each other
+        /// </summary>
         public static void full()
         {
             pages(1);
             pages(2);
             pages(3);
         }
+        /// <summary>
+        /// Gets the detailed help for a specific command given to the method
+        /// </summary>
+        /// <param name="topic"></param>
         public static void specific(string topic)
         {
             if (topic == "mkdir")

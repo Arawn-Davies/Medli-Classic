@@ -1,4 +1,4 @@
-# Medli2
+# Medli
 ### Welcome to Medli, an attractive free and open successor to the original Chocolate OS.
 Medli has come a long way since the early days of Cosmos, with it's roots going back to the old Milestone days with
 Visual C# Express 2008 being the IDE. Medli originally started off as Aza-DOS back in late 2010, a very basic non-DOS 
@@ -29,13 +29,7 @@ Use the command 'help' to view a list of commands and use 'help <command>' for m
 * A little Linux easteregg by the name of cowsay ;)
 			- only one cowfile though atm
 
-
+* Documentation!
 
 ### Work In Progress:
-* manpages documentation
 
-* Tidying stuff up...
-
-* ~~'cd ..' command is currently useless, so that needs implementing properly~~ Working!
-
-* ~~ngscript/midnascript needs fixing/implementing/whatever, ain't been updated for quite a long time~~ Working!

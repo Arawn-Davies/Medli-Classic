@@ -11,6 +11,9 @@ namespace Medli
     {
         public class BlueScreen
         {
+            /// <summary>
+            /// BSoD equivalent message, when users see this, then they know it truly is an 'O shit' situation
+            /// </summary>
             public static string Msg = @"
 
                 '||            ||    
@@ -20,6 +23,13 @@ namespace Medli
 `|..|'    `...' .||  || .||.   `|..'
 
 What's happened now?! ";
+            /// <summary>
+            /// Initializes the BSoD equivalent, getting the error level, 
+            /// error description and the error itself
+            /// </summary>
+            /// <param name="errlvl"></param>
+            /// <param name="errdsc"></param>
+            /// <param name="err"></param>
             public static void Init(int errlvl, string errdsc, string err)
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
@@ -33,6 +43,14 @@ What's happened now?! ";
                 machineinfo.reboot();
             }
         }
+        /// <summary>
+        /// Initializes the error reporter,
+        /// works as an error handler for exceptions inside applications
+        /// </summary>
+        /// <param name="errlvl"></param>
+        /// <param name="errdsc"></param>
+        /// <param name="critical"></param>
+        /// <param name="err"></param>
         public static void Init(int errlvl, string errdsc, bool critical, string err)
         {
             if (critical == true)

@@ -17,9 +17,22 @@ namespace Medli
 { 
     public class Kernel : Sys.Kernel
     {
+        /// <summary>
+        /// Sets the filesystems current directory to its initial value
+        /// i.e. the root of the storage device, same initial value but keeps them separate
+        /// </summary>
         public static string current_dir = "0:\\";
+        /// <summary>
+        /// Defines the root directory's value, same as current_dir's initial value but keeps them separate
+        /// </summary>
         public static string root_dir = "0:\\";
+        /// <summary>
+        /// Creates a new instance of the virtual filesystem called fs
+        /// </summary>
         Sys.FileSystem.CosmosVFS fs;
+        /// <summary>
+        /// Initial kernel method, overrides the built-in Cosmos BeforeRun method
+        /// </summary>
         protected override void BeforeRun()
         {
             fs = new Sys.FileSystem.CosmosVFS();
@@ -48,10 +61,17 @@ namespace Medli
             Console.Clear();
             OSVars.ver();
         }
+        /// <summary>
+        /// Main kernel method that runs in a loop - Overrides the built-in Cosmos Run() method
+        /// Calls the mshell.prompt() method that starts the user command line prompt.
+        /// </summary>
         protected override void Run()
         {
             mshell.prompt();
         }
+        /// <summary>
+        /// Runs necessary checks to see if computer is running an existing installation
+        /// </summary>
         public static void PreInit()
         {
             if (File.Exists(Kernel.current_dir + "pcinfo.sys"))
