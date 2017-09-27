@@ -21,7 +21,6 @@ namespace Medli
         }
         public static void PAKTC()
         {
-            Console.CursorTop = 24;
             Console.ReadKey(true);    
         }
         public static ConsoleColor defaultcol = ConsoleColor.Black;
@@ -31,8 +30,9 @@ namespace Medli
         public static void MInit()
         {
             InitScreen(defaultcol);
-            Console.WriteLine("Medli was unable to find any info regarding your PC.");
+            InstallerWriteLine("Medli was unable to find any info regarding your PC.");
             InstallerWriteLine("The Medli installer will now run.");
+            InstallerWriteLine("Press any key to continue...");
             PAKTC();
             Console.Clear();
             InitScreen(defaultcol);
