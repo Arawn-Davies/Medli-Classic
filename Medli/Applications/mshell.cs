@@ -81,24 +81,18 @@ namespace Medli.Applications
                     ErrorHandler.Init(0, ex.Message, false, "");
                 }
             }
-            else if (command == "install")
-            {
-                Installer.MInit();
-            }
             else if (command.StartsWith("cd "))
             {
-                FSfunc.cd(command);
+                Fsfunc.cd(command);
             }
             
             else if (command == "reinstall")
             {
                 try
                 {
-                    Kernel.current_dir = Kernel.root_dir;
-                    
-                    Directory.Delete(Kernel.root_dir + "/" + OSVars.username);
-                    FSfunc.delfile(OSVars.usrinfo);
-                    FSfunc.delfile(OSVars.pcinfo);
+                    //Directory.Delete(Kernel.root_dir + "/" + OSVars.username);
+                    Fsfunc.delfile(OSVars.usrinfo);
+                    Fsfunc.delfile(OSVars.pcinfo);
                 }
                 catch (Exception ex)
                 {
@@ -126,7 +120,7 @@ namespace Medli.Applications
             {
                 try
                 {
-                    FSfunc.delfile(command.Remove(0, 4));
+                    Fsfunc.delfile(command.Remove(0, 4));
                 }
                 catch (Exception ex)
                 {
@@ -138,7 +132,7 @@ namespace Medli.Applications
             {
                 try
                 {
-                    FSfunc.deldir(command.Remove(0, 4));
+                    Fsfunc.deldir(command.Remove(0, 4));
                 }
                 catch (Exception ex)
                 {
@@ -152,7 +146,7 @@ namespace Medli.Applications
             }
             else if (command.StartsWith("dir"))
             {
-                FSfunc.dir();
+                Fsfunc.dir();
             }
             else if (command.StartsWith("miv"))
             {
@@ -191,7 +185,7 @@ namespace Medli.Applications
             }
             else if (command.StartsWith("mkdir "))
             {
-                FSfunc.mkdir(command.Remove(0, 6));
+                Fsfunc.mkdir(command.Remove(0, 6));
             }
             else if (command == "shell2")
             {
@@ -254,7 +248,7 @@ namespace Medli.Applications
             }
             else if (command == "ver")
             {
-                OSVars.ver();
+                OSVars.Ver();
             }
             else
             {

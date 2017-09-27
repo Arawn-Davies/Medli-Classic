@@ -32,8 +32,8 @@
       <Project>{432c7434-31e3-4c41-8e36-c0caeb15d66f}</Project>
       <Private>True</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Medli2\Medli2.csproj">
-      <Name>Medli2</Name>
+    <ProjectReference Include="..\Medli\Medli.csproj">
+      <Name>Medli</Name>
       <Project>{04da9f1a-7f34-4bc0-9ea1-27fbef5c8434}</Project>
       <Private>True</Private>
     </ProjectReference>
@@ -43,6 +43,7 @@
     <Folder Include="Installer\" />
     <Folder Include="Kernel\" />
     <Folder Include="System\" />
+    <Folder Include="UserManagement\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cosmos.Core.Plugs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />

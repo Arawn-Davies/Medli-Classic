@@ -1,9 +1,15 @@
 ﻿/*
 Changelog
-0.9 - Updated project dependencies, general fixes so it works on the userkit, can start developing again!
-      Will start making the documentation for Medli, makes it easier to understand the source code for 
-      what's going on with the internals, describing what methods do etc.
-*/
+0.10 -  Fixes/Changes   Worked on file system structure, installer and other kernel variables. 
+                        An extra mkdir function is added just for the installer
+        
+        Removed:        unused 'version' double, only 'ver_no' is needed or used.
+                        The ability to choose the installer background colour, not really needed
+        
+        Added:          Filesystem structure
+                        New, better and cleaner installer
+                        User management classes are there, just needs integrating.
+ */
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -39,7 +45,7 @@ namespace Medli
             VFSManager.RegisterVFS(fs);
             fs.Initialize();
             Console.Clear();
-            OSVars.ver();
+            OSVars.Ver();
             //This is just to identify the users machine, much later in Medli will this have any usage however
             //i.e. not until networking is set up, FS Permissions are working etc...
             //If it wasn't able to find a machinename file, then it will try and create one.
@@ -59,7 +65,7 @@ namespace Medli
             
 
             Console.Clear();
-            OSVars.ver();
+            OSVars.Ver();
         }
         /// <summary>
         /// Main kernel method that runs in a loop - Overrides the built-in Cosmos Run() method
@@ -74,7 +80,7 @@ namespace Medli
         /// </summary>
         public static void PreInit()
         {
-            if (File.Exists(Kernel.current_dir + "pcinfo.sys"))
+            if (File.Exists(KernelVariables.sysdir + @"\" + "pcinfo.sys"))
             {
                 try
                 {
@@ -90,7 +96,7 @@ namespace Medli
                 }
                 
             }
-            if (File.Exists(Kernel.current_dir + "usrinfo.sys"))
+            if (File.Exists(KernelVariables.sysdir + @"\" + "usrinfo.sys"))
             {
                 try
                 {
