@@ -18,11 +18,12 @@ using Sys = Cosmos.System;
 using System.IO;
 using Medli.System;
 using Medli.Applications;
+using Cosmos.Debug;
 
 namespace Medli
 { 
     public class Kernel : Sys.Kernel
-    {
+    {        
         /// <summary>
         /// Sets the filesystems current directory to its initial value
         /// i.e. the root of the storage device, same initial value but keeps them separate

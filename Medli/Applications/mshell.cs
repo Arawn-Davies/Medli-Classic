@@ -90,7 +90,7 @@ namespace Medli.Applications
             {
                 try
                 {
-                    //Directory.Delete(Kernel.root_dir + "/" + OSVars.username);
+                    //Directory.Delete(Kernel.root_dir + @"\" + OSVars.username);
                     Fsfunc.delfile(OSVars.usrinfo);
                     Fsfunc.delfile(OSVars.pcinfo);
                 }

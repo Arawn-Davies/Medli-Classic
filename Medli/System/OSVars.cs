@@ -12,7 +12,7 @@ namespace Medli
     /// </summary>
     public class KernelVariables
     {
-        public static string root = "0:\\";
+        public static string root = Kernel.root_dir;
         /// <summary>
         /// Creates the system directories required
         /// For now, a *nix file system is used
@@ -22,19 +22,19 @@ namespace Medli
             Console.WriteLine("Creating system directories...");
             try
             {
-                Fsfunc.mksysdir(etcdir); Console.WriteLine("/etc        done!");
-                Fsfunc.mksysdir(bindir); Console.WriteLine("/bin        done!");
-                Fsfunc.mksysdir(sbindir); Console.WriteLine("/sbin      done!");
-                Fsfunc.mksysdir(procdir); Console.WriteLine("/proc      done!");
-                Fsfunc.mksysdir(usrdir); Console.WriteLine("/usr        done!");
-                Fsfunc.mksysdir(homedir); Console.WriteLine("/home      done!");
-                Fsfunc.mksysdir(rootusrdir); Console.WriteLine("/root   done!");
-                Fsfunc.mksysdir(tmpdir); Console.WriteLine("/tmp        done!");
-                Fsfunc.mksysdir(vardir); Console.WriteLine("/var        done!");
-                Fsfunc.mksysdir(sysdir); Console.WriteLine("/sys        done!");
-                Fsfunc.mksysdir(libdir); Console.WriteLine("/lib        done!");
-                Fsfunc.mksysdir(optdir); Console.WriteLine("/opt        done!");
-                Fsfunc.mksysdir(devdir); Console.WriteLine("/dev        done!");
+                Fsfunc.mksysdir(etcdir); Console.WriteLine(@"\etc     done!");
+                Fsfunc.mksysdir(bindir); Console.WriteLine(@"\bin     done!");
+                Fsfunc.mksysdir(sbindir); Console.WriteLine(@"\sbin  done!");
+                Fsfunc.mksysdir(procdir); Console.WriteLine(@"\proc  done!");
+                Fsfunc.mksysdir(usrdir); Console.WriteLine(@"\usr     done!");
+                Fsfunc.mksysdir(homedir); Console.WriteLine(@"\home  done!");
+                Fsfunc.mksysdir(rootdir); Console.WriteLine(@"\root  done!");
+                Fsfunc.mksysdir(tmpdir); Console.WriteLine(@"\tmp     done!");
+                Fsfunc.mksysdir(vardir); Console.WriteLine(@"\var     done!");
+                Fsfunc.mksysdir(sysdir); Console.WriteLine(@"\sys     done!");
+                Fsfunc.mksysdir(libdir); Console.WriteLine(@"\lib     done!");
+                Fsfunc.mksysdir(optdir); Console.WriteLine(@"\opt     done!");
+                Fsfunc.mksysdir(devdir); Console.WriteLine(@"\dev     done!");
             }
             catch (Exception ex)
             {
@@ -45,55 +45,55 @@ namespace Medli
         /// <summary>
         /// etc system directory
         /// </summary>
-        public static string etcdir = root + "/" + "etc";
+        public static string etcdir = root + "etc";
         /// <summary>
         /// bin system directory
         /// </summary>
-        public static string bindir = root + "/" + "bin";
+        public static string bindir = root + "bin";
         /// <summary>
         /// sbin system directory
         /// </summary>
-        public static string sbindir = root + "/" + "sbin";
+        public static string sbindir = root  + "sbin";
         /// <summary>
         /// proc system directory
         /// </summary>
-        public static string procdir = root + "/" + "proc";
+        public static string procdir = root  + "proc";
         /// <summary>
         /// usr system directory - not to be confused with /home user directorie
         /// </summary>
-        public static string usrdir = root + "/" + "usr";
+        public static string usrdir = root  + "usr";
         /// <summary>
         /// home system directory - holds user directories except from root
         /// </summary>
-        public static string homedir = root + "/" + "home";
+        public static string homedir = root + "home";
         /// <summary>
         /// root user directory
         /// </summary>
-        public static string rootusrdir = root + "/" + "root";
+        public static string rootdir = root + "root";
         /// <summary>
         /// tmp system directory - stores tempory files and folders
         /// </summary>
-        public static string tmpdir = root + "/" + "tmp";
+        public static string tmpdir = root + "tmp";
         /// <summary>
         /// var system directory
         /// </summary>
-        public static string vardir = root + "/" + "var";
+        public static string vardir = root + "var";
         /// <summary>
         /// sys system directory
         /// </summary>
-        public static string sysdir = root + "/" + "sys";
+        public static string sysdir = root  + "sys";
         /// <summary>
         /// lib system directory
         /// </summary>
-        public static string libdir = root + "/" + "lib";
+        public static string libdir = root + "lib";
         /// <summary>
         /// opt system directory - for application libraries
         /// </summary>
-        public static string optdir = root + "/" + "opt";
+        public static string optdir = root + "opt";
         /// <summary>
         /// dev system directory
         /// </summary>
-        public static string devdir = root + "/" + "dev";
+        public static string devdir = root + "dev";
         #endregion
     }
     public class OSVars

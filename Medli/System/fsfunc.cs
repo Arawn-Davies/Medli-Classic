@@ -69,9 +69,9 @@ namespace Medli
         {
             try
             {
-                if (!Directory.Exists(Kernel.current_dir + "/" + dirname))
+                if (!Directory.Exists(Kernel.current_dir + @"\" + dirname))
                 {
-                    Directory.CreateDirectory(Kernel.current_dir + "/" + dirname);
+                    Directory.CreateDirectory(Kernel.current_dir + @"\" + dirname);
                 }
             }
             catch (Exception ex)
@@ -119,7 +119,7 @@ namespace Medli
             }
             else
             {
-                Console.WriteLine("Folder does not exist " + Kernel.current_dir + "/" + path);
+                Console.WriteLine("Folder does not exist " + Kernel.current_dir + @"\" + path);
             }
         }
 
@@ -129,7 +129,7 @@ namespace Medli
         /// <param name="dirname"></param>
         public static void deldir(string dirname)
         {
-            Directory.Delete(Kernel.current_dir + "/" + dirname);
+            Directory.Delete(Kernel.current_dir + @"\" + dirname);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Medli
         /// <param name="filename"></param>
         public static void delfile(string filename)
         {
-            File.Delete(Kernel.current_dir + "/" + filename);
+            File.Delete(Kernel.current_dir + @"\" + filename);
         }
     }
 }
