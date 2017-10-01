@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
 using Medli.System;
+using Medli.SysInternal;
 
 namespace Medli.Applications
 {
-
     class mshell
     {
         public static void invalidCommand(string args, int errorlvl)
@@ -104,6 +104,14 @@ namespace Medli.Applications
                 Console.ReadKey(true);
                 Sysfunc.reboot();
 
+            }
+            else if (command == "time")
+            {
+                MedliTime.printTime();
+            }
+            else if (command == "date")
+            {
+                MedliTime.printDate();
             }
             else if (command.StartsWith("run "))
             {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Sys = Cosmos.System;
 
-namespace Medli
+namespace Medli.SysInternal
 {
     class Fsfunc
     {

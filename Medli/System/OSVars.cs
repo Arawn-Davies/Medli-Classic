@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Medli
+namespace Medli.SysInternal
 {
     /// <summary>
     /// A class which holds the path of system directories in strings

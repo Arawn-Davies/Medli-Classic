@@ -19,10 +19,11 @@ using System.IO;
 using Medli.System;
 using Medli.Applications;
 using Cosmos.Debug;
+using Medli.SysInternal;
 
 namespace Medli
 { 
-    public class Kernel : Sys.Kernel
+    public class Kernel : Cosmos.System.Kernel
     {        
         /// <summary>
         /// Sets the filesystems current directory to its initial value
@@ -36,13 +37,13 @@ namespace Medli
         /// <summary>
         /// Creates a new instance of the virtual filesystem called fs
         /// </summary>
-        Sys.FileSystem.CosmosVFS fs;
+        Cosmos.System.FileSystem.CosmosVFS fs;
         /// <summary>
         /// Initial kernel method, overrides the built-in Cosmos BeforeRun method
         /// </summary>
         protected override void BeforeRun()
         {
-            fs = new Sys.FileSystem.CosmosVFS();
+            fs = new Cosmos.System.FileSystem.CosmosVFS();
             VFSManager.RegisterVFS(fs);
             fs.Initialize();
             Console.Clear();

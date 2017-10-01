@@ -7,7 +7,7 @@ using System.IO;
 using Medli.System;
 using Medli.Applications;
 
-namespace Medli
+namespace Medli.SysInternal
 {
     class Sysfunc
     {

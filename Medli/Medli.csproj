@@ -15,7 +15,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\Medli.Hardware\Medli.Hardware.csproj" />
     <ProjectReference Include="..\Medli.System\Medli.System.csproj" />
   </ItemGroup>
 
