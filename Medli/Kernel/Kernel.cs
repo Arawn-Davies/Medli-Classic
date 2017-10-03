@@ -21,7 +21,7 @@ using Medli.SysInternal;
 
 namespace Medli
 { 
-    public class Kernel : Cosmos.System.Kernel
+    public class Kernel : Sys.Kernel
     {
         public static bool testing = true;
         /// <summary>
