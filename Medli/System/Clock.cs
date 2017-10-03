@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Medli.Hardware;
+using Medli.System;
 
 namespace Medli.SysInternal
 {
@@ -9,39 +9,39 @@ namespace Medli.SysInternal
     {
         public static void printTime()
         {
-            Console.WriteLine("The current time is HH:{0} MM:{1} SS:{2}", Clock.Hour(), Clock.Minute(), Clock.Second());
+            Console.WriteLine("The current time is HH:{0} MM:{1} SS:{2}", SysClock.Hour(), SysClock.Minute(), SysClock.Second());
         }
         public static void printDate()
         {
-            Console.WriteLine("The current date is {0}/{1}/{2}", Clock.DayOfTheMonth(), Clock.Month(), Clock.Year());
+            Console.WriteLine("The current date is {0}/{1}/{2}", SysClock.DayOfTheMonth(), SysClock.Month(), SysClock.Year());
         }
         public static int Second()
         {
-            return Clock.Second();
+            return SysClock.Second();
         }
         public static int Minute()
         {
-            return Clock.Minute();
+            return SysClock.Minute();
         }
         public static int Hour()
         {
-            return Clock.Hour();
+            return SysClock.Hour();
         }
         public static int DayOfTheWeek()
         {
-            return Clock.DayOfTheWeek();
+            return SysClock.DayOfTheWeek();
         }
         public static int Month()
         {
-            return Clock.Month();
+            return SysClock.Month();
         }
         public static int Year()
         {
-            return Clock.Year();
+            return SysClock.Year();
         }
         public static int DayOfTheMonth()
         {
-            return Clock.DayOfTheMonth();
+            return SysClock.DayOfTheMonth();
         }
     }
 }

@@ -166,11 +166,11 @@ namespace Medli.Applications
             }
             else if (command == "reboot")
             {
-                machineinfo.reboot();
+                CoreFunc.reboot();
             }
             else if (command == "shutdown")
             {
-                machineinfo.shutdown();
+                CoreFunc.shutdown();
             }
             else if (command == "panic")
             {

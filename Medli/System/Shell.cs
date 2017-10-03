@@ -47,7 +47,7 @@ namespace Medli
                 }
                 else if (input == "halt")
                 {
-                    machineinfo.shutdown();
+                    CoreFunc.shutdown();
                 }
                 else if (input == "lock")
                 {

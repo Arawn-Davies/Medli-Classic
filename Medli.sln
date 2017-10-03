@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medli.System", "Medli.Syste
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medli.Hardware", "Medli.Hardware\Medli.Hardware.csproj", "{20E8A6B0-5698-4912-A619-8C5676EF2854}"
 EndProject
-Project("{471EC4BB-E47E-4229-A789-D1F5F83B52D4}") = "MedliBoot", "MedliBoot\MedliBoot.Cosmos", "{86861A90-5B5D-4C1D-A19C-CF7B2B13B6B9}"
+Project("{471EC4BB-E47E-4229-A789-D1F5F83B52D4}") = "MedliBoot", "Medli\MedliBoot.Cosmos", "{86861A90-5B5D-4C1D-A19C-CF7B2B13B6B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
