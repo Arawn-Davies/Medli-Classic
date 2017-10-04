@@ -1,4 +1,4 @@
-theme: jekyll-theme-minimal
+theme: jekyll-theme-slate
 show_downloads: true
 name: Medli OS
 description: Medli OS, a free and open source operating system made in C#
