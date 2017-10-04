@@ -113,6 +113,12 @@ namespace Medli.Applications
             {
                 MedliTime.printDate();
             }
+            /*
+            else if (command == "day")
+            {
+                DateTime.Now.Day.ToString();
+            }
+            */
             else if (command.StartsWith("run "))
             {
                 if (!File.Exists(Kernel.current_dir + command.Remove(0, 4)))
