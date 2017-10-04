@@ -1,5 +1,5 @@
 # Medli
-### Welcome to Medli, a free and open source operating system made in C#
+### Welcome to Medli, a free and open source operating system made in C\#
 
 View the Kernel.cs file to see the current changelog.
 Use the command 'help' to view a list of commands and use 'help <command>' for more help on specific commands.
