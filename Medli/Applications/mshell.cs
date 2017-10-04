@@ -113,6 +113,12 @@ namespace Medli.Applications
             {
                 MedliTime.printDate();
             }
+            /*
+            else if (command == "day")
+            {
+                DateTime.Now.Day.ToString();
+            }
+            */
             else if (command.StartsWith("run "))
             {
                 if (!File.Exists(Kernel.current_dir + command.Remove(0, 4)))
@@ -166,11 +172,11 @@ namespace Medli.Applications
             }
             else if (command == "reboot")
             {
-                machineinfo.reboot();
+                CoreFunc.reboot();
             }
             else if (command == "shutdown")
             {
-                machineinfo.shutdown();
+                CoreFunc.shutdown();
             }
             else if (command == "panic")
             {

@@ -7,7 +7,7 @@ using Medli.Hardware;
 
 namespace Medli.System
 {
-    public class machineinfo
+    public class CoreFunc
     {
         public static uint getRam() { return machine.getRam(); }
         public static void reboot() { Cosmos.HAL.Power.Reboot(); }

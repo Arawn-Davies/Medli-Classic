@@ -12,12 +12,12 @@
     </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Medli2Boot.Cosmos" />
+    <None Remove="MedliBoot.Cosmos" />
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Cosmos.Debug.Kernel" Version="1.0.0-*" />
-    <PackageReference Include="Cosmos.System" Version="1.0.0-*" />
+    <PackageReference Include="Cosmos.Debug.Kernel" Version="1.0.*" />
+    <PackageReference Include="Cosmos.System" Version="1.0.*" />
   </ItemGroup>
   
   <ItemGroup>

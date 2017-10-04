@@ -131,10 +131,9 @@ namespace Medli.SysInternal
         public static string username;
 
         /// <summary>
-        /// The Medli version number is stored as a double
-        /// Internal memo - why two?
+        /// The Medli version number is stored as a string
         /// </summary>
-        public static double ver_no = 0.10;
+        public static string ver_no = "0.11";
 
         /// <summary>
         /// The Medli logo is stored as an escaped string,

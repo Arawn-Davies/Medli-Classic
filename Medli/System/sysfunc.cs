@@ -13,11 +13,11 @@ namespace Medli.SysInternal
     {
         public static void shutdown()
         {
-            machineinfo.shutdown();
+            CoreFunc.shutdown();
         }
-        public static void reboot() { machineinfo.reboot(); }
+        public static void reboot() { CoreFunc.reboot(); }
         public static void clearScreen() { Console.Clear(); }
-        public static uint getram = machineinfo.getRam();
+        public static uint getram = CoreFunc.getRam();
         public static void ram()
         {
             Console.WriteLine("");
