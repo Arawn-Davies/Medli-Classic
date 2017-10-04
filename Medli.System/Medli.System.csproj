@@ -2,9 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.5</TargetFramework>
-    <AssemblyName>Medli.System</AssemblyName>
-    <PackageId>Medli.System</PackageId>
-    <ProjectGuid>{432c7434-31e3-4c41-8e36-c0caeb15d66f}</ProjectGuid>
+    <ProjectGuid>{621ce67d-445a-4552-9e20-74fc882c4cf8}</ProjectGuid>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,8 +10,8 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Cosmos.Debug.Kernel" Version="1.0.0-*" />
-    <PackageReference Include="Cosmos.System" Version="1.0.0-*" />
+    <PackageReference Include="Cosmos.Debug.Kernel" Version="1.0.*" />
+    <PackageReference Include="Cosmos.System" Version="1.0.*" />
   </ItemGroup>
   
   <ItemGroup>

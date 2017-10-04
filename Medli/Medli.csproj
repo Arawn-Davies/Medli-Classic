@@ -5,6 +5,12 @@
     <ProjectGuid>{04da9f1a-7f34-4bc0-9ea1-27fbef5c8434}</ProjectGuid>
   </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Remove="MedliBoot\**" />
+      <EmbeddedResource Remove="MedliBoot\**" />
+      <None Remove="MedliBoot\**" />
+    </ItemGroup>
+
   <ItemGroup>
     <None Remove="Medli2Boot.Cosmos" />
   </ItemGroup>

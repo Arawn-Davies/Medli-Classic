@@ -29,17 +29,17 @@
     <Reference Include="Cosmos.System.Plugs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Medli.Hardware\Medli.Hardware.csproj">
+    <ProjectReference Include="..\..\Medli.Hardware\Medli.Hardware.csproj">
       <Name>Medli.Hardware</Name>
       <Project>{20e8a6b0-5698-4912-a619-8c5676ef2854}</Project>
       <Private>True</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Medli.System\Medli.System.csproj">
+    <ProjectReference Include="..\..\Medli.System\Medli.System.csproj">
       <Name>Medli.System</Name>
-      <Project>{432c7434-31e3-4c41-8e36-c0caeb15d66f}</Project>
+      <Project>{621ce67d-445a-4552-9e20-74fc882c4cf8}</Project>
       <Private>True</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Medli\Medli.csproj">
+    <ProjectReference Include="..\..\Medli\Medli.csproj">
       <Name>Medli</Name>
       <Project>{04da9f1a-7f34-4bc0-9ea1-27fbef5c8434}</Project>
       <Private>True</Private>

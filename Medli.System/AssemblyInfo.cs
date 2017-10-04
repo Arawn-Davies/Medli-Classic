@@ -1,10 +1,9 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
+using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Cosmos.Common;
-using System;
-using System.Resources;
-
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
@@ -19,7 +18,7 @@ using System.Resources;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("095c5e4b-f08d-4f6f-a354-5fc307d650f7")] 
+[assembly: Guid("f0024c93-320e-4de8-93ae-8b64dcf68dff")]
 
 // Version information for an assembly consists of the following four values:
 //

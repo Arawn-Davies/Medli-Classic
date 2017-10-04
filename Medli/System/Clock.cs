@@ -9,11 +9,11 @@ namespace Medli.SysInternal
     {
         public static void printTime()
         {
-            Console.WriteLine("The current time is HH:{0} MM:{1} SS:{2}", Clock.Hour(), Clock.Minute(), Clock.Second());
+            Console.WriteLine("The current time is HH:{0} MM:{1} SS:{2}", Clock.Hour().ToString(), Clock.Minute().ToString(), Clock.Second().ToString());
         }
         public static void printDate()
         {
-            Console.WriteLine("The current date is {0}/{1}/{2}", Clock.DayOfTheMonth(), Clock.Month(), Clock.Year());
+            Console.WriteLine("The current date is {0}/{1}/{2}", Clock.DayOfTheMonth().ToString(), Clock.Month().ToString(), Clock.Year().ToString());
         }
         public static int Second()
         {
