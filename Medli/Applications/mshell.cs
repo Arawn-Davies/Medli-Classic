@@ -172,11 +172,11 @@ namespace Medli.Applications
             }
             else if (command == "reboot")
             {
-                CoreFunc.reboot();
+                CoreFunc.Reboot();
             }
             else if (command == "shutdown")
             {
-                CoreFunc.shutdown();
+                CoreFunc.Shutdown();
             }
             else if (command == "panic")
             {

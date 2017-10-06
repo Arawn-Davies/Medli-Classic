@@ -47,7 +47,7 @@ namespace Medli
                 }
                 else if (input == "halt")
                 {
-                    CoreFunc.shutdown();
+                    CoreFunc.Shutdown();
                 }
                 else if (input == "lock")
                 {

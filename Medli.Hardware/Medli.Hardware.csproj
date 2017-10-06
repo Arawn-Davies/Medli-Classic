@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.Net.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.5</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Medli.Hardware</AssemblyName>
     <PackageId>Medli.Hardware</PackageId>
     <ProjectGuid>{20e8a6b0-5698-4912-a619-8c5676ef2854}</ProjectGuid>
@@ -12,12 +12,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Power.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Medli.HardwareBoot.Cosmos" />
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Cosmos.Debug.Kernel" Version="1.0.0-*" />
-    <PackageReference Include="Cosmos.System" Version="1.0.0-*" />
+    <PackageReference Include="Cosmos.Debug.Kernel" Version="*" />
+    <PackageReference Include="Cosmos.System2" Version="*" />
   </ItemGroup>
 
 </Project>

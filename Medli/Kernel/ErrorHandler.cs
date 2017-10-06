@@ -40,7 +40,7 @@ What's happened now?! ";
                 Console.ReadKey(true);
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.BackgroundColor = ConsoleColor.Black;
-                CoreFunc.reboot();
+                CoreFunc.Reboot();
             }
         }
         /// <summary>

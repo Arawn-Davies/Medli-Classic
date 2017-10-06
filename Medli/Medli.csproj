@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.Net.Sdk">
 
     <PropertyGroup>
-    <TargetFramework>netstandard1.5</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <ProjectGuid>{04da9f1a-7f34-4bc0-9ea1-27fbef5c8434}</ProjectGuid>
   </PropertyGroup>
 
@@ -16,8 +16,8 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Cosmos.Debug.Kernel" Version="1.0.*" />
-    <PackageReference Include="Cosmos.System" Version="1.0.*" />
+    <PackageReference Include="Cosmos.Debug.Kernel" Version="*" />
+    <PackageReference Include="Cosmos.System2" Version="*" />
   </ItemGroup>
   
   <ItemGroup>
