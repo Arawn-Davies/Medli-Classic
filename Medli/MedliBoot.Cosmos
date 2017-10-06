@@ -38,6 +38,7 @@
     <Folder Include="Installer\" />
     <Folder Include="Kernel\" />
     <Folder Include="System\" />
+    <Folder Include="UserManagement\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Medli\Medli.csproj">
