@@ -193,6 +193,10 @@ namespace Medli.Applications
                     ErrorHandler.Init(1, "Medli received the 'panic userlvl' command, Nothing's gonna happen.", false, "");
                 }
             }
+            else if (command == "startm")
+            {
+                MUI.MUIInit.Init();
+            }
             else if (command.StartsWith("cowsay"))
             {
                 Cowsay.Main(input.Remove(0, 7));

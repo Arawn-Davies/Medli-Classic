@@ -7,6 +7,6 @@ namespace Medli.System
 {
     public class MUIGfx
     {
-        public static Cosmos.HAL.Mouse sysMouse = new Hardware.Graphics.hdwMouse();
+        public static Cosmos.HAL.Mouse sysMouse = new Cosmos.HAL.Mouse();
     }
 }

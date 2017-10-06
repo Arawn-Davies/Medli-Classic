@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medli.Hardware", "Medli.Har
 EndProject
 Project("{471EC4BB-E47E-4229-A789-D1F5F83B52D4}") = "MedliBoot", "Medli\MedliBoot.Cosmos", "{86861A90-5B5D-4C1D-A19C-CF7B2B13B6B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medli.System", "Medli.System\Medli.System.csproj", "{621CE67D-445A-4552-9E20-74FC882C4CF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medli.System", "Medli.System\Medli.System.csproj", "{621CE67D-445A-4552-9E20-74FC882C4CF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +25,10 @@ Global
 		{20E8A6B0-5698-4912-A619-8C5676EF2854}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20E8A6B0-5698-4912-A619-8C5676EF2854}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20E8A6B0-5698-4912-A619-8C5676EF2854}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4BF49F9E-BCF7-45E9-B98F-F988FDC2785C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4BF49F9E-BCF7-45E9-B98F-F988FDC2785C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4BF49F9E-BCF7-45E9-B98F-F988FDC2785C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4BF49F9E-BCF7-45E9-B98F-F988FDC2785C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86861A90-5B5D-4C1D-A19C-CF7B2B13B6B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86861A90-5B5D-4C1D-A19C-CF7B2B13B6B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86861A90-5B5D-4C1D-A19C-CF7B2B13B6B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86861A90-5B5D-4C1D-A19C-CF7B2B13B6B9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{621CE67D-445A-4552-9E20-74FC882C4CF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{621CE67D-445A-4552-9E20-74FC882C4CF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{621CE67D-445A-4552-9E20-74FC882C4CF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
