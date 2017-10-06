@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Medli.SysInternal;
 using Medli.System;
 
 namespace Medli
@@ -46,7 +47,7 @@ namespace Medli
                 }
                 else if (input == "halt")
                 {
-                    machineinfo.shutdown();
+                    CoreFunc.Shutdown();
                 }
                 else if (input == "lock")
                 {

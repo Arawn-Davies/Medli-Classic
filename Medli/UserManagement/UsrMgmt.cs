@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Medli.SysInternal;
 using Medli;
 
-namespace Medli.System
+namespace Medli.UserManagement
 {
     class UsrMgmt
     {
         public static void NewUser(string usrname)
         {
-            Directory.CreateDirectory(KernelVariables.homedir + "/" + usrname);
-            Console.WriteLine("Created new user directory: " + KernelVariables.homedir + "/" + usrname);
+            Directory.CreateDirectory(KernelVariables.homedir + @"\" + usrname);
+            Console.WriteLine("Created new user directory: " + KernelVariables.homedir + @"\" + usrname);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("     Done!");
             Console.ForegroundColor = ConsoleColor.White;

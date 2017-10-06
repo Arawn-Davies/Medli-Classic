@@ -12,6 +12,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Power.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Medli.HardwareBoot.Cosmos" />
   </ItemGroup>
   

@@ -4,7 +4,7 @@ using Cosmos.Core;
 
 namespace Medli.Hardware
 {
-    public unsafe class ACPI
+    public unsafe class Power
     {
         private static int* SMI_CMD;
         private static byte ACPI_ENABLE;
@@ -57,7 +57,7 @@ namespace Medli.Hardware
             public byte PM1_CNT_LEN;
         };
         static byte* Facp = null;
-        static int* facpget(int number)
+        static int* Facpget(int number)
         {
 
             if (number == 0) { return (int*)*((int*)(Facp + 40)); }
@@ -67,7 +67,7 @@ namespace Medli.Hardware
             else { return null; }
 
         }
-        static byte facpbget(int number)
+        static byte Facpbget(int number)
         {
             if (number == 0) { return *(Facp + 52); }
             else if (number == 1) { return *(Facp + 53); }
@@ -75,7 +75,7 @@ namespace Medli.Hardware
             else return 0;
         }
         // check if the given address has a valid header
-        static uint* acpiCheckRSDPtr(uint* ptr)
+        static uint* AcpiCheckRSDPtr(uint* ptr)
         {
             string sig = "RSD PTR ";
             RSDPtr* rsdp = (RSDPtr*)ptr;
@@ -128,7 +128,7 @@ namespace Medli.Hardware
             return 0;
         }
         // checks for a given header and validates checksum
-        static int acpiCheckHeader(byte* ptr, string sig)
+        static int AcpiCheckHeader(byte* ptr, string sig)
         {
             return Compare(sig, ptr);
         }
@@ -241,11 +241,11 @@ namespace Medli.Hardware
                     Facp = (byte*)yeuse;
                     if (Compare("FACP", Facp) == 0)
                     {
-                        if (acpiCheckHeader((byte*)facpget(0), "DSDT") == 0)
+                        if (AcpiCheckHeader((byte*)Facpget(0), "DSDT") == 0)
                         {
                             // search the \_S5 package in the DSDT
-                            byte* S5Addr = (byte*)facpget(0) + 36; // skip header
-                            int dsdtLength = *(facpget(0) + 1) - 36;
+                            byte* S5Addr = (byte*)Facpget(0) + 36; // skip header
+                            int dsdtLength = *(Facpget(0) + 1) - 36;
                             while (0 < dsdtLength--)
                             {
                                 if (Compare("_S5_", (byte*)S5Addr) == 0)
@@ -270,21 +270,21 @@ namespace Medli.Hardware
                                         S5Addr++;   // skip byteprefix
                                     SLP_TYPb = (short)(*(S5Addr) << 10);
 
-                                    SMI_CMD = facpget(1);
+                                    SMI_CMD = Facpget(1);
 
-                                    ACPI_ENABLE = facpbget(0);
-                                    ACPI_DISABLE = facpbget(1);
+                                    ACPI_ENABLE = Facpbget(0);
+                                    ACPI_DISABLE = Facpbget(1);
 
-                                    PM1a_CNT = facpget(2);
-                                    PM1b_CNT = facpget(3);
+                                    PM1a_CNT = Facpget(2);
+                                    PM1b_CNT = Facpget(3);
 
-                                    PM1_CNT_LEN = facpbget(3);
+                                    PM1_CNT_LEN = Facpbget(3);
 
                                     SLP_EN = 1 << 13;
                                     SCI_EN = 1;
-                                    smiIO = new Cosmos.Core.IOPort((ushort)SMI_CMD);
-                                    pm1aIO = new Cosmos.Core.IOPort((ushort)PM1a_CNT);
-                                    pm1bIO = new Cosmos.Core.IOPort((ushort)PM1b_CNT);
+                                    smiIO = new IOPort((ushort)SMI_CMD);
+                                    pm1aIO = new IOPort((ushort)PM1a_CNT);
+                                    pm1bIO = new IOPort((ushort)PM1b_CNT);
                                     return 0;
                                 }
                                 else
@@ -322,15 +322,15 @@ namespace Medli.Hardware
                 good = Inb(0x64);
             Outb(0x64, 0xFE);
 
-            Cosmos.Core.Global.CPU.Halt();
+            Global.CPU.Halt();
         }
 
-        static Cosmos.Core.IOPort io = new Cosmos.Core.IOPort(0);
+        static IOPort io = new IOPort(0);
         static int PP = 0, D = 0;
         public static void Outb(ushort port, byte data)
         {
             if (io.Port != port)
-                io = new Cosmos.Core.IOPort(port);
+                io = new IOPort(port);
             io.Byte = data;
             PP = port;
             D = data;
@@ -339,7 +339,7 @@ namespace Medli.Hardware
         public static byte Inb(ushort port)
         {
             if (io.Port != port)
-                io = new Cosmos.Core.IOPort(port);
+                io = new IOPort(port);
             return io.Byte;
 
         }

@@ -1,12 +1,18 @@
 ﻿<Project Sdk="Microsoft.Net.Sdk">
 
-  <PropertyGroup>
+    <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <ProjectGuid>{8906715f-d090-4688-8a0d-553850861e2e}</ProjectGuid>
+    <ProjectGuid>{04da9f1a-7f34-4bc0-9ea1-27fbef5c8434}</ProjectGuid>
   </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Remove="MedliBoot\**" />
+      <EmbeddedResource Remove="MedliBoot\**" />
+      <None Remove="MedliBoot\**" />
+    </ItemGroup>
+
   <ItemGroup>
-    <None Remove="CosmosOSBoot.Cosmos" />
+    <None Remove="MedliBoot.Cosmos" />
   </ItemGroup>
   
   <ItemGroup>
@@ -15,12 +21,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\Medli.Hardware\Medli.Hardware.csproj" />
     <ProjectReference Include="..\Medli.System\Medli.System.csproj" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="UserManagement\" />
   </ItemGroup>
 
 </Project>

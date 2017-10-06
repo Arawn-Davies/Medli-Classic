@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Cosmos.Debug;
+using Medli.SysInternal;
 
 namespace Medli
 {
@@ -12,6 +14,7 @@ namespace Medli
     /// </summary>
     class Installer
     {
+        public static Cosmos.Debug.Kernel.Debugger mDebugger;
         /// <summary>
         /// Custom Write method for the installer console, sets the cursor position
         /// </summary>
@@ -101,8 +104,7 @@ namespace Medli
             Console.CursorLeft = 0;
             username = Console.ReadLine();
             InitScreen(color);
-            try
-            {
+            
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Clear();
@@ -113,16 +115,21 @@ namespace Medli
                 Console.ReadKey(true);
                 Console.Clear();
                 InitScreen(color);
+            try
+            {
                 Console.CursorTop = 7;
-                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating user directory... "); Directory.CreateDirectory(KernelVariables.homedir + "/" + username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
+                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating user directory... "); Directory.CreateDirectory(KernelVariables.homedir + @"\" + username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.CursorTop = 8;
-                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating users file...     "); File.Create(KernelVariables.sysdir + "/" + "usrinfo.sys"); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
+                mDebugger = new Cosmos.Debug.Kernel.Debugger("User", "Kernel");
+                mDebugger.Send(KernelVariables.sysdir + @"\" + "usrinfo.sys");
+                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating users file...     "); File.Create(KernelVariables.sysdir + @"\" + "usrinfo.sys").Dispose(); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.CursorTop = 9;
-                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Writing username to file..."); File.WriteAllText(KernelVariables.sysdir + "/" + "usrinfo.sys", username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
+                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Writing username to file..."); File.WriteAllText(KernelVariables.sysdir + @"\" + "usrinfo.sys", username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             catch
             {
+                Console.ReadKey(true);
                 ErrorHandler.BlueScreen.Init(5, @"The Installer was unable to create the user directory and other files. 
 This may be due to an unformatted hard drive or some other error", "FAT Error");
             }
@@ -141,12 +148,13 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
             InitScreen(color);
             try
             {
-                Console.ForegroundColor = ConsoleColor.White; Console.Write("Creating machineinfo file...  "); File.Create(KernelVariables.sysdir + @"\" + "pcinfo.sys"); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
+                Console.ForegroundColor = ConsoleColor.White; Console.Write("Creating machineinfo file...  "); File.Create(KernelVariables.sysdir + @"\" + "pcinfo.sys").Dispose(); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
                 Console.ForegroundColor = ConsoleColor.White; Console.Write("Writing machineinfo to file..."); File.WriteAllText(KernelVariables.sysdir + @"\" + "pcinfo.sys", OSVars.pcname); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             catch
             {
+                Console.ReadKey(true);
                 ErrorHandler.BlueScreen.Init(5, @"The Installer was unable to create the user directory and other files. 
 This may be due to an unformatted hard drive or some other error", "FAT Error");
             }

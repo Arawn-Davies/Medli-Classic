@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
 using Medli.System;
+using Medli.SysInternal;
 
 namespace Medli.Applications
 {
-
     class mshell
     {
         public static void invalidCommand(string args, int errorlvl)
@@ -90,7 +90,7 @@ namespace Medli.Applications
             {
                 try
                 {
-                    //Directory.Delete(Kernel.root_dir + "/" + OSVars.username);
+                    //Directory.Delete(Kernel.root_dir + @"\" + OSVars.username);
                     Fsfunc.delfile(OSVars.usrinfo);
                     Fsfunc.delfile(OSVars.pcinfo);
                 }
@@ -105,6 +105,20 @@ namespace Medli.Applications
                 Sysfunc.reboot();
 
             }
+            else if (command == "time")
+            {
+                MedliTime.printTime();
+            }
+            else if (command == "date")
+            {
+                MedliTime.printDate();
+            }
+            /*
+            else if (command == "day")
+            {
+                DateTime.Now.Day.ToString();
+            }
+            */
             else if (command.StartsWith("run "))
             {
                 if (!File.Exists(Kernel.current_dir + command.Remove(0, 4)))
@@ -158,11 +172,11 @@ namespace Medli.Applications
             }
             else if (command == "reboot")
             {
-                machineinfo.reboot();
+                CoreFunc.Reboot();
             }
             else if (command == "shutdown")
             {
-                machineinfo.shutdown();
+                CoreFunc.Shutdown();
             }
             else if (command == "panic")
             {
@@ -178,6 +192,10 @@ namespace Medli.Applications
                 {
                     ErrorHandler.Init(1, "Medli received the 'panic userlvl' command, Nothing's gonna happen.", false, "");
                 }
+            }
+            else if (command == "startm")
+            {
+                MUI.MUIInit.Init();
             }
             else if (command.StartsWith("cowsay"))
             {

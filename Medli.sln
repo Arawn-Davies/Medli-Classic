@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medli.System", "Medli.System\Medli.System.csproj", "{432C7434-31E3-4C41-8E36-C0CAEB15D66F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medli", "Medli\Medli.csproj", "{04DA9F1A-7F34-4BC0-9EA1-27FBEF5C8434}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medli.Hardware", "Medli.Hardware\Medli.Hardware.csproj", "{20E8A6B0-5698-4912-A619-8C5676EF2854}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medli", "Medli\Medli.csproj", "{8906715F-D090-4688-8A0D-553850861E2E}"
+Project("{471EC4BB-E47E-4229-A789-D1F5F83B52D4}") = "MedliBoot", "Medli\MedliBoot.Cosmos", "{86861A90-5B5D-4C1D-A19C-CF7B2B13B6B9}"
 EndProject
-Project("{471EC4BB-E47E-4229-A789-D1F5F83B52D4}") = "MedliBoot", "Medli\MedliBoot.Cosmos", "{D37A25E3-0C8D-4B5E-B3A0-03C62BD90590}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medli.System", "Medli.System\Medli.System.csproj", "{621CE67D-445A-4552-9E20-74FC882C4CF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,27 +17,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{432C7434-31E3-4C41-8E36-C0CAEB15D66F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{432C7434-31E3-4C41-8E36-C0CAEB15D66F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{432C7434-31E3-4C41-8E36-C0CAEB15D66F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{432C7434-31E3-4C41-8E36-C0CAEB15D66F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04DA9F1A-7F34-4BC0-9EA1-27FBEF5C8434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04DA9F1A-7F34-4BC0-9EA1-27FBEF5C8434}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04DA9F1A-7F34-4BC0-9EA1-27FBEF5C8434}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04DA9F1A-7F34-4BC0-9EA1-27FBEF5C8434}.Release|Any CPU.Build.0 = Release|Any CPU
 		{20E8A6B0-5698-4912-A619-8C5676EF2854}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{20E8A6B0-5698-4912-A619-8C5676EF2854}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20E8A6B0-5698-4912-A619-8C5676EF2854}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20E8A6B0-5698-4912-A619-8C5676EF2854}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8906715F-D090-4688-8A0D-553850861E2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8906715F-D090-4688-8A0D-553850861E2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8906715F-D090-4688-8A0D-553850861E2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8906715F-D090-4688-8A0D-553850861E2E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D37A25E3-0C8D-4B5E-B3A0-03C62BD90590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D37A25E3-0C8D-4B5E-B3A0-03C62BD90590}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D37A25E3-0C8D-4B5E-B3A0-03C62BD90590}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D37A25E3-0C8D-4B5E-B3A0-03C62BD90590}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86861A90-5B5D-4C1D-A19C-CF7B2B13B6B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86861A90-5B5D-4C1D-A19C-CF7B2B13B6B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86861A90-5B5D-4C1D-A19C-CF7B2B13B6B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86861A90-5B5D-4C1D-A19C-CF7B2B13B6B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{621CE67D-445A-4552-9E20-74FC882C4CF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{621CE67D-445A-4552-9E20-74FC882C4CF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{621CE67D-445A-4552-9E20-74FC882C4CF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{621CE67D-445A-4552-9E20-74FC882C4CF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {19E8100E-3831-4330-B936-7127C1FC90C1}
+		SolutionGuid = {7C31DE84-6150-4530-9AD4-AE0B16A3F817}
 	EndGlobalSection
 EndGlobal

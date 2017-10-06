@@ -7,17 +7,17 @@ using System.IO;
 using Medli.System;
 using Medli.Applications;
 
-namespace Medli
+namespace Medli.SysInternal
 {
     class Sysfunc
     {
         public static void shutdown()
         {
-            machineinfo.shutdown();
+            CoreFunc.Shutdown();
         }
-        public static void reboot() { machineinfo.reboot(); }
+        public static void reboot() { CoreFunc.Reboot(); }
         public static void clearScreen() { Console.Clear(); }
-        public static uint getram = machineinfo.getRam();
+        public static uint getram = CoreFunc.GetRam();
         public static void ram()
         {
             Console.WriteLine("");

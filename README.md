@@ -1,22 +1,7 @@
-# Medli-gen3
-W.I.P Medli build for Gen3 kernel of Cosmos
-
 # Medli
-### Welcome to Medli, an attractive free and open successor to the original Chocolate OS.
-Medli has come a long way since the early days of Cosmos, with it's roots going back to the old Milestone days with
-Visual C# Express 2008 being the IDE. Medli originally started off as Aza-DOS back in late 2010, a very basic non-DOS 
-'DOS' without any filesystem functionality - we tended to place DOS at the end of things which weren't even capable of using disks. 
-Over the years, Aza-DOS has evolved and changed to be what it is now, Medli OS. Developed by Arawn Davies, with some assistance 
-and guidance from people over time, Medli wouldn't be what it is now without them, so thank you so much to everyone who's helped in 
-any way at all. Here's to many more years and progress with Medli. 
+### Welcome to Medli, a free and open source operating system made in C\#
 
-
-### FAQ
-Due to the current lack of LFN writing one can only use filenames with the texteditor
-that have 255 digits in the title and 3 letter extensions. 
-
-The text editor can currently view any file with 3 letter extensions formatted as a text file.
-
+View the Kernel.cs file to see the current changelog.
 Use the command 'help' to view a list of commands and use 'help <command>' for more help on specific commands.
 
 
@@ -29,9 +14,10 @@ Use the command 'help' to view a list of commands and use 'help <command>' for m
 
 * Text Editor and Viewer, now with the advanced MIV text editor!
 
-* A little Linux easteregg by the name of cowsay ;)
-			- only one cowfile though atm
+* and lots more!
 
 * Documentation!
 
 ### Work In Progress:
+
+Medli Graphical User Interface (MUI)
