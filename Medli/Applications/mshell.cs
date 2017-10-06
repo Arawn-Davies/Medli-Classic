@@ -2,6 +2,7 @@
 using System.IO;
 using Medli.System;
 using Medli.SysInternal;
+using Medli.GUI;
 
 namespace Medli.Applications
 {
@@ -195,7 +196,7 @@ namespace Medli.Applications
             }
             else if (command == "startm")
             {
-                MUI.MUIInit.Init();
+                MUI.Init();
             }
             else if (command.StartsWith("cowsay"))
             {

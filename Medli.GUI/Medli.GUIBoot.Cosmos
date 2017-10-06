@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.Net.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net462</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <BinFormat>elf</BinFormat>
+    <Profile>VMware</Profile>
+    <DebugEnabled>true</DebugEnabled>
+    <DebugMode>Source</DebugMode>
+    <TraceMode>User</TraceMode>
+    <EnableGDB>False</EnableGDB>
+    <StartCosmosGDB>false</StartCosmosGDB>
+    <VMWareEdition>Player</VMWareEdition>
+    <OutputPath>bin\Debug\</OutputPath>
+    <Description>Use VMware Player or Workstation to deploy and debug.</Description>
+    <Deployment>ISO</Deployment>
+    <Launch>VMware</Launch>
+    <VisualStudioDebugPort>Pipe: Cosmos\Serial</VisualStudioDebugPort>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="*" />
+    <None Remove="*.Cosmos" />
+    <Compile Remove="*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include=".\Medli.GUI.csproj">
+      <Name>Medli.GUI</Name>
+      <Project>{1f916fd5-84bf-45c5-8ea9-0c763f7343e9}</Project>
+    </ProjectReference>
+  </ItemGroup>
+
+  <Import Project="$(AppData)\Cosmos User Kit\Build\VSIP\Cosmos.targets" />
+
+</Project>

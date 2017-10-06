@@ -98,6 +98,11 @@
     <Compile Remove="*" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Medli.GUI\Medli.GUI.csproj">
+      <Name>Medli.GUI</Name>
+      <Project>{1f916fd5-84bf-45c5-8ea9-0c763f7343e9}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\Medli.Hardware\Medli.Hardware.csproj">
       <Name>Medli.Hardware</Name>
       <Project>{20e8a6b0-5698-4912-a619-8c5676ef2854}</Project>
@@ -106,11 +111,6 @@
     <ProjectReference Include="..\Medli.System\Medli.System.csproj">
       <Name>Medli.System</Name>
       <Project>{432c7434-31e3-4c41-8e36-c0caeb15d66f}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\Medli\Medli.csproj">
-      <Name>Medli</Name>
-      <Project>{04da9f1a-7f34-4bc0-9ea1-27fbef5c8434}</Project>
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
@@ -122,6 +122,5 @@
     <Folder Include="System\" />
     <Folder Include="UserManagement\" />
   </ItemGroup>
-
   <Import Project="$(AppData)\Cosmos User Kit\Build\VSIP\Cosmos.targets" />
 </Project>
