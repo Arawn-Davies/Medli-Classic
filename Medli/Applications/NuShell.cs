@@ -7,21 +7,21 @@ using System.IO;
 using Medli.SysInternal;
 using Medli.System;
 
-namespace Medli
+namespace Medli.Applications
 {
-    class Shell
+    class NuShell
     {
         public static void Run()
         {
             Console.Clear();
             Console.BackgroundColor = ConsoleColor.Blue;
             Console.WriteLine(@"
-                                                       
-                    Welcome to NuShell                 
-    Type help to display a list of accepted commands.  
-     Or go to this project's documentation for a more  
-         complete list of commands and actions.        
-                                                       
+_______________________________________________________
+#                   Welcome to NuShell                #
+#   Type help to display a list of accepted commands. #
+#    Or go to this project's documentation for a more #
+#        complete list of commands and actions.       #
+#_____________________________________________________#
                                                         ");
             bool running = true;
             while (running == true)
@@ -32,14 +32,16 @@ namespace Medli
                 if (input == "help")
                 {
                     Console.BackgroundColor = ConsoleColor.DarkGreen;
-                    Console.WriteLine(@"                                                         
- Help  - displays this message                           
- Echo  - displays userinput onto the console             
- Clear - Clears the console                              
- Exit  - exits the prompt                                
- Lock  - Locks the system from accepting any user        
-         input until a correct password/code is inputted 
- Halt  - Shuts down the system.                          ");
+                    Console.WriteLine(@"
+___________________________________________________________
+# Help  - displays this message                           #
+# Echo  - displays userinput onto the console             #
+# Clear - Clears the console                              #
+# Exit  - exits the prompt                                #
+# Lock  - Locks the system from accepting any user        #
+#         input until a correct password/code is inputted #
+# Halt  - Shuts down the system.                          #
+#_________________________________________________________#");
                 }
                 else if (input == "clear")
                 {

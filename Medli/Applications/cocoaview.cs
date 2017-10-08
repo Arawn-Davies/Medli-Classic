@@ -30,7 +30,7 @@ namespace Medli.Applications
                 }
                 else if (!File.Exists(Kernel.current_dir + file))
                 {
-                    mshell.invalidCommand(file, 2);
+                    Shell.invalidCommand(file, 2);
                 }
             }
             catch (Exception ex)

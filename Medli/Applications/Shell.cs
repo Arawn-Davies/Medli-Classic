@@ -3,10 +3,11 @@ using System.IO;
 using Medli.System;
 using Medli.SysInternal;
 using Medli.GUI;
+using Medli.Command_db.Commands;
 
 namespace Medli.Applications
 {
-    class mshell
+    class Shell
     {
         public static void invalidCommand(string args, int errorlvl)
         {
@@ -167,10 +168,6 @@ namespace Medli.Applications
             {
                 MIV.StartMIV();
             }
-            else if (command == "easteregg")
-            {
-                Tests.Test();
-            }
             else if (command == "reboot")
             {
                 CoreFunc.Reboot();
@@ -208,7 +205,7 @@ namespace Medli.Applications
             }
             else if (command == "shell2")
             {
-                Shell.Run();
+                NuShell.Run();
                 Console.Clear();
             }
             else if (command == "clear")
@@ -244,25 +241,25 @@ namespace Medli.Applications
             }
             else if (command == "help")
             {
-                getHelp.full();
+                Help.full();
             }
             else if (command.StartsWith("help "))
             {
                 if (command == "help 1")
                 {
-                    getHelp.pages(1);
+                    Help.pages(1);
                 }
                 else if (command == "help 2")
                 {
-                    getHelp.pages(2);
+                    Help.pages(2);
                 }
                 else if (command == "help 3")
                 {
-                    getHelp.pages(3);
+                    Help.pages(3);
                 }
                 else
                 {
-                    getHelp.specific(command.Remove(0, 5));
+                    Help.specific(command.Remove(0, 5));
                 }
             }
             else if (command == "ver")

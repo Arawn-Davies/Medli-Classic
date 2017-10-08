@@ -74,7 +74,7 @@ namespace Medli
         /// </summary>
         protected override void Run()
         {
-            mshell.prompt();
+            Shell.prompt();
         }
         /// <summary>
         /// Runs necessary checks to see if computer is running an existing installation
