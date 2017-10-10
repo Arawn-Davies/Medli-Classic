@@ -16,24 +16,24 @@ namespace Medli.Applications
             Console.Clear();
             Console.BackgroundColor = ConsoleColor.Blue;
             Console.WriteLine(@"
-_______________________________________________________
+=======================================================
 #                   Welcome to NuShell                #
 #   Type help to display a list of accepted commands. #
 #    Or go to this project's documentation for a more #
 #        complete list of commands and actions.       #
-#_____________________________________________________#
-                                                        ");
+=======================================================");
             bool running = true;
             while (running == true)
             {
                 Console.BackgroundColor = ConsoleColor.Black;
-                Console.Write("#");
+                Console.Write("$");
                 string input = Console.ReadLine();
+                var input_args = input.Split(' ');
                 if (input == "help")
                 {
                     Console.BackgroundColor = ConsoleColor.DarkGreen;
                     Console.WriteLine(@"
-___________________________________________________________
+===========================================================
 # Help  - displays this message                           #
 # Echo  - displays userinput onto the console             #
 # Clear - Clears the console                              #
@@ -41,7 +41,7 @@ ___________________________________________________________
 # Lock  - Locks the system from accepting any user        #
 #         input until a correct password/code is inputted #
 # Halt  - Shuts down the system.                          #
-#_________________________________________________________#");
+#=========================================================#");
                 }
                 else if (input == "clear")
                 {
@@ -64,7 +64,7 @@ ___________________________________________________________
                         Console.BackgroundColor = ConsoleColor.DarkBlue;
                         Console.WriteLine("Insert correct password: ");
                         string pwd = Console.ReadLine();
-                        if (pwd == input.Remove(0, 5))
+                        if (pwd == input_args[1])
                         {
                             Console.WriteLine("Correct - unlocking system");
                             Console.Clear();
@@ -82,7 +82,7 @@ ___________________________________________________________
                 }
                 else if (input.StartsWith("echo"))
                 {
-                    Console.WriteLine(input.Remove(0, 5));
+                    Console.WriteLine(input_args[1]);
                 }
                 else if (input == "exit")
                 {

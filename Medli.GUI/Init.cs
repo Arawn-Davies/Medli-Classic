@@ -13,7 +13,7 @@ namespace Medli.GUI
         public static Canvas canvas;
         public static void Init()
         {
-            Console.WriteLine("Cosmos booted successfully. Let's go in Graphic Mode");
+            Console.WriteLine("Medli GUI booted successfully. Let's go in Graphic Mode");
             Console.Clear();
             canvas = FullScreenCanvas.GetFullScreenCanvas();
             Main();

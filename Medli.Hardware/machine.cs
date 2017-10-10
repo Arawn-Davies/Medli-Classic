@@ -9,14 +9,14 @@ namespace Medli.Hardware
 {
     public class Machine
     {
-        public static void EnableACPI() { ACPI.Enable(); }
+        public static void EnableACPI() { Power.Enable(); }
         public static uint GetRam() { return CPU.GetAmountOfRAM(); }
         public static void ShutDown()
         {
-        ACPI.Shutdown();
-        ACPI.Disable();
-        Global.CPU.Halt();
+            Power.Shutdown();
+            Power.Disable();
+            Global.CPU.Halt();
         }
-        public static void Reboot() { ACPI.Reboot(); }
+        public static void Reboot() { Power.Reboot(); }
     }
 }

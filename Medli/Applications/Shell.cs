@@ -9,41 +9,12 @@ namespace Medli.Applications
 {
     class Shell
     {
-        public static void invalidCommand(string args, int errorlvl)
-        {
-            if (errorlvl == 1)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write(args);
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine(" is not a valid command, see 'help' for a list of commands");
-            }
-            else if (errorlvl == 2)
-            {
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("The file ");
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.Write(args);
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("could not be found!");
-
-            }
-            else if (errorlvl == 3)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-            }
-            else if (errorlvl == 4)
-            {
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.DarkRed;
-            }
-            
-            
-        }
         public static void prompt()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(OSVars.username+ "@" +OSVars.pcname + ":");
+            Console.Write(OSVars.username + "@");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(OSVars.pcname + ":");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(Kernel.current_dir);
             Console.ForegroundColor = ConsoleColor.White;
@@ -53,6 +24,7 @@ namespace Medli.Applications
         public static void cmd(string input)
         {
             var command = input.ToLower();
+            string[] cmd_args = command.Split(' ');
             if (command == "cd ..")
             {
                 try
@@ -85,9 +57,19 @@ namespace Medli.Applications
             }
             else if (command.StartsWith("cd "))
             {
-                Fsfunc.cd(command);
+                Fsfunc.cd(cmd_args[1]);
             }
-            
+            else if (command.StartsWith("ccolor "))
+            {
+                if (cmd_args[1] == "bgc")
+                {
+                    ColorChanger.ChangeBGC(cmd_args[2]);
+                }
+                else if (cmd_args[1] == "fgc")
+                {
+                    ColorChanger.ChangeFGC(cmd_args[2]);
+                }
+            }
             else if (command == "reinstall")
             {
                 try
@@ -123,37 +105,37 @@ namespace Medli.Applications
             */
             else if (command.StartsWith("run "))
             {
-                if (!File.Exists(Kernel.current_dir + command.Remove(0, 4)))
+                if (!File.Exists(Kernel.current_dir + cmd_args[1]))
                 {
                     invalidCommand(command.Remove(0, 4), 2);
                 }
                 else
                 {
-                    mdscript.Execute(Kernel.current_dir + command.Remove(0, 4));
+                    mdscript.Execute(Kernel.current_dir + cmd_args[1]);
                 }
             }
             else if (command.StartsWith("rmf "))
             {
                 try
                 {
-                    Fsfunc.delfile(command.Remove(0, 4));
+                    Fsfunc.delfile(cmd_args[1]);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    invalidCommand(command.Remove(0, 4), 2);
+                    invalidCommand(cmd_args[1], 2);
                 }
             }
             else if (command.StartsWith("rmd "))
             {
                 try
                 {
-                    Fsfunc.deldir(command.Remove(0, 4));
+                    Fsfunc.deldir(cmd_args[1]);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    invalidCommand(command.Remove(0, 4), 2);
+                    invalidCommand(cmd_args[1], 2);
                 }
             }
             else if (command == "getram")
@@ -164,17 +146,21 @@ namespace Medli.Applications
             {
                 Fsfunc.dir();
             }
-            else if (command.StartsWith("miv"))
+            else if (command.StartsWith("miv "))
+            {
+                MIV.StartMIV(cmd_args[1]);
+            }
+            else if (command == "miv")
             {
                 MIV.StartMIV();
             }
             else if (command == "reboot")
             {
-                CoreFunc.Reboot();
+                Sysfunc.reboot();
             }
             else if (command == "shutdown")
             {
-                CoreFunc.Shutdown();
+                Sysfunc.shutdown();
             }
             else if (command == "panic")
             {
@@ -182,11 +168,11 @@ namespace Medli.Applications
             }
             else if (command.StartsWith("panic"))
             {
-                if (command.Remove(0, 6) == "critical")
+                if (cmd_args[1] == "critical")
                 {
                     ErrorHandler.Init(0, "Medli received the 'panic critical' command , Nothings gonna happen", true, "User-invoked panic");
                 }
-                else if (command.Remove(0, 6) == "userlvl")
+                else if (cmd_args[1] == "userlvl")
                 {
                     ErrorHandler.Init(1, "Medli received the 'panic userlvl' command, Nothing's gonna happen.", false, "");
                 }
@@ -195,18 +181,51 @@ namespace Medli.Applications
             {
                 MUI.Init();
             }
+            else if (command == "cowsay")
+            {
+                Cowsay.Cow("Say something using 'Cowsay <message>'");
+                Console.WriteLine(@"You can also use 'cowsay -f' tux for penguin, cow for cow and 
+sodomized-sheep for, you guessed it, a sodomized-sheep");
+            }
             else if (command.StartsWith("cowsay"))
             {
-                Cowsay.Main(input.Remove(0, 7));
+                if (cmd_args[1] == "-f")
+                {
+                    if (cmd_args[2] == "cow")
+                    {
+                        Cowsay.Cow(command.Substring(14));
+                    }
+                    else if (cmd_args[2] == "tux")
+                    {
+                        Cowsay.Tux(command.Substring(14));
+                    }
+                    else if (cmd_args[2] == "sodomized-sheep")
+                    {
+                        Cowsay.SodomizedSheep(command.Substring(26));
+                    }
+                }
+                else
+                {
+                    Cowsay.Cow(cmd_args[1]);
+                }
+            }
+            else if (command == "mkdir")
+            {
+                Console.WriteLine("Usage: mkdir <directory>");
             }
             else if (command.StartsWith("mkdir "))
             {
-                Fsfunc.mkdir(command.Remove(0, 6));
+                Fsfunc.mkdir(cmd_args[1]);
             }
             else if (command == "shell2")
             {
                 NuShell.Run();
                 Console.Clear();
+            }
+            else if (command.StartsWith("alias "))
+            {
+                Console.WriteLine("Aliases are cleared over reboot. W.I.P");
+                throw new NotImplementedException();
             }
             else if (command == "clear")
             {
@@ -214,7 +233,7 @@ namespace Medli.Applications
             }
             else if (command.StartsWith("cp "))
             {
-                cpedit.Run(command.Remove(0, 3));
+                cpedit.Run(cmd_args[1]);
             }
             else if (command == "cv")
             {
@@ -222,7 +241,7 @@ namespace Medli.Applications
             }
             else if (command.StartsWith("cv "))
             {
-                cpview.ViewFile(command.Remove(0, 3));
+                cpview.ViewFile(cmd_args[1]);
             }
             else if (command == "")
             {
@@ -232,7 +251,7 @@ namespace Medli.Applications
             {
                 try
                 {
-                    Console.WriteLine(input.Remove(0, 5));
+                    Console.WriteLine(command.Substring(5));
                 }
                 catch (Exception ex)
                 {
@@ -245,21 +264,21 @@ namespace Medli.Applications
             }
             else if (command.StartsWith("help "))
             {
-                if (command == "help 1")
+                if (cmd_args[1] == "1")
                 {
                     Help.pages(1);
                 }
-                else if (command == "help 2")
+                else if (cmd_args[1] == "2")
                 {
                     Help.pages(2);
                 }
-                else if (command == "help 3")
+                else if (cmd_args[1] == "3")
                 {
                     Help.pages(3);
                 }
                 else
                 {
-                    Help.specific(command.Remove(0, 5));
+                    Help.specific(cmd_args[1]);
                 }
             }
             else if (command == "ver")
@@ -269,6 +288,35 @@ namespace Medli.Applications
             else
             {
                 invalidCommand(command, 1);
+            }
+        }
+        public static void invalidCommand(string args, int errorlvl)
+        {
+            if (errorlvl == 1)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(args);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine(" is not a valid command, see 'help' for a list of commands");
+            }
+            else if (errorlvl == 2)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("The file ");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write(args);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("could not be found!");
+
+            }
+            else if (errorlvl == 3)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+            else if (errorlvl == 4)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkRed;
             }
         }
     }
