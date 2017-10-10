@@ -133,7 +133,7 @@ namespace Medli.SysInternal
         /// <summary>
         /// The Medli version number is stored as a string
         /// </summary>
-        public static string ver_no = "0.11";
+        public static string ver_no = "0.1.5";
 
         /// <summary>
         /// The Medli logo is stored as an escaped string,

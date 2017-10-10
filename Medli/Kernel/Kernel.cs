@@ -1,8 +1,6 @@
 ﻿/*
 Changelog
-0.15 -  
-        
-        Added:              Began creating GUI project and class.
+0.1.5 -  Added:             Began creating GUI project and class.
                             Updated MIV to accept a filename as an argument for launching.
                             Introduced arguments for the commandline system.
                             Updated Cowsay - now features cow, tux and sodomized-sheep!
@@ -10,6 +8,7 @@ Changelog
                             Introducing the command database, easier management for a unified method of creating and launching Medli Applications.
         
         Fixes/Changes       Skipped a few versions, due to the vast amount of changes.
+                            Switched to semantic versioning.
 
         What to see next:   Beginning user management, make proper use of home directories and start populating them.
   
