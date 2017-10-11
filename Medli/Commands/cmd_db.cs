@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Medli.Command_db
 {
-    public abstract class cmd_db
+    public abstract class CMD_DB
     {
         public string func_name;
         public string cmd_name;

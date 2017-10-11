@@ -96,6 +96,7 @@
     <VMware_StartBochsDebugGui>False</VMware_StartBochsDebugGui>
     <ISO_EnableBochsDebug>False</ISO_EnableBochsDebug>
     <ISO_StartBochsDebugGui>False</ISO_StartBochsDebugGui>
+    <Name>MedliBoot</Name>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="*" />
@@ -109,12 +110,7 @@
     </ProjectReference>
     <ProjectReference Include="..\Medli.System\Medli.System.csproj">
       <Name>Medli.System</Name>
-      <Project>{432c7434-31e3-4c41-8e36-c0caeb15d66f}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\Medli\Medli.csproj">
-      <Name>Medli</Name>
-      <Project>{04da9f1a-7f34-4bc0-9ea1-27fbef5c8434}</Project>
+      <Project>{621ce67d-445a-4552-9e20-74fc882c4cf8}</Project>
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>

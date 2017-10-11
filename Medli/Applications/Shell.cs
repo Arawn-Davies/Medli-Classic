@@ -8,7 +8,7 @@ using Medli.Command_db.Commands;
 namespace Medli.Applications
 {
     class Shell
-    {
+    { 
         public static void prompt()
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -24,7 +24,7 @@ namespace Medli.Applications
         public static void cmd(string input)
         {
             var command = input.ToLower();
-            string[] cmd_args = command.Split(' ');
+            string[] cmd_args = input.Split(' ');
             if (command == "cd ..")
             {
                 try
@@ -193,15 +193,15 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
                 {
                     if (cmd_args[2] == "cow")
                     {
-                        Cowsay.Cow(command.Substring(14));
+                        Cowsay.Cow(command.Remove(0, cmd_args[0].Length + cmd_args[1].Length + cmd_args[2].Length + 3));
                     }
                     else if (cmd_args[2] == "tux")
                     {
-                        Cowsay.Tux(command.Substring(14));
+                        Cowsay.Tux(command.Remove(0, cmd_args[0].Length + cmd_args[1].Length + cmd_args[2].Length + 3));
                     }
                     else if (cmd_args[2] == "sodomized-sheep")
                     {
-                        Cowsay.SodomizedSheep(command.Substring(26));
+                        Cowsay.SodomizedSheep(command.Remove(0, cmd_args[0].Length + cmd_args[1].Length + cmd_args[2].Length + 3));
                     }
                 }
                 else
@@ -231,15 +231,15 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             {
                 Sysfunc.clearScreen();
             }
-            else if (command.StartsWith("cp "))
+            else if (command.StartsWith("cedit "))
             {
                 cpedit.Run(cmd_args[1]);
             }
-            else if (command == "cv")
+            else if (command == "cview")
             {
                 cpview.Run();
             }
-            else if (command.StartsWith("cv "))
+            else if (command.StartsWith("cview "))
             {
                 cpview.ViewFile(cmd_args[1]);
             }
@@ -251,7 +251,7 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             {
                 try
                 {
-                    Console.WriteLine(command.Substring(5));
+                    Console.WriteLine(command.Remove(0, 5));
                 }
                 catch (Exception ex)
                 {
@@ -260,25 +260,26 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             }
             else if (command == "help")
             {
-                Help.full();
+                
+                GetHelp.Run();
             }
             else if (command.StartsWith("help "))
             {
                 if (cmd_args[1] == "1")
                 {
-                    Help.pages(1);
+                    GetHelp.pages(1);
                 }
                 else if (cmd_args[1] == "2")
                 {
-                    Help.pages(2);
+                    GetHelp.pages(2);
                 }
                 else if (cmd_args[1] == "3")
                 {
-                    Help.pages(3);
+                    GetHelp.pages(3);
                 }
                 else
                 {
-                    Help.specific(cmd_args[1]);
+                    GetHelp.specific(cmd_args[1]);
                 }
             }
             else if (command == "ver")
@@ -306,7 +307,7 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.Write(args);
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("could not be found!");
+                Console.WriteLine(" could not be found!");
 
             }
             else if (errorlvl == 3)
