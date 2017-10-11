@@ -12,10 +12,12 @@ namespace Medli.Applications
         public static void prompt()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(OSVars.username + "@");
+            Console.Write(OSVars.username);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("@");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write(OSVars.pcname + ":");
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.Write(Kernel.current_dir);
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("$");
@@ -219,7 +221,8 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             }
             else if (command == "shell2")
             {
-                NuShell.Run();
+                Console.Clear();
+                Shell2.Run();   
                 Console.Clear();
             }
             else if (command.StartsWith("alias "))
@@ -247,6 +250,35 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             {
 
             }
+            else if (input == "lock")
+            {
+                Console.WriteLine("Missing password - try again.");
+            }
+            else if (input.StartsWith("lock"))
+            {
+                Console.Clear();
+                bool locked = true;
+                while (locked == true)
+                {
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    Console.WriteLine("Insert correct password: ");
+                    string pwd = Console.ReadLine();
+                    if (pwd == cmd_args[1])
+                    {
+                        Console.WriteLine("Correct - unlocking system");
+                        Console.Clear();
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        locked = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect password - try again.");
+                        locked = true;
+                    }
+                }
+                Console.Clear();
+                Console.BackgroundColor = ConsoleColor.Black;
+            }
             else if (command.StartsWith("echo "))
             {
                 try
@@ -258,28 +290,27 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
                     Console.WriteLine(ex.Message);
                 }
             }
-            else if (command == "help")
-            {
-                
-                GetHelp.Run();
-            }
             else if (command.StartsWith("help "))
             {
-                if (cmd_args[1] == "1")
+                if (cmd_args[1] == "1" || cmd_args[1] == "app")
                 {
                     GetHelp.pages(1);
                 }
-                else if (cmd_args[1] == "2")
+                else if (cmd_args[1] == "2" || cmd_args[1] == "fs")
                 {
                     GetHelp.pages(2);
                 }
-                else if (cmd_args[1] == "3")
+                else if (cmd_args[1] == "3" || cmd_args[1] == "sys")
                 {
                     GetHelp.pages(3);
                 }
+                else if (cmd_args[1] == "specific")
+                {
+                    GetHelp.specific(cmd_args[2]);
+                }
                 else
                 {
-                    GetHelp.specific(cmd_args[1]);
+                    GetHelp.full();
                 }
             }
             else if (command == "ver")

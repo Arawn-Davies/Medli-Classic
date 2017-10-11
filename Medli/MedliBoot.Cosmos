@@ -113,6 +113,11 @@
       <Project>{621ce67d-445a-4552-9e20-74fc882c4cf8}</Project>
       <Private>True</Private>
     </ProjectReference>
+    <ProjectReference Include="..\Medli\Medli.csproj">
+      <Name>Medli</Name>
+      <Project>{04da9f1a-7f34-4bc0-9ea1-27fbef5c8434}</Project>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Applications\" />

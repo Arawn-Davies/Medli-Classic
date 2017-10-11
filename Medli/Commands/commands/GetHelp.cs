@@ -42,6 +42,12 @@ namespace Medli.Command_db.Commands
             {
                 full();
             }
+            else if (args == "specific")
+            {
+                Console.WriteLine("Enter specific command:");
+                string topic = Console.ReadLine();
+                GetHelp.specific(topic);
+            }
         }
         public static void SysHelp()
         {

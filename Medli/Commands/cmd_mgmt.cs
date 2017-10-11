@@ -7,8 +7,13 @@ namespace Medli.Command_db
     public class CMD_MGMT
     {
         public static List<CMD_DB> Commands = new List<CMD_DB>();
-        
-        public static void Run(string cmd, string args = "")
+
+        public void Init()
+        {
+            Commands.Add(new Commands.GetHelp());
+        }
+
+        public void Run(string cmd, string args)
         {
             bool g = false;
             for (int i = 0; i < Commands.Count - 1; i++)
