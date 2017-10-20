@@ -30,7 +30,7 @@ namespace Medli.Applications
         /// then calls 'print()' to render the message
         /// </summary>
         /// <param name="args"></param>
-        public static void Main(string args)
+        public static void Cow(string args)
         {
 
             Console.Write("/--"); print(args); Console.WriteLine(@"--\");
@@ -43,6 +43,41 @@ namespace Medli.Applications
             (__)\       )\/\
                 ||----w |
                 ||     ||");
+        }
+        public static void Tux(string args)
+        {
+            Console.Write("/--"); print(args); Console.WriteLine(@"--\");
+            Console.WriteLine("|- " + args + @" -|");
+            Console.Write(@"\--"); print(args); Console.Write(@"--/");
+            Console.WriteLine(@"
+       \
+        \   
+         \     .--.
+          \   |o_o |
+              |:_/ |
+             //   \ \
+            (|     | )
+           /'\_   _/`\
+           \___)=(___/
+");
+        }
+        public static void SodomizedSheep (string args)
+        {
+            Console.Write("/--"); print(args); Console.WriteLine(@"--\");
+            Console.WriteLine("|- " + args + @" -|");
+            Console.Write(@"\--"); print(args); Console.Write(@"--/");
+            Console.WriteLine(@"
+  \                 __
+   \               (oo)
+    \              (  )
+     \             /--\
+       __         / \  \
+      UooU\.'@@@@@@`.\  )
+      \__/(@@@@@@@@@@) /
+           (@@@@@@@@)((
+           `YY~~~~YY' \\
+            ||    ||   >>
+");
         }
     }
 }

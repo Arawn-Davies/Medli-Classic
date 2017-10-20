@@ -62,7 +62,7 @@ What's happened now?! ";
                 if (errlvl == 5)
                 Console.BackgroundColor = ConsoleColor.Blue;
                 Console.Clear();
-                Applications.Cowsay.Main("Whoops!");
+                Applications.Cowsay.Cow("Whoops!");
                 Console.WriteLine("You've encountered an error. This means that: "); Console.WriteLine(errdsc);
                 Console.WriteLine("Press any key to return to shell.");
                 Console.ReadKey(true);

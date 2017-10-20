@@ -3,18 +3,18 @@
     <TargetFramework>net462</TargetFramework>
   </PropertyGroup>
   <PropertyGroup>
-    <BinFormat>elf</BinFormat>
-    <Profile>Bochs</Profile>
+    <BinFormat>Bin</BinFormat>
+    <Profile>VMware</Profile>
     <DebugEnabled>False</DebugEnabled>
     <DebugMode>Source</DebugMode>
     <TraceMode>User</TraceMode>
     <EnableGDB>False</EnableGDB>
     <StartCosmosGDB>false</StartCosmosGDB>
-    <VMWareEdition>Player</VMWareEdition>
+    <VMWareEdition>Workstation</VMWareEdition>
     <OutputPath>bin\Debug\</OutputPath>
-    <Description>Use Bochs emulator to deploy and debug.</Description>
+    <Description>Use VMware Player or Workstation to deploy and debug.</Description>
     <Deployment>ISO</Deployment>
-    <Launch>Bochs</Launch>
+    <Launch>VMware</Launch>
     <VisualStudioDebugPort>Pipe: Cosmos\Serial</VisualStudioDebugPort>
     <PxeInterface>192.168.56.1</PxeInterface>
     <VMware_Description>Use VMware Player or Workstation to deploy and debug.</VMware_Description>
@@ -24,7 +24,7 @@
     <VMware_DebugMode>Source</VMware_DebugMode>
     <VMware_VisualStudioDebugPort>Pipe: Cosmos\Serial</VMware_VisualStudioDebugPort>
     <VMware_PxeInterface>192.168.56.1</VMware_PxeInterface>
-    <VMware_VMwareEdition>Player</VMware_VMwareEdition>
+    <VMware_VMwareEdition>Workstation</VMware_VMwareEdition>
     <VMware_OutputPath>bin\Debug\net462\</VMware_OutputPath>
     <VMware_EnableGDB>False</VMware_EnableGDB>
     <VMware_StartCosmosGDB>false</VMware_StartCosmosGDB>
@@ -92,6 +92,11 @@
     <Bochs_StartCosmosGDB>false</Bochs_StartCosmosGDB>
     <Bochs_EnableBochsDebug>False</Bochs_EnableBochsDebug>
     <Bochs_StartBochsDebugGui>False</Bochs_StartBochsDebugGui>
+    <VMware_EnableBochsDebug>False</VMware_EnableBochsDebug>
+    <VMware_StartBochsDebugGui>False</VMware_StartBochsDebugGui>
+    <ISO_EnableBochsDebug>False</ISO_EnableBochsDebug>
+    <ISO_StartBochsDebugGui>False</ISO_StartBochsDebugGui>
+    <Name>MedliBoot</Name>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="*" />
@@ -105,7 +110,7 @@
     </ProjectReference>
     <ProjectReference Include="..\Medli.System\Medli.System.csproj">
       <Name>Medli.System</Name>
-      <Project>{432c7434-31e3-4c41-8e36-c0caeb15d66f}</Project>
+      <Project>{621ce67d-445a-4552-9e20-74fc882c4cf8}</Project>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Medli\Medli.csproj">
@@ -116,17 +121,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Applications\" />
+    <Folder Include="Commands\" />
+    <Folder Include="Commands\commands\" />
     <Folder Include="Installer\" />
     <Folder Include="Kernel\" />
     <Folder Include="MUI\" />
     <Folder Include="System\" />
     <Folder Include="UserManagement\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Cosmos.Core.Plugs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
-    <Reference Include="Cosmos.Core.Plugs.Asm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
-    <Reference Include="Cosmos.Debug.Kernel.Plugs.Asm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
-    <Reference Include="Cosmos.System.Plugs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983" />
   </ItemGroup>
   <Import Project="$(AppData)\Cosmos User Kit\Build\VSIP\Cosmos.targets" />
 </Project>

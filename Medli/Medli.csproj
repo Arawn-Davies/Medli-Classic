@@ -21,6 +21,7 @@
   </ItemGroup>
   
   <ItemGroup>
+    <ProjectReference Include="..\Medli.GUI\Medli.GUI.csproj" />
     <ProjectReference Include="..\Medli.System\Medli.System.csproj" />
   </ItemGroup>
 

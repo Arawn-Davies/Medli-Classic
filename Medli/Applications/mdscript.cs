@@ -28,7 +28,7 @@ namespace Medli.Applications
                     string[] lines = File.ReadAllLines(scriptname);
                     foreach (string line in lines)
                     {
-                        mshell.cmd(line);
+                        Shell.cmd(line);
                         //Console.WriteLine("");
                     }
                 }

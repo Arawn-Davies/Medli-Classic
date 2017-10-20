@@ -134,8 +134,7 @@ namespace Medli
         /// The Medli version number is stored as a double
         /// Internal memo - why two?
         /// </summary>
-        public static double ver_no = 0.10;
-
+        public static string ver_no = "0.1.5";
         /// <summary>
         /// The Medli logo is stored as an escaped string,
         /// required for the use of backslashes and newlines

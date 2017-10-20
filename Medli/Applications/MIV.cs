@@ -9,7 +9,6 @@ namespace Medli.Applications
 {
     class MIV
     {
-        public static string file;
         public static void printMIVStartScreen()
         {
             Console.Clear();
@@ -259,7 +258,7 @@ namespace Medli.Applications
 
         public static bool isForbiddenKey(ConsoleKey key)
         {
-            ConsoleKey[] forbiddenKeys = { ConsoleKey.Print, ConsoleKey.PrintScreen, ConsoleKey.Pause, ConsoleKey.Home, ConsoleKey.PageUp, ConsoleKey.PageDown, ConsoleKey.End, ConsoleKey.NumPad0, ConsoleKey.NumPad1, ConsoleKey.NumPad2, ConsoleKey.NumPad3, ConsoleKey.NumPad4, ConsoleKey.NumPad5, ConsoleKey.NumPad6, ConsoleKey.NumPad7, ConsoleKey.NumPad8, ConsoleKey.NumPad9, ConsoleKey.Insert, ConsoleKey.F1, ConsoleKey.F2, ConsoleKey.F3, ConsoleKey.F4, ConsoleKey.F5, ConsoleKey.F6, ConsoleKey.F7, ConsoleKey.F8, ConsoleKey.F9, ConsoleKey.F10, ConsoleKey.F11, ConsoleKey.F12, ConsoleKey.Add, ConsoleKey.Divide, ConsoleKey.Multiply, ConsoleKey.Subtract };
+            ConsoleKey[] forbiddenKeys = { ConsoleKey.Print, ConsoleKey.PrintScreen, ConsoleKey.Pause, ConsoleKey.Home, ConsoleKey.PageUp, ConsoleKey.PageDown, ConsoleKey.End, ConsoleKey.NumPad0, ConsoleKey.NumPad1, ConsoleKey.NumPad2, ConsoleKey.NumPad3, ConsoleKey.NumPad4, ConsoleKey.NumPad5, ConsoleKey.NumPad6, ConsoleKey.NumPad7, ConsoleKey.NumPad8, ConsoleKey.NumPad9, ConsoleKey.Insert, ConsoleKey.F1, ConsoleKey.F2, ConsoleKey.F3, ConsoleKey.F4, ConsoleKey.F5, ConsoleKey.F6, ConsoleKey.F7, ConsoleKey.F8, ConsoleKey.F9, ConsoleKey.F10, ConsoleKey.F11, ConsoleKey.F12, ConsoleKey.Add, ConsoleKey.Divide, ConsoleKey.Multiply, ConsoleKey.Subtract, ConsoleKey.LeftWindows, ConsoleKey.RightWindows };
             for (int i = 0; i < forbiddenKeys.Length; i++)
             {
                 if (key == forbiddenKeys[i]) return true;
@@ -271,21 +270,18 @@ namespace Medli.Applications
         {
             for (int i = 0; i < time; i++) ;
         }
-        public static void StartMIV()
+        public static void StartMIV(string filename)
         {
-            Console.WriteLine("Enter file's filename to open:");
-            Console.WriteLine("If the specified file does not exist, it will be created.");
-            file = Console.ReadLine();
             try
             {
-                if (File.Exists(@"0:\" + file))
+                if (File.Exists(@"0:\" + filename))
                 {
                     Console.WriteLine("Found file!");
                 }
-                else if (!File.Exists(@"0:\" + file))
+                else if (!File.Exists(@"0:\" + filename))
                 {
                     Console.WriteLine("Creating file!");
-                    File.Create(@"0:\" + file);
+                    File.Create(@"0:\" + filename);
                 }
                 Console.Clear();
             }
@@ -295,10 +291,46 @@ namespace Medli.Applications
             }
 
             String text = String.Empty;
-            Console.WriteLine("Do you want to open " + file + " content? (Yes/No)");
+
+            text = miv(File.ReadAllText(@"0:\" + filename));
+            Console.Clear();
+
+            if (text != null)
+            {
+                File.WriteAllText(@"0:\" + filename, text);
+                Console.WriteLine("Content has been saved to " + filename);
+            }
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey(true);
+        }
+        public static void StartMIV()
+        {
+            Console.WriteLine("Enter file's filename to open:");
+            Console.WriteLine("If the specified file does not exist, it will be created.");
+            string filename = Console.ReadLine();
+            try
+            {
+                if (File.Exists(@"0:\" + filename))
+                {
+                    Console.WriteLine("Found file!");
+                }
+                else if (!File.Exists(@"0:\" + filename))
+                {
+                    Console.WriteLine("Creating file!");
+                    File.Create(@"0:\" + filename);
+                }
+                Console.Clear();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            String text = String.Empty;
+            Console.WriteLine("Do you want to open " + filename + " content? (Yes/No)");
             if (Console.ReadLine().ToLower() == "yes" || Console.ReadLine().ToLower() == "y")
             {
-                text = miv(File.ReadAllText(@"0:\" + file));
+                text = miv(File.ReadAllText(@"0:\" + filename));
             }
             else
             {
@@ -309,8 +341,8 @@ namespace Medli.Applications
 
             if (text != null)
             {
-                File.WriteAllText(@"0:\" + MIV.file, text);
-                Console.WriteLine("Content has been saved to " + file);
+                File.WriteAllText(@"0:\" + filename, text);
+                Console.WriteLine("Content has been saved to " + filename);
             }
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey(true);

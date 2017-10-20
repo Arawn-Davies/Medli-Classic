@@ -1,11 +1,30 @@
-﻿using System;
+﻿using Cosmos.Core;
+using Cosmos.Debug.Kernel;
+using System;
 using System.Runtime.InteropServices;
-using Cosmos.Core;
 
 namespace Medli.Hardware
 {
     public unsafe class Power
     {
+
+        public static readonly Debugger mDebugger = new Debugger("System", "Global");
+
+        //RSD Table
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+        public unsafe struct RSDPtr
+        {
+            public fixed byte Signature[8];
+            public byte CheckSum;
+            public fixed byte OemID[6];
+            public byte Revision;
+            public int RsdtAddress;
+        };
+
+        // New Port I/O
+        private static IOPort smiIO, pm1aIO, pm1bIO;
+
+        // ACPI variables
         private static int* SMI_CMD;
         private static byte ACPI_ENABLE;
         private static byte ACPI_DISABLE;
@@ -17,27 +36,14 @@ namespace Medli.Hardware
         private static short SCI_EN;
         private static byte PM1_CNT_LEN;
 
-
-        static int Compare(string c1, byte* c2)
+        //ACPI Check Header
+        static int acpiCheckHeader(byte* ptr, string sig)
         {
-
-            for (int i = 0; i < c1.Length; i++)
-            {
-                if (c1[i] != (char)c2[i]) { return -1; }
-            }
-            return 0;
+            return Compare(sig, ptr);
         }
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        struct RSDPtr
-        {
-            public fixed byte Signature[8];
-            public byte CheckSum;
-            public fixed byte OemID[6];
-            public byte Revision;
-            public int RsdtAddress;
-        };
 
-
+        // FACP
+        private static byte* Facp = null;
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         struct FACP
         {
@@ -56,83 +62,18 @@ namespace Medli.Hardware
             public fixed byte unneded4[89 - 72];
             public byte PM1_CNT_LEN;
         };
-        static byte* Facp = null;
-        static int* Facpget(int number)
-        {
 
-            if (number == 0) { return (int*)*((int*)(Facp + 40)); }
-            else if (number == 1) { return (int*)*((int*)(Facp + 48)); }
-            else if (number == 2) { return (int*)*((int*)(Facp + 64)); }
-            else if (number == 3) { return (int*)*((int*)(Facp + 68)); }
-            else { return null; }
-
-        }
-        static byte Facpbget(int number)
+        //Compare
+        static int Compare(string c1, byte* c2)
         {
-            if (number == 0) { return *(Facp + 52); }
-            else if (number == 1) { return *(Facp + 53); }
-            else if (number == 2) { return *(Facp + 89); }
-            else return 0;
-        }
-        // check if the given address has a valid header
-        static uint* AcpiCheckRSDPtr(uint* ptr)
-        {
-            string sig = "RSD PTR ";
-            RSDPtr* rsdp = (RSDPtr*)ptr;
-            byte* bptr;
-            byte check = 0;
-            int i;
-
-            if (Compare(sig, (byte*)rsdp) == 0)
+            for (int i = 0; i < c1.Length; i++)
             {
-                // check checksum rsdpd
-                bptr = (byte*)ptr;
-                for (i = 0; i < 20; i++)
-                {
-                    check += *bptr;
-                    bptr++;
-                }
-                //Console.WriteLine("0x" + check.ToHex());
-                // found valid rsdpd   
-                if (check == 0)
-                {
-                    //string str = rsdp->RsdtAddress.ToHex();
-                    //Console.WriteLine("seen"); Console.WriteLine(str);
-                    Compare("RSDT", (byte*)rsdp->RsdtAddress);
-                    if (rsdp->RsdtAddress != 0)
-                        return (uint*)rsdp->RsdtAddress;
-                }
+                if (c1[i] != c2[i]) { return -1; }
             }
-            Console.WriteLine("Unable to find RSDT. ACPI not available");
-            return null;
-        }
-
-        static unsafe uint RSDPAddress()
-        {
-
-            // check bios
-            for (uint addr = 0xE0000; addr < 0x100000; addr += 4)
-                if (Compare("RSD PTR ", (byte*)addr) == 0)
-                    if (Check_RSD(addr))
-                        return addr;
-            // check extended bios
-            uint ebda_address = *((uint*)0x040E);
-
-            ebda_address = (ebda_address * 0x10) & 0x000fffff;
-
-            for (uint addr = ebda_address; addr < ebda_address + 1024; addr += 4)
-                if (Compare("RSD PTR ", (byte*)addr) == 0)
-                    return addr;
-
-            // not found
             return 0;
         }
-        // checks for a given header and validates checksum
-        static int AcpiCheckHeader(byte* ptr, string sig)
-        {
-            return Compare(sig, ptr);
-        }
 
+        //Check RSD
         static bool Check_RSD(uint address)
         {
             byte sum = 0;
@@ -143,189 +84,58 @@ namespace Medli.Hardware
 
             return (sum == 0);
         }
-        private static Cosmos.Core.IOPort smiIO, pm1aIO, pm1bIO;
-        public static int Enable()
+
+        //Acpi Initialization :P
+        public static void Start(bool initialize = true, bool enable = true)
         {
-            // check if acpi is enabled
+            if (initialize)
+                Init();
 
-            if (pm1aIO.Word == 0)
-            {
-                // check if acpi can be enabled
-                if (SMI_CMD != null && ACPI_ENABLE != 0)
-                {
-                    smiIO.Byte = ACPI_ENABLE;
-                    //CPUBus.Write8((byte)SMI_CMD, ACPI_ENABLE); // send acpi enable command
-                    // give 3 seconds time to enable acpi
-                    int i;
-                    for (i = 0; i < 300; i++)
-                    {
-                        if ((pm1aIO.Word & 1) == 1)
-                            //if ((CPUBus.Read16((ushort)PM1a_CNT) & SCI_EN) == 1)
-                            break;
-
-                    }
-                    if (PM1b_CNT != null)
-                        for (; i < 300; i++)
-                        {
-                            //if ((CPUBus.Read16((ushort)PM1b_CNT) & SCI_EN) == 1)
-                            if ((pm1bIO.Word & 1) == 1)
-                                break;
-                        }
-                    if (i < 300)
-                    {
-
-                        return 0;
-                    }
-                    else
-                    {
-                        Console.WriteLine("couldn't enable acpi.");
-                        return -1;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("no known way to enable acpi.");
-                    return -1;
-                }
-            }
-            else
-            {
-
-                return 0;
-            }
-        }
-        public static void Disable()
-        {
-            smiIO.Byte = ACPI_DISABLE;
-        }
-        public static int Init()
-        {
-            byte* ptr = (byte*)RSDPAddress(); int addr = 0;
-
-            for (int i = 19; i >= 16; i--)
-            {
-                addr += (*((byte*)ptr + i));
-                addr = (i == 16) ? addr : addr << 8;
-            }
-
-            ptr = (byte*)addr;
-            ptr += 4; addr = 0;
-            for (int i = 3; i >= 0; i--)
-            {
-                addr += (*((byte*)ptr + i));
-                addr = (i == 0) ? addr : addr << 8;
-            }
-            int length = addr;
-
-            ptr -= 4;
-            // check if address is correct  ( if acpi is available on this pc )
-            if (ptr != null && acpiCheckHeader((byte*)ptr, "RSDT") == 0)
-            {
-                addr = 0;
-                // the RSDT contains an unknown number of pointers to acpi tables
-
-                int entrys = length;
-                entrys = (entrys - 36) / 4;
-                ptr += 36;   // skip header information
-                byte* yeuse;
-
-                while (0 < entrys--)
-                {
-                    for (int i = 3; i >= 0; i--)
-                    {
-                        addr += (*((byte*)ptr + i));
-                        addr = (i == 0) ? addr : addr << 8;
-                    }
-                    yeuse = (byte*)addr;
-                    // check if the desired table is reached
-                    Facp = (byte*)yeuse;
-                    if (Compare("FACP", Facp) == 0)
-                    {
-                        if (AcpiCheckHeader((byte*)Facpget(0), "DSDT") == 0)
-                        {
-                            // search the \_S5 package in the DSDT
-                            byte* S5Addr = (byte*)Facpget(0) + 36; // skip header
-                            int dsdtLength = *(Facpget(0) + 1) - 36;
-                            while (0 < dsdtLength--)
-                            {
-                                if (Compare("_S5_", (byte*)S5Addr) == 0)
-                                    break;
-                                S5Addr++;
-                            }
-                            // check if \_S5 was found
-                            if (dsdtLength > 0)
-                            {
-                                // check for valid AML structure
-                                if ((*(S5Addr - 1) == 0x08 || (*(S5Addr - 2) == 0x08 && *(S5Addr - 1) == '\\')) && *(S5Addr + 4) == 0x12)
-                                {
-                                    S5Addr += 5;
-                                    S5Addr += ((*S5Addr & 0xC0) >> 6) + 2;   // calculate PkgLength size
-
-                                    if (*S5Addr == 0x0A)
-                                        S5Addr++;   // skip byteprefix
-                                    SLP_TYPa = (short)(*(S5Addr) << 10);
-                                    S5Addr++;
-
-                                    if (*S5Addr == 0x0A)
-                                        S5Addr++;   // skip byteprefix
-                                    SLP_TYPb = (short)(*(S5Addr) << 10);
-
-                                    SMI_CMD = Facpget(1);
-
-                                    ACPI_ENABLE = Facpbget(0);
-                                    ACPI_DISABLE = Facpbget(1);
-
-                                    PM1a_CNT = Facpget(2);
-                                    PM1b_CNT = Facpget(3);
-
-                                    PM1_CNT_LEN = Facpbget(3);
-
-                                    SLP_EN = 1 << 13;
-                                    SCI_EN = 1;
-                                    smiIO = new IOPort((ushort)SMI_CMD);
-                                    pm1aIO = new IOPort((ushort)PM1a_CNT);
-                                    pm1bIO = new IOPort((ushort)PM1b_CNT);
-                                    return 0;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("\\_S5 parse error.\n");
-                                }
-                            }
-                            else
-                            {
-                                Console.WriteLine("\\_S5 not present.\n");
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("DSDT invalid.\n");
-                        }
-                    }
-                    ptr += 4;
-                }
-                Console.WriteLine("no valid FACP present.\n");
-            }
-            else
-            {
-                Console.WriteLine("no acpi.\n");
-            }
-
-            return -1;
-
+            if (enable)
+                Enable();
         }
 
+        // Shutdown
+        public static void Shutdown()
+        {
+            Console.Clear();
+            if (PM1a_CNT == null)
+                Init();
+
+            pm1aIO.Word = (ushort)(SLP_TYPa | SLP_EN);
+
+            if (PM1b_CNT != null)
+                pm1bIO.Word = (ushort)(SLP_TYPb | SLP_EN);
+
+            Global.CPU.Halt();
+        }
+
+        // Reboot
         public static void Reboot()
         {
+            //Old Reboot code
+            
             byte good = 0x02;
             while ((good & 0x02) != 0)
                 good = Inb(0x64);
             Outb(0x64, 0xFE);
 
             Global.CPU.Halt();
+            CPU.DisableInterrupts();
+            
+            //Sets the value of the ACPI FADT reset register (0xcf9) to 6 (0x06)
+            //Outb(0xcf9, 0x06);
         }
 
-        static IOPort io = new IOPort(0);
+
+
+        public static byte Inb(ushort port)
+        {
+            if (io.Port != port)
+                io = new IOPort(port);
+            return io.Byte;
+
+        }
         static int PP = 0, D = 0;
         public static void Outb(ushort port, byte data)
         {
@@ -336,27 +146,192 @@ namespace Medli.Hardware
             D = data;
 
         }
-        public static byte Inb(ushort port)
+        static IOPort io = new IOPort(0);
+        // Initializazion
+        private static bool Init()
         {
-            if (io.Port != port)
-                io = new IOPort(port);
-            return io.Byte;
+            byte* ptr = (byte*)RSDPAddress();
+            int addr = 0;
 
+            for (int i = 19; i >= 16; i--)
+            {
+                addr += (*(ptr + i));
+                addr = (i == 16) ? addr : addr << 8;
+            }
+
+            ptr = (byte*)addr;
+            ptr += 4; addr = 0;
+
+            for (int i = 3; i >= 0; i--)
+            {
+                addr += (*(ptr + i));
+                addr = (i == 0) ? addr : addr << 8;
+            }
+
+            int length = addr;
+            ptr -= 4;
+
+            if (ptr != null && acpiCheckHeader(ptr, "RSDT") == 0)
+            {
+                addr = 0;
+                int entrys = length;
+                entrys = (entrys - 36) / 4;
+                ptr += 36;
+                byte* yeuse;
+
+                while (0 < entrys--)
+                {
+                    for (int i = 3; i >= 0; i--)
+                    {
+                        addr += (*(ptr + i));
+                        addr = (i == 0) ? addr : addr << 8;
+                    }
+
+                    yeuse = (byte*)addr;
+                    Facp = yeuse;
+
+                    if (acpiCheckHeader((byte*)facpget(0), "DSDT") == 0)
+                    {
+                        byte* S5Addr = (byte*)facpget(0) + 36;
+                        int dsdtLength = *(facpget(0) + 1) - 36;
+
+                        while (0 < dsdtLength--)
+                        {
+                            if (Compare("_S5_", S5Addr) == 0)
+                                break;
+                            S5Addr++;
+                        }
+
+                        if (dsdtLength > 0)
+                        {
+                            if ((*(S5Addr - 1) == 0x08 || (*(S5Addr - 2) == 0x08 && *(S5Addr - 1) == '\\')) && *(S5Addr + 4) == 0x12)
+                            {
+                                S5Addr += 5;
+                                S5Addr += ((*S5Addr & 0xC0) >> 6) + 2;
+                                if (*S5Addr == 0x0A)
+                                    S5Addr++;
+                                SLP_TYPa = (short)(*(S5Addr) << 10);
+                                S5Addr++;
+                                if (*S5Addr == 0x0A)
+                                    S5Addr++;
+                                SLP_TYPb = (short)(*(S5Addr) << 10);
+                                SMI_CMD = facpget(1);
+                                ACPI_ENABLE = facpbget(0);
+                                ACPI_DISABLE = facpbget(1);
+                                PM1a_CNT = facpget(2);
+                                PM1b_CNT = facpget(3);
+                                PM1_CNT_LEN = facpbget(3);
+                                SLP_EN = 1 << 13;
+                                SCI_EN = 1;
+
+                                smiIO = new IOPort((ushort)SMI_CMD);
+                                pm1aIO = new IOPort((ushort)PM1a_CNT);
+                                pm1bIO = new IOPort((ushort)PM1b_CNT);
+
+                                return true;
+                            }
+                        }
+                    }
+                    ptr += 4;
+                }
+            }
+
+            return false;
         }
 
-        public static void Shutdown()
+        // Enable ACPI
+        public static void Enable()
         {
-            // send the shutdown command
-            Console.Clear();
-            if (PM1a_CNT == null) Init();
-            if (pm1aIO != null)
-            {
-                pm1aIO.Word = (ushort)(SLP_TYPa | SLP_EN);
-                if (PM1b_CNT != null)
-                    pm1bIO.Word = (ushort)(SLP_TYPb | SLP_EN);
+            smiIO = new IOPort(ACPI_ENABLE);
+        }
 
+        // Disable ACPI
+        public static void Disable()
+        {
+            smiIO = new IOPort(ACPI_DISABLE);
+        }
+
+        // Retrieve the RSDP address
+        private static unsafe uint RSDPAddress()
+        {
+            for (uint addr = 0xE0000; addr < 0x100000; addr += 4)
+                if (Compare("RSD PTR ", (byte*)addr) == 0)
+                    if (Check_RSD(addr))
+                        return addr;
+
+            uint ebda_address = *((uint*)0x040E);
+            ebda_address = (ebda_address * 0x10) & 0x000fffff;
+
+            for (uint addr = ebda_address; addr < ebda_address + 1024; addr += 4)
+                if (Compare("RSD PTR ", (byte*)addr) == 0)
+                    return addr;
+
+            return 0;
+        }
+
+        // RSDT Table
+        private static uint* acpiCheckRSDPtr(uint* ptr)
+        {
+            string sig = "RSD PTR ";
+            RSDPtr* rsdp = (RSDPtr*)ptr;
+
+            byte* bptr;
+            byte check = 0;
+            int i;
+
+            if (Compare(sig, (byte*)rsdp) == 0)
+            {
+                bptr = (byte*)ptr;
+
+                for (i = 0; i < 20; i++)
+                {
+                    check += *bptr;
+                    bptr++;
+                }
+
+                if (check == 0)
+                {
+                    Compare("RSDT", (byte*)rsdp->RsdtAddress);
+
+                    if (rsdp->RsdtAddress != 0)
+                        return (uint*)rsdp->RsdtAddress;
+                }
             }
-            //  Console.WriteLine("It is now safe to turn off your computer");
+
+            return null;
+        }
+
+        // FACP Table
+        private static byte facpbget(int number)
+        {
+            switch (number)
+            {
+                case 0:
+                    return *(Facp + 52);
+                case 1:
+                    return *(Facp + 53);
+                case 2:
+                    return *(Facp + 89);
+                default:
+                    return 0;
+            }
+        }
+
+        private static int* facpget(int number)
+        {
+            switch (number)
+            {
+                case 0:
+                    return (int*)*((int*)(Facp + 40));
+                case 1:
+                    return (int*)*((int*)(Facp + 48));
+                case 2:
+                    return (int*)*((int*)(Facp + 64));
+                case 3:
+                    return (int*)*((int*)(Facp + 68));
+                default:
+                    return null;
+            }
         }
     }
 }

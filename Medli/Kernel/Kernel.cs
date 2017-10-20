@@ -1,12 +1,17 @@
 ﻿/*
 Changelog
-0.11 -  Fixes/Changes   Fixed references to Medli.Hardware (Ring HAL) which is not allowed in the Kernel project (Ring User)
-                        Version number is now stored as a string - easier to differentiate between versions 0.1 and 0.10
+0.1.5 -  Added:             Began creating GUI project and class.
+                            Updated MIV to accept a filename as an argument for launching.
+                            Introduced arguments for the commandline system.
+                            Updated Cowsay - now features cow, tux and sodomized-sheep!
+                            Introduced ColorChanger from Apollo (or was it Chocolate? Who knows - both made by Arawn-Davies)
+                            Introducing the command database, easier management for a unified method of creating and launching Medli Applications.
         
-        Added:          Clock class with method in shell.
+        Fixes/Changes       Skipped a few versions, due to the vast amount of changes.
+                            Switched to semantic versioning.
 
-                        A small boolean added for development purposes, bypasses the installation 
-                        procedure which is useful in cases where the testing of a feature is required.
+        What to see next:   Beginning user management, make proper use of home directories and start populating them.
+  
  */
 using System;
 using System.Collections.Generic;
@@ -23,7 +28,7 @@ namespace Medli
 { 
     public class Kernel : Sys.Kernel
     {
-        public static bool testing = true;
+        public static bool testing = false;
         /// <summary>
         /// Sets the filesystems current directory to its initial value
         /// i.e. the root of the storage device, same initial value but keeps them separate
@@ -74,7 +79,7 @@ namespace Medli
         /// </summary>
         protected override void Run()
         {
-            mshell.prompt();
+            Shell.prompt();
         }
         /// <summary>
         /// Runs necessary checks to see if computer is running an existing installation

@@ -55,12 +55,12 @@ namespace Medli.Applications
                         File.WriteAllText(Kernel.current_dir + file, text);
                         savedtext = text;
                         running = false;
-                        mshell.prompt();
+                        Shell.prompt();
                     }
                     else if (notsaved == "n")
                     {
                         running = false;
-                        mshell.prompt();
+                        Shell.prompt();
                     }
                 }
                 if (line == "save")
@@ -69,7 +69,7 @@ namespace Medli.Applications
                     File.WriteAllText(Kernel.current_dir + file, text);
                     savedtext = text;
                     running = false;
-                    mshell.prompt();
+                    Shell.prompt();
                 }
                 text = text + (Environment.NewLine + line);
             }

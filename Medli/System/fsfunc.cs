@@ -127,7 +127,7 @@ namespace Medli.SysInternal
         /// <param name="input"></param>
         public static void cd(string input)
         {
-            string path = input.Remove(0, 3); //cd <- 2 chars
+            string path = input; //cd <- 2 chars
             if (Directory.Exists(Kernel.current_dir + path))
             {
                 Kernel.current_dir = Kernel.current_dir + path;
