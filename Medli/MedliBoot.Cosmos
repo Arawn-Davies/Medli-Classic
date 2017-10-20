@@ -127,7 +127,6 @@
     <Folder Include="Kernel\" />
     <Folder Include="MUI\" />
     <Folder Include="System\" />
-    <Folder Include="System\UserMgmt\" />
     <Folder Include="UserManagement\" />
   </ItemGroup>
   <Import Project="$(AppData)\Cosmos User Kit\Build\VSIP\Cosmos.targets" />

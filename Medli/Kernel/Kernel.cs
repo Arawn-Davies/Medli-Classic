@@ -23,7 +23,6 @@ using Medli.System;
 using Medli.Applications;
 using Cosmos.Debug;
 using Medli.SysInternal;
-using Medli.UsrMgmt;
 
 namespace Medli
 { 
@@ -114,11 +113,14 @@ namespace Medli
                 {
                     try
                     {
-                        UserManagement.LoadUsers();
-                        UserManagement.UserLogin();
-                        Console.WriteLine("Welcome back, " + OSVars.username + @"!");
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey(true);
+                        string[] usernames = File.ReadAllLines(OSVars.usrinfo);
+                        foreach (string username in usernames)
+                        {
+                            OSVars.username = username;
+                            Console.WriteLine("Welcome back, " + OSVars.username + @"!");
+                            Console.WriteLine("Press any key to continue...");
+                            Console.ReadKey(true);
+                        }
                     }
                     catch (Exception ex)
                     {

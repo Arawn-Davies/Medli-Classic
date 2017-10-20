@@ -124,8 +124,7 @@ namespace Medli
                 mDebugger.Send(KernelVariables.sysdir + @"\" + "usrinfo.sys");
                 Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating users file...     "); File.Create(KernelVariables.sysdir + @"\" + "usrinfo.sys").Dispose(); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.CursorTop = 9;
-                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Writing username to file..."); File.AppendAllText(KernelVariables.sysdir + @"\" + "usrinfo.sys", username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
-                UserMgmt.UsrMgmt.users.Add(username);
+                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Writing username to file..."); File.WriteAllText(KernelVariables.sysdir + @"\" + "usrinfo.sys", username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             catch
@@ -167,8 +166,8 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
 
             Console.Clear();
             InitScreen(defaultcol);
-            InstallerWriteLine("Awesome - you're all set! Medli now needs to reboot to finish setting up.");
-            InstallerWriteLine("Press any key to reboot...");
+            InstallerWriteLine("Awesome - you're all set!");
+            InstallerWriteLine("Press any key to start Medli!");
             Console.CursorTop = 24;
             Console.ReadKey(true);
             Console.CursorTop = 0;
