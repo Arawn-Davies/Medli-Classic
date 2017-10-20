@@ -12,6 +12,7 @@ namespace Medli.SysInternal
     /// </summary>
     public class KernelVariables
     {
+        public static string current_usr_dir = homedir + OSVars.username;
         public static string root = Kernel.root_dir;
         /// <summary>
         /// Creates the system directories required

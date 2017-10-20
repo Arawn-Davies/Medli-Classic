@@ -250,6 +250,7 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             {
 
             }
+            /*
             else if (input == "lock")
             {
                 Console.WriteLine("Missing password - try again.");
@@ -278,7 +279,7 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
                 }
                 Console.Clear();
                 Console.BackgroundColor = ConsoleColor.Black;
-            }
+            }*/
             else if (command.StartsWith("echo "))
             {
                 try
