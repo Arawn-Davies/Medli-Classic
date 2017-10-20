@@ -100,6 +100,25 @@ namespace Medli.SysInternal
         }
 
         /// <summary>
+        /// Another similar mkdir() function, will simply but this is for the Installer, where current_dir isn't assigned
+        /// </summary>
+        /// <param name="dirname"></param>
+        public static void mksysdir(string dirname)
+        {
+            try
+            {
+                if (!Directory.Exists(dirname))
+                {
+                    Directory.CreateDirectory(dirname);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("mkdir: " + ex.Message);
+            }
+        }
+
+        /// <summary>
         /// Changes the current working directory to 'input'
         /// Passing '..' as a directory name will change the
         /// current working directory to it's parent, 
