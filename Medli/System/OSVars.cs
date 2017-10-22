@@ -13,34 +13,7 @@ namespace Medli.SysInternal
     public class KernelVariables
     {
         public static string root = Kernel.root_dir;
-        /// <summary>
-        /// Creates the system directories required
-        /// For now, a *nix file system is used
-        /// </summary>
-        public static void Mksysdir()
-        {
-            Console.WriteLine("Creating system directories...");
-            try
-            {
-                Fsfunc.mksysdir(etcdir); Console.WriteLine(@"\etc     done!");
-                Fsfunc.mksysdir(bindir); Console.WriteLine(@"\bin     done!");
-                Fsfunc.mksysdir(sbindir); Console.WriteLine(@"\sbin  done!");
-                Fsfunc.mksysdir(procdir); Console.WriteLine(@"\proc  done!");
-                Fsfunc.mksysdir(usrdir); Console.WriteLine(@"\usr     done!");
-                Fsfunc.mksysdir(homedir); Console.WriteLine(@"\home  done!");
-                Fsfunc.mksysdir(rootdir); Console.WriteLine(@"\root  done!");
-                Fsfunc.mksysdir(tmpdir); Console.WriteLine(@"\tmp     done!");
-                Fsfunc.mksysdir(vardir); Console.WriteLine(@"\var     done!");
-                Fsfunc.mksysdir(sysdir); Console.WriteLine(@"\sys     done!");
-                Fsfunc.mksysdir(libdir); Console.WriteLine(@"\lib     done!");
-                Fsfunc.mksysdir(optdir); Console.WriteLine(@"\opt     done!");
-                Fsfunc.mksysdir(devdir); Console.WriteLine(@"\dev     done!");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
+        
         #region systemdir
         /// <summary>
         /// etc system directory
@@ -103,13 +76,13 @@ namespace Medli.SysInternal
         /// Defines where the PC information is stored as a file
         /// with it's location stored as a string
         /// </summary>
-        public static string pcinfo = KernelVariables.sysdir + @"\" + "pcinfo.sys";
+        public static string pcinfo = KernelVariables.sysdir + @"\pcinfo.sys";
 
         /// <summary>
         /// Defines where the user information is stored as a file,
         /// with it's location stored as a string
         /// </summary>
-        public static string usrinfo = KernelVariables.sysdir + @"\" + "usrinfo.sys";
+        public static string usrinfo = KernelVariables.sysdir + @"\usrinfo.sys";
 
         /// <summary>
         /// Won't be defined until registration is set up
@@ -140,14 +113,14 @@ namespace Medli.SysInternal
         /// required for the use of backslashes and newlines
         /// </summary>
         public static string logo = @"
- /------\   /-------- /------\  ||        ---------- 
-/|  ||  |\  ||        ||    ||  ||            ||     
-||  ||  ||  ||        ||    ||  ||            ||     
-||  ||  ||  |------   ||    ||  ||            ||     
-||      ||  ||        ||    ||  ||            ||     
-||      ||  ||        ||    ||  ||            ||     
-||      ||  \-------- \------/  \-------- ----------";
-
+ _________   _______  ______            ____       ______    _____
+/ __   __ \ / /_____ |  __  \ | |      |_  _|     | ____ |  | ____|
+| | | | | | | |      | |  | | | |        ||       ||    ||  ||
+| | | | | | | |_____ | |  | | | |        ||  ___  ||    ||  ||____
+| | |_| | | |  _____ | |  | | | |        || |___| ||    ||  |____ |
+| |     | | | |      | |  | | | |        ||       ||    ||       ||
+| |     | | | |_____ | |__| | | |_____  _||_      ||____||   ____||
+|_|     |_| \_______ |______/ \_______ |____|     |______|  |_____|";
         /// <summary>
         /// Welcome line one - 
         /// gets displayed on the welcome screen at first boot

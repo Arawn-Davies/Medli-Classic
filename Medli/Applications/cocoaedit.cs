@@ -65,8 +65,8 @@ namespace Medli.Applications
                 }
                 if (line == "save")
                 {
-                    File.Create(Kernel.current_dir + file);
-                    File.WriteAllText(Kernel.current_dir + file, text);
+                    File.Create(Kernel.current_dir + @"\" + file);
+                    File.WriteAllText(Kernel.current_dir + @"\" + file, text);
                     savedtext = text;
                     running = false;
                     Shell.prompt();

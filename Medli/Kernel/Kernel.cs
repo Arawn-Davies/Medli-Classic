@@ -33,11 +33,11 @@ namespace Medli
         /// Sets the filesystems current directory to its initial value
         /// i.e. the root of the storage device, same initial value but keeps them separate
         /// </summary>
-        public static string current_dir = "0:\\";
+        public static string current_dir = @"0:\";
         /// <summary>
         /// Defines the root directory's value, same as current_dir's initial value but keeps them separate
         /// </summary>
-        public static string root_dir = "0:\\";
+        public static string root_dir = @"0:\";
         /// <summary>
         /// Creates a new instance of the virtual filesystem called fs
         /// </summary>

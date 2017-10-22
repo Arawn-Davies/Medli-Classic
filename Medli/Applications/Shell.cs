@@ -290,6 +290,10 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
                     Console.WriteLine(ex.Message);
                 }
             }
+            else if (command == "help")
+            {
+                GetHelp.full();
+            }
             else if (command.StartsWith("help "))
             {
                 if (cmd_args[1] == "1" || cmd_args[1] == "app")

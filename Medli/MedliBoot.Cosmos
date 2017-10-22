@@ -10,7 +10,7 @@
     <TraceMode>User</TraceMode>
     <EnableGDB>False</EnableGDB>
     <StartCosmosGDB>false</StartCosmosGDB>
-    <VMWareEdition>Workstation</VMWareEdition>
+    <VMWareEdition>Player</VMWareEdition>
     <OutputPath>bin\Debug\</OutputPath>
     <Description>Use VMware Player or Workstation to deploy and debug.</Description>
     <Deployment>ISO</Deployment>
@@ -24,7 +24,7 @@
     <VMware_DebugMode>Source</VMware_DebugMode>
     <VMware_VisualStudioDebugPort>Pipe: Cosmos\Serial</VMware_VisualStudioDebugPort>
     <VMware_PxeInterface>192.168.56.1</VMware_PxeInterface>
-    <VMware_VMwareEdition>Workstation</VMware_VMwareEdition>
+    <VMware_VMwareEdition>Player</VMware_VMwareEdition>
     <VMware_OutputPath>bin\Debug\net462\</VMware_OutputPath>
     <VMware_EnableGDB>False</VMware_EnableGDB>
     <VMware_StartCosmosGDB>false</VMware_StartCosmosGDB>
@@ -82,7 +82,7 @@
     <Bochs_Description>Use Bochs emulator to deploy and debug.</Bochs_Description>
     <Bochs_Deployment>ISO</Bochs_Deployment>
     <Bochs_Launch>Bochs</Bochs_Launch>
-    <Bochs_DebugEnabled>False</Bochs_DebugEnabled>
+    <Bochs_DebugEnabled>True</Bochs_DebugEnabled>
     <Bochs_DebugMode>Source</Bochs_DebugMode>
     <Bochs_VisualStudioDebugPort>Pipe: Cosmos\Serial</Bochs_VisualStudioDebugPort>
     <Bochs_PxeInterface>192.168.56.1</Bochs_PxeInterface>
@@ -90,13 +90,22 @@
     <Bochs_OutputPath>bin\Debug\net462\</Bochs_OutputPath>
     <Bochs_EnableGDB>False</Bochs_EnableGDB>
     <Bochs_StartCosmosGDB>false</Bochs_StartCosmosGDB>
-    <Bochs_EnableBochsDebug>False</Bochs_EnableBochsDebug>
-    <Bochs_StartBochsDebugGui>False</Bochs_StartBochsDebugGui>
+    <Bochs_EnableBochsDebug>True</Bochs_EnableBochsDebug>
+    <Bochs_StartBochsDebugGui>True</Bochs_StartBochsDebugGui>
     <VMware_EnableBochsDebug>False</VMware_EnableBochsDebug>
     <VMware_StartBochsDebugGui>False</VMware_StartBochsDebugGui>
     <ISO_EnableBochsDebug>False</ISO_EnableBochsDebug>
     <ISO_StartBochsDebugGui>False</ISO_StartBochsDebugGui>
     <Name>MedliBoot</Name>
+    <VMware_Name>MedliBoot</VMware_Name>
+    <PXE_StackCorruptionDetectionEnabled>True</PXE_StackCorruptionDetectionEnabled>
+    <PXE_Name>MedliBoot</PXE_Name>
+    <PXE_EnableBochsDebug>False</PXE_EnableBochsDebug>
+    <PXE_StartBochsDebugGui>False</PXE_StartBochsDebugGui>
+    <ISO_Name>MedliBoot</ISO_Name>
+    <Bochs_Name>MedliBoot</Bochs_Name>
+    <IgnoreDebugStubAttribute>False</IgnoreDebugStubAttribute>
+    <VMware_IgnoreDebugStubAttribute>False</VMware_IgnoreDebugStubAttribute>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="*" />

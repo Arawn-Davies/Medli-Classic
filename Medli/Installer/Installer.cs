@@ -38,6 +38,7 @@ namespace Medli
         /// </summary>
         public static void PAKTC()
         {
+            Console.CursorTop = 23;
             InstallerWriteLine("Press any key to continue...");
             Console.ReadKey(true);    
         }
@@ -67,7 +68,6 @@ namespace Medli
             Console.Clear();
             InitScreen(defaultcol);
             Run();
-            InitScreen(color);
         }
         /// <summary>
         /// Initializes the Medli installer console screen by 
@@ -99,32 +99,24 @@ namespace Medli
             color = ConsoleColor.Blue;
             Console.BackgroundColor = ConsoleColor.Blue;
             InitScreen(color);
+            Mksysdir();
+            InitScreen(color);
             InstallerWriteLine("Enter a username for Medli:");
             Console.CursorTop = 24;
             Console.CursorLeft = 0;
             username = Console.ReadLine();
             InitScreen(color);
-            
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Clear();
-                Console.CursorLeft = 0;
-                Console.CursorTop = 0;
-                KernelVariables.Mksysdir();
-                Console.WriteLine("Press any key to return...");
-                Console.ReadKey(true);
-                Console.Clear();
-                InitScreen(color);
             try
             {
                 Console.CursorTop = 7;
                 Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating user directory... "); Directory.CreateDirectory(KernelVariables.homedir + @"\" + username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.CursorTop = 8;
                 mDebugger = new Cosmos.Debug.Kernel.Debugger("User", "Kernel");
-                mDebugger.Send(KernelVariables.sysdir + @"\" + "usrinfo.sys");
-                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating users file...     "); File.Create(KernelVariables.sysdir + @"\" + "usrinfo.sys").Dispose(); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
+                mDebugger.Send(OSVars.usrinfo);
+                //Not needed when using File.Append - creates file anyway if file doesn't exist.
+                //Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating users file...     "); File.Create(OSVars.usrinfo).Dispose(); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.CursorTop = 9;
-                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Writing username to file..."); File.WriteAllText(KernelVariables.sysdir + @"\" + "usrinfo.sys", username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
+                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Writing username to file..."); File.AppendAllText(OSVars.usrinfo, username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             catch
@@ -142,14 +134,15 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
             OSVars.username = username;
             Console.BackgroundColor = color;
             Console.Clear();
+            InitScreen(color);
             InstallerWriteLine("Please enter a machine name:");
             Console.CursorTop = 24;
             OSVars.pcname = Console.ReadLine();
             InitScreen(color);
             try
             {
-                Console.ForegroundColor = ConsoleColor.White; Console.Write("Creating machineinfo file...  "); File.Create(KernelVariables.sysdir + @"\" + "pcinfo.sys").Dispose(); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
-                Console.ForegroundColor = ConsoleColor.White; Console.Write("Writing machineinfo to file..."); File.WriteAllText(KernelVariables.sysdir + @"\" + "pcinfo.sys", OSVars.pcname); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
+                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating machineinfo file...  "); File.Create(OSVars.pcinfo).Dispose(); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
+                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Writing machineinfo to file..."); File.WriteAllText(OSVars.pcinfo, OSVars.pcname); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             catch
@@ -172,7 +165,39 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
             Console.ReadKey(true);
             Console.CursorTop = 0;
             Console.CursorLeft = 0;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
+        }
+        /// <summary>
+        /// Creates the system directories required
+        /// For now, a *nix file system is used
+        /// </summary>
+        public static void Mksysdir()
+        {
+            InitScreen(color);
+            InstallerWriteLine("Creating system directories...");
+            try
+            {
+                Fsfunc.mksysdir(KernelVariables.etcdir); InstallerWriteLine(@"\etc     done!");
+                Fsfunc.mksysdir(KernelVariables.bindir); InstallerWriteLine(@"\bin     done!");
+                Fsfunc.mksysdir(KernelVariables.sbindir); InstallerWriteLine(@"\sbin   done!");
+                Fsfunc.mksysdir(KernelVariables.procdir); InstallerWriteLine(@"\proc   done!");
+                Fsfunc.mksysdir(KernelVariables.usrdir); InstallerWriteLine(@"\usr     done!");
+                Fsfunc.mksysdir(KernelVariables.homedir); InstallerWriteLine(@"\home   done!");
+                Fsfunc.mksysdir(KernelVariables.rootdir); InstallerWriteLine(@"\root   done!");
+                Fsfunc.mksysdir(KernelVariables.tmpdir); InstallerWriteLine(@"\tmp     done!");
+                Fsfunc.mksysdir(KernelVariables.vardir); InstallerWriteLine(@"\var     done!");
+                Fsfunc.mksysdir(KernelVariables.sysdir); InstallerWriteLine(@"\sys     done!");
+                Fsfunc.mksysdir(KernelVariables.libdir); InstallerWriteLine(@"\lib     done!");
+                Fsfunc.mksysdir(KernelVariables.optdir); InstallerWriteLine(@"\opt     done!");
+                Fsfunc.mksysdir(KernelVariables.devdir); InstallerWriteLine(@"\dev     done!");
+                PAKTC();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

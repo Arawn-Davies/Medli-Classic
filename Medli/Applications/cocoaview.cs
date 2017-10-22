@@ -11,7 +11,7 @@ namespace Medli.Applications
     {
         public static void Run()
         {
-            Console.WriteLine("Cocoapad Viewer\n");
+            Console.WriteLine("--|:Cocoapad Viewer:|--\n");
             Console.Write(cpedit.savedtext);
             Console.CursorTop = Console.CursorTop + 1;
             Console.CursorLeft = 0;
@@ -20,15 +20,15 @@ namespace Medli.Applications
         {
             try
             {
-                if (File.Exists(Kernel.current_dir + file))
+                if (File.Exists(Kernel.current_dir + @"\" + file))
                 {
-                    string[] lines = File.ReadAllLines(Kernel.current_dir + file);
+                    string[] lines = File.ReadAllLines(Kernel.current_dir + @"\" + file);
                     foreach (string line in lines)
                     {
                         Console.WriteLine(line);
                     }
                 }
-                else if (!File.Exists(Kernel.current_dir + file))
+                else if (!File.Exists(Kernel.current_dir + @"\" + file))
                 {
                     Shell.invalidCommand(file, 2);
                 }
