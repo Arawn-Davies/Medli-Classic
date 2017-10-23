@@ -164,6 +164,10 @@ namespace Medli.Applications
             {
                 Sysfunc.shutdown();
             }
+            else if (command == "logout")
+            {
+                UserManagement.UserLogin();
+            }
             else if (command == "panic")
             {
                 ErrorHandler.Init(1, "Medli received the 'panic' command, Nothing's gonna happen.", false, "");

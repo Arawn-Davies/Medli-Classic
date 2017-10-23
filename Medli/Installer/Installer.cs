@@ -39,7 +39,7 @@ namespace Medli
         public static void PAKTC()
         {
             Console.CursorTop = 23;
-            InstallerWriteLine("Press any key to continue...");
+            Console.WriteLine("Press any key to continue...");
             Console.ReadKey(true);    
         }
         /// <summary>
@@ -55,6 +55,8 @@ namespace Medli
         /// until set by the user in the installer
         /// </summary>
         public static string username;
+        public static string userpass;
+        public static string rootpass;
         /// <summary>
         /// Initializes the installer and allows the user to choose a machine name
         /// Sets the machine name as a variable and writes it to the disk
@@ -78,8 +80,8 @@ namespace Medli
         {
             Console.BackgroundColor = color;
             Console.Clear();
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine("Medli Installer");
             Console.BackgroundColor = color;
             Console.CursorLeft = 7;
@@ -90,10 +92,10 @@ namespace Medli
         /// </summary>
         public static void Run()
         {
-            InitScreen(defaultcol);
+            InitScreen(color);
             InstallerWriteLine("Welcome to the Medli installer.");
             PAKTC();
-            InitScreen(defaultcol);
+            InitScreen(color);
             Console.CursorTop = 24;
             Console.CursorLeft = 0;
             color = ConsoleColor.Blue;
@@ -101,18 +103,27 @@ namespace Medli
             InitScreen(color);
             Mksysdir();
             InitScreen(color);
-            InstallerWriteLine("Enter a username for Medli:");
-            Console.CursorTop = 24;
+            InstallerWriteLine("Enter a username and password for Medli:");
+            InstallerWriteLine("Please enter a username and password to use as a normal user,\nand a password for the root user.");
+            Console.CursorTop = 22;
             Console.CursorLeft = 0;
+            Console.Write("Username:");
             username = Console.ReadLine();
+            Console.Write("Password:");
+            userpass = Console.ReadLine();
+            Console.Write("Root password:");
+            rootpass = Console.ReadLine();
             InitScreen(color);
             try
             {
                 Console.CursorTop = 7;
-                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating user directory... "); Directory.CreateDirectory(KernelVariables.homedir + @"\" + username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
+                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating user directory... "); Directory.CreateDirectory(KernelVariables.homedir + username + @"\"); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.CursorTop = 8;
                 mDebugger = new Cosmos.Debug.Kernel.Debugger("User", "Kernel");
                 mDebugger.Send(KernelVariables.usrinfo);
+                MEnvironment.usrpass = userpass;
+                MEnvironment.rootpass = rootpass;
+                Console.ForegroundColor = ConsoleColor.White; InstallerWriteLine("Writing root password..."); MEnvironment.WriteRootPass(); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 //Not needed when using File.Append - creates file anyway if file doesn't exist.
                 //Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating users file...     "); File.Create(KernelVariables.usrinfo).Dispose(); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.CursorTop = 9;
@@ -181,11 +192,11 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
             {
                 Fsfunc.mksysdir(KernelVariables.etcdir); InstallerWriteLine(@"\etc     done!");
                 Fsfunc.mksysdir(KernelVariables.bindir); InstallerWriteLine(@"\bin     done!");
-                Fsfunc.mksysdir(KernelVariables.sbindir); InstallerWriteLine(@"\sbin   done!");
+                Fsfunc.mksysdir(KernelVariables.sbindir); InstallerWriteLine(@"\sbin    done!");
                 //Fsfunc.mksysdir(KernelVariables.procdir); InstallerWriteLine(@"\proc   done!");
                 Fsfunc.mksysdir(KernelVariables.usrdir); InstallerWriteLine(@"\usr     done!");
-                Fsfunc.mksysdir(KernelVariables.homedir); InstallerWriteLine(@"\home   done!");
-                Fsfunc.mksysdir(KernelVariables.rootdir); InstallerWriteLine(@"\root   done!");
+                Fsfunc.mksysdir(KernelVariables.homedir); InstallerWriteLine(@"\home    done!");
+                Fsfunc.mksysdir(KernelVariables.rootdir); InstallerWriteLine(@"\root    done!");
                 Fsfunc.mksysdir(KernelVariables.tmpdir); InstallerWriteLine(@"\tmp     done!");
                 Fsfunc.mksysdir(KernelVariables.vardir); InstallerWriteLine(@"\var     done!");
                 Fsfunc.mksysdir(KernelVariables.sysdir); InstallerWriteLine(@"\sys     done!");

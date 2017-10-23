@@ -115,7 +115,7 @@ namespace Medli.SysInternal
             }
             else if (Directory.Exists(path))
             {
-                MEnvironment.current_dir = path;
+                MEnvironment.current_dir = path + MEnvironment.dir_ext;
             }
             else
             {

@@ -11,21 +11,26 @@ namespace Medli
 {
     class UserManagement
     {
-        public static void NewUser(string usrname)
+        public static List<string> Users = new List<string>();
+        public static void NewUser(string usrname, string pass)
         {
-            Directory.CreateDirectory(KernelVariables.homedir + @"\" + usrname);
-            Console.WriteLine("Created new user directory: " + KernelVariables.homedir + @"\" + usrname);
+            KernelVariables.username = usrname;
+            MEnvironment.usrpass = pass;
+            Directory.CreateDirectory(KernelVariables.homedir + usrname + MEnvironment.dir_ext);
+            Console.WriteLine("Created new user directory: " + KernelVariables.homedir + usrname + MEnvironment.dir_ext);
+            MEnvironment.WriteUserPass();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("     Done!");
             Console.ForegroundColor = ConsoleColor.White;
             KernelVariables.username = usrname;
+            Users.Add(usrname);
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey(true);
         }
         
         public static void PermCheck()
         {
-            if (KernelVariables.username != KernelVariables.homedir + KernelVariables.username)
+            if (KernelVariables.username != MEnvironment.current_usr_dir)
             {
                 Console.WriteLine("You are not logged in as this user! Access Denied.");
             }
@@ -34,23 +39,70 @@ namespace Medli
 
             }
         }
-        
-        public static void UserLogon()
+        public static void resetConsoleColor()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
+        }
+        public static void changepass()
         {
             Console.Clear();
-            Console.WriteLine("User Logon:");
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.WriteLine("Change password:");
+            Console.CursorTop = 5;
+            resetConsoleColor();
+            Console.WriteLine("Enter the new user password");
+            string usrpass = Console.ReadLine();
+            File.WriteAllText(KernelVariables.homedir + KernelVariables.username + @"\pass.sys", AIC_Framework.Crypto.MD5.hash(usrpass));
+        }
+        public static void UserLogin()
+        {
+            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine("User Login:");
+            resetConsoleColor();
             Console.CursorTop = 5;
             Console.WriteLine("You can either log in as an existing user or create a new one.\n");
-            Console.Write(">");
+            Console.Write("Username >");
             string usrlogon = Console.ReadLine();
             if (!Directory.Exists(KernelVariables.homedir + usrlogon))
             {
-                NewUser(usrlogon);
+                Console.WriteLine("User does not exist!");
+                Console.WriteLine("");
+                UserLogin();
             }
             else if (Directory.Exists(KernelVariables.homedir + usrlogon))
             {
-                KernelVariables.username = usrlogon;
+                Console.Write("Password >");
+                string pass = Console.ReadLine();
+                if (usrlogon == "root")
+                {
+                    if (AIC_Framework.Crypto.MD5.hash(pass) == MEnvironment.rootpass_rockpotato)
+                    {
+                        KernelVariables.username = usrlogon;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect root password. ");
+                        MEnvironment.PressAnyKey();
+                        UserLogin();
+                    }
+                }
+                else
+                {
+                    if (AIC_Framework.Crypto.MD5.hash(pass) == MEnvironment.usrpass_rockpotato)
+                    {
+                        KernelVariables.username = usrlogon;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect password.");
+                        MEnvironment.PressAnyKey();
+                        UserLogin();
+                    }
+                }
             }
-        }        
-    }
+        }
+    }        
 }

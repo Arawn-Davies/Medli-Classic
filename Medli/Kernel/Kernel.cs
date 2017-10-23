@@ -88,10 +88,7 @@ namespace Medli
                     try
                     {
                         string[] pcnames = File.ReadAllLines(KernelVariables.pcinfo);
-                        foreach (string pcname in pcnames)
-                        {
-                            KernelVariables.pcname = pcname;
-                        }
+                        KernelVariables.pcname = pcnames[0];
                     }
                     catch (Exception ex)
                     {
@@ -105,13 +102,9 @@ namespace Medli
                     Console.Clear();
                     try
                     {
-                        string[] usernames = File.ReadAllLines(KernelVariables.usrinfo);
-                        foreach (string username in usernames)
-                        {
-                            KernelVariables.username = username;
-                            Console.WriteLine("Welcome back, " + KernelVariables.username + @"!");
-                            MEnvironment.PressAnyKey();
-                        }
+                        UserManagement.UserLogin();
+                        Console.WriteLine("Welcome back, " + KernelVariables.username + @"!");
+                        MEnvironment.PressAnyKey();
                     }
                     catch (Exception ex)
                     {
