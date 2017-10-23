@@ -7,7 +7,7 @@ namespace Medli
     /// <summary>
     /// Will hold the environment methods which will be called by various components in Medli
     /// </summary>
-    public class Environment
+    public class MEnvironment
     {
         /// <summary>
         /// Small and simple method saves typing this method out over and over again - only has to be called once

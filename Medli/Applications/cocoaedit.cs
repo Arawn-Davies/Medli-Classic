@@ -51,8 +51,8 @@ namespace Medli.Applications
                     string notsaved = Console.ReadLine();
                     if (notsaved == "y")
                     {
-                        File.Create(Kernel.current_dir + file);
-                        File.WriteAllText(Kernel.current_dir + file, text);
+                        File.Create(MEnvironment.current_dir + file);
+                        File.WriteAllText(MEnvironment.current_dir + file, text);
                         savedtext = text;
                         running = false;
                         Shell.prompt();
@@ -65,8 +65,8 @@ namespace Medli.Applications
                 }
                 if (line == "save")
                 {
-                    File.Create(Kernel.current_dir + @"\" + file);
-                    File.WriteAllText(Kernel.current_dir + @"\" + file, text);
+                    File.Create(MEnvironment.current_dir + @"\" + file);
+                    File.WriteAllText(MEnvironment.current_dir + @"\" + file, text);
                     savedtext = text;
                     running = false;
                     Shell.prompt();

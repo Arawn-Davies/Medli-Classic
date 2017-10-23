@@ -6,6 +6,7 @@ Changelog
         Fixes/Changes       Began user management, requires lists which aren't fully plugged (if list contains(string))
                             Will make proper use of home directories and start populating them.
                             Unified OSVars and KernelVariables class to have one single class of variables, strings and methods
+                            Updated logo, made it slightly smaller
 
         What to see next:   
   
@@ -109,7 +110,7 @@ namespace Medli
                         {
                             KernelVariables.username = username;
                             Console.WriteLine("Welcome back, " + KernelVariables.username + @"!");
-                            Environment.PressAnyKey();
+                            MEnvironment.PressAnyKey();
                         }
                     }
                     catch (Exception ex)

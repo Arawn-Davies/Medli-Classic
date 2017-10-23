@@ -12,22 +12,22 @@ namespace Medli.SysInternal
     /// </summary>
     public class KernelVariables
     {
-        public static string root = Environment.root_dir;
+        public static string root = MEnvironment.root_dir;
 
         #region systemdir
         
         /// <summary>
         /// etc system directory
         /// </summary>
-        public static string etcdir = root + "etc";
+        public static string etcdir = root + @"etc\";
         /// <summary>
         /// bin system directory
         /// </summary>
-        public static string bindir = root + "bin";
+        public static string bindir = root + @"bin\";
         /// <summary>
         /// sbin system directory
         /// </summary>
-        public static string sbindir = root  + @"sbin";
+        public static string sbindir = root  + @"sbin\";
         /// <summary>
         /// usr system directory - not to be confused with /home user directorie
         /// </summary>
@@ -51,7 +51,7 @@ namespace Medli.SysInternal
         /// <summary>
         /// sys system directory
         /// </summary>
-        public static string sysdir = root  + @"sy\s";
+        public static string sysdir = root + @"sys\";
         /// <summary>
         /// lib system directory
         /// </summary>
@@ -70,13 +70,13 @@ namespace Medli.SysInternal
         /// Defines where the PC information is stored as a file
         /// with it's location stored as a string
         /// </summary>
-        public static string pcinfo = KernelVariables.sysdir + @"\pcinfo.sys";
+        public static string pcinfo = KernelVariables.sysdir + "pcinfo.sys";
 
         /// <summary>
         /// Defines where the user information is stored as a file,
         /// with it's location stored as a string
         /// </summary>
-        public static string usrinfo = KernelVariables.sysdir + @"\usrinfo.sys";
+        public static string usrinfo = KernelVariables.sysdir + "usrinfo.sys";
 
         /// <summary>
         /// Won't be defined until registration is set up
@@ -108,11 +108,9 @@ namespace Medli.SysInternal
         /// </summary>
         public static string logo = @"
  _________   _______  ______            ____       ______    _____
-/ __   __ \ / /_____ |  __  \ | |      |_  _|     | ____ |  | ____|
-| | | | | | | |      | |  | | | |        ||       ||    ||  ||
+/  _   _  \ / /_____ |  __  \ | |      |_  _|     | ____ |  | ____|
 | | | | | | | |_____ | |  | | | |        ||  ___  ||    ||  ||____
 | | |_| | | |  _____ | |  | | | |        || |___| ||    ||  |____ |
-| |     | | | |      | |  | | | |        ||       ||    ||       ||
 | |     | | | |_____ | |__| | | |_____  _||_      ||____||   ____||
 |_|     |_| \_______ |______/ \_______ |____|     |______|  |_____|";
         /// <summary>

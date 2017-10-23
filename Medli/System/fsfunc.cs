@@ -25,7 +25,7 @@ namespace Medli.SysInternal
         {
             try
             {
-                foreach (var dir in Directory.GetDirectories(Environment.current_dir))
+                foreach (var dir in Directory.GetDirectories(MEnvironment.current_dir))
                 {
                     try
                     {
@@ -38,7 +38,7 @@ namespace Medli.SysInternal
                         Console.WriteLine(ex.Message);
                     }
                 }
-                foreach (var dir in Directory.GetFiles(Environment.current_dir))
+                foreach (var dir in Directory.GetFiles(MEnvironment.current_dir))
                 {
                     try
                     {
@@ -69,9 +69,9 @@ namespace Medli.SysInternal
         {
             try
             {
-                if (!Directory.Exists(Environment.current_dir + @"\" + dirname))
+                if (!Directory.Exists(MEnvironment.current_dir + @"\" + dirname))
                 {
-                    Directory.CreateDirectory(Environment.current_dir + @"\" + dirname);
+                    Directory.CreateDirectory(MEnvironment.current_dir + @"\" + dirname);
                 }
             }
             catch (Exception ex)
@@ -109,17 +109,17 @@ namespace Medli.SysInternal
         public static void cd(string input)
         {
             string path = input; //cd <- 2 chars
-            if (Directory.Exists(Environment.current_dir + path))
+            if (Directory.Exists(MEnvironment.current_dir + path))
             {
-                Environment.current_dir = Environment.current_dir + path;
+                MEnvironment.current_dir = MEnvironment.current_dir + path;
             }
             else if (Directory.Exists(path))
             {
-                Environment.current_dir = path;
+                MEnvironment.current_dir = path;
             }
             else
             {
-                Console.WriteLine("Folder does not exist " + Environment.current_dir + @"\" + path);
+                Console.WriteLine("Folder does not exist " + MEnvironment.current_dir + @"\" + path);
             }
         }
 
@@ -133,7 +133,7 @@ namespace Medli.SysInternal
             {
                 Console.WriteLine("This directory is a protected directory file.\nNon-root access is not permitted!");
             }
-            Directory.Delete(Environment.current_dir + @"\" + dirname);
+            Directory.Delete(MEnvironment.current_dir + @"\" + dirname);
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Medli.SysInternal
                 var key_pressed = Console.ReadKey().Key;
                 if (key_pressed == ConsoleKey.Y)
                 {
-                    File.Delete(Environment.current_dir + @"\" + filename);
+                    File.Delete(MEnvironment.current_dir + @"\" + filename);
                 }
                 else
                 {
@@ -164,7 +164,7 @@ namespace Medli.SysInternal
             }
             else
             {
-                File.Delete(Environment.current_dir + @"\" + filename);
+                File.Delete(MEnvironment.current_dir + @"\" + filename);
             }
             
         }

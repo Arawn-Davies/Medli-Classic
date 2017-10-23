@@ -18,7 +18,7 @@ namespace Medli.Applications
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write(KernelVariables.pcname + ":");
             Console.ForegroundColor = ConsoleColor.DarkBlue;
-            Console.Write(Environment.current_dir);
+            Console.Write(MEnvironment.current_dir);
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("$");
             cmd(Console.ReadLine());
@@ -31,16 +31,16 @@ namespace Medli.Applications
             {
                 try
                 {
-                    if (Environment.current_dir == Environment.root_dir)
+                    if (MEnvironment.current_dir == MEnvironment.root_dir)
                     {
                         Console.WriteLine("Cannot go up any more levels!");
                     }
                     else
                     {
-                        var pos = Environment.current_dir.LastIndexOf('\\');
+                        var pos = MEnvironment.current_dir.LastIndexOf('\\');
                         if (pos >= 0)
                         {
-                            Environment.current_dir = Environment.current_dir.Substring(0, pos) + @"\";
+                            MEnvironment.current_dir = MEnvironment.current_dir.Substring(0, pos) + @"\";
                         }
                         /*                        
                         var dir = FSfunc.fs.GetDirectory(Kernel.current_dir);
@@ -107,13 +107,13 @@ namespace Medli.Applications
             */
             else if (command.StartsWith("run "))
             {
-                if (!File.Exists(Environment.current_dir + cmd_args[1]))
+                if (!File.Exists(MEnvironment.current_dir + cmd_args[1]))
                 {
                     invalidCommand(command.Remove(0, 4), 2);
                 }
                 else
                 {
-                    mdscript.Execute(Environment.current_dir + cmd_args[1]);
+                    mdscript.Execute(MEnvironment.current_dir + cmd_args[1]);
                 }
             }
             else if (command.StartsWith("rmf "))

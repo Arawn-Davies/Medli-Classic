@@ -22,7 +22,7 @@ namespace Medli.Applications
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write(KernelVariables.pcname + ":");
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
-                Console.Write(Environment.current_dir);
+                Console.Write(MEnvironment.current_dir);
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("$");
                 var cinput = Console.ReadLine();
