@@ -1,16 +1,13 @@
 ﻿/*
 Changelog
-0.1.5 -  Added:             Began creating GUI project and class.
-                            Updated MIV to accept a filename as an argument for launching.
-                            Introduced arguments for the commandline system.
-                            Updated Cowsay - now features cow, tux and sodomized-sheep!
-                            Introduced ColorChanger from Apollo (or was it Chocolate? Who knows - both made by Arawn-Davies)
-                            Introducing the command database, easier management for a unified method of creating and launching Medli Applications.
+0.2.1 - Added:              Included the AIC Framework, will introduce more features for Medli
+                            Introduced a class for environment methods, e.g. PressAnyKey();
         
-        Fixes/Changes       Skipped a few versions, due to the vast amount of changes.
-                            Switched to semantic versioning.
+        Fixes/Changes       Began user management, requires lists which aren't fully plugged (if list contains(string))
+                            Will make proper use of home directories and start populating them.
+                            Unified OSVars and KernelVariables class to have one single class of variables, strings and methods
 
-        What to see next:   Beginning user management, make proper use of home directories and start populating them.
+        What to see next:   
   
  */
 using System;
@@ -23,21 +20,14 @@ using Medli.System;
 using Medli.Applications;
 using Cosmos.Debug;
 using Medli.SysInternal;
+using AIC_Framework;
 
 namespace Medli
 { 
     public class Kernel : Sys.Kernel
     {
         public static bool testing = false;
-        /// <summary>
-        /// Sets the filesystems current directory to its initial value
-        /// i.e. the root of the storage device, same initial value but keeps them separate
-        /// </summary>
-        public static string current_dir = @"0:\";
-        /// <summary>
-        /// Defines the root directory's value, same as current_dir's initial value but keeps them separate
-        /// </summary>
-        public static string root_dir = @"0:\";
+        
         /// <summary>
         /// Creates a new instance of the virtual filesystem called fs
         /// </summary>
@@ -51,27 +41,26 @@ namespace Medli
             VFSManager.RegisterVFS(fs);
             fs.Initialize();
             Console.Clear();
-            OSVars.Ver();
+            KernelVariables.Ver();
             //This is just to identify the users machine, much later in Medli will this have any usage however
             //i.e. not until networking is set up, FS Permissions are working etc...
             //If it wasn't able to find a machinename file, then it will try and create one.
             //This is why initializing the filesystem is vital before executing this code.
 
             /*
-            if (File.Exists(OSVars.reginfo))
+            if (File.Exists(KernelVariables.reginfo))
             {
-                string[] lines = File.ReadAllLines(OSVars.reginfo);
+                string[] lines = File.ReadAllLines(KernelVariables.reginfo);
                 foreach (string line in lines)
                 {
-                    OSVars.regname = line;
+                    KernelVariables.regname = line;
                 }
                 */
 
             PreInit();
-            
-
             Console.Clear();
-            OSVars.Ver();
+            KernelVariables.Ver();
+
         }
         /// <summary>
         /// Main kernel method that runs in a loop - Overrides the built-in Cosmos Run() method
@@ -88,19 +77,19 @@ namespace Medli
         {
             if (testing == true)
             {
-                OSVars.username = "test";
-                OSVars.pcname = "testing";
+                KernelVariables.username = "test";
+                KernelVariables.pcname = "testing";
             }
             else if (testing == false)
             {
-                if (File.Exists(OSVars.pcinfo))
+                if (File.Exists(KernelVariables.pcinfo))
                 {
                     try
                     {
-                        string[] pcnames = File.ReadAllLines(OSVars.pcinfo);
+                        string[] pcnames = File.ReadAllLines(KernelVariables.pcinfo);
                         foreach (string pcname in pcnames)
                         {
-                            OSVars.pcname = pcname;
+                            KernelVariables.pcname = pcname;
                         }
                     }
                     catch (Exception ex)
@@ -109,22 +98,23 @@ namespace Medli
                     }
 
                 }
-                if (File.Exists(OSVars.usrinfo))
+                if (File.Exists(KernelVariables.usrinfo))
                 {
+                    Bootscreen.Show("Medli OS", Bootscreen.Effect.Matrix, ConsoleColor.Red, 3);
+                    Console.Clear();
                     try
                     {
-                        string[] usernames = File.ReadAllLines(OSVars.usrinfo);
+                        string[] usernames = File.ReadAllLines(KernelVariables.usrinfo);
                         foreach (string username in usernames)
                         {
-                            OSVars.username = username;
-                            Console.WriteLine("Welcome back, " + OSVars.username + @"!");
-                            Console.WriteLine("Press any key to continue...");
-                            Console.ReadKey(true);
+                            KernelVariables.username = username;
+                            Console.WriteLine("Welcome back, " + KernelVariables.username + @"!");
+                            Environment.PressAnyKey();
                         }
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
+                        Console.WriteLine("Medli encountered an exception during the pre-initialization stage.\nError: " + ex.Message);
                     }
                 }
                 else

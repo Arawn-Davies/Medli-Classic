@@ -20,15 +20,15 @@ namespace Medli.Applications
         {
             try
             {
-                if (File.Exists(Kernel.current_dir + @"\" + file))
+                if (File.Exists(Environment.current_dir + @"\" + file))
                 {
-                    string[] lines = File.ReadAllLines(Kernel.current_dir + @"\" + file);
+                    string[] lines = File.ReadAllLines(Environment.current_dir + @"\" + file);
                     foreach (string line in lines)
                     {
                         Console.WriteLine(line);
                     }
                 }
-                else if (!File.Exists(Kernel.current_dir + @"\" + file))
+                else if (!File.Exists(Environment.current_dir + @"\" + file))
                 {
                     Shell.invalidCommand(file, 2);
                 }

@@ -49,7 +49,7 @@ namespace Medli.SysInternal
         }
         public static void printDate()
         {
-            Console.WriteLine("The current date is " + GetDay() + " " + SysClock.DayOfTheMonth().ToString() + ", of " + SysClock.Month().ToString() + ", " + SysClock.Year().ToString());
+            Console.WriteLine("The current date is " + GetDay() + SysClock.DayOfTheMonth().ToString() + ", of " + SysClock.Month().ToString() + ", " + SysClock.Year().ToString());
         }
         public static int Second()
         {

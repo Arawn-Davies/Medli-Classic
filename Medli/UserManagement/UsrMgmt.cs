@@ -7,9 +7,9 @@ using System.IO;
 using Medli.SysInternal;
 using Medli;
 
-namespace Medli.UserManagement
+namespace Medli
 {
-    class UsrMgmt
+    class UserManagement
     {
         public static void NewUser(string usrname)
         {
@@ -18,23 +18,24 @@ namespace Medli.UserManagement
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("     Done!");
             Console.ForegroundColor = ConsoleColor.White;
-            Installer.username = usrname;
+            KernelVariables.username = usrname;
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey(true);
         }
-        /*
+        
         public static void PermCheck()
         {
-            if (Terminal.current_user != user_directory)
+            if (KernelVariables.username != KernelVariables.homedir + KernelVariables.username)
             {
-                SystemRing.ErrorHandler.Warning(1, "oud");
+                Console.WriteLine("You are not logged in as this user! Access Denied.");
             }
             else
             {
 
             }
         }
-        public static void CheckUser()
+        
+        public static void UserLogon()
         {
             Console.Clear();
             Console.WriteLine("User Logon:");
@@ -42,15 +43,14 @@ namespace Medli.UserManagement
             Console.WriteLine("You can either log in as an existing user or create a new one.\n");
             Console.Write(">");
             string usrlogon = Console.ReadLine();
-            if (!Directory.Exists(Terminal.usrs_dir + usrlogon))
+            if (!Directory.Exists(KernelVariables.homedir + usrlogon))
             {
                 NewUser(usrlogon);
             }
-            else if (Directory.Exists(Terminal.usrs_dir + usrlogon))
+            else if (Directory.Exists(KernelVariables.homedir + usrlogon))
             {
-                Terminal.current_user = usrlogon;
+                KernelVariables.username = usrlogon;
             }
-        }
-        */        
+        }        
     }
 }

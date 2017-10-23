@@ -12,13 +12,13 @@ namespace Medli.Applications
         public static void prompt()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(OSVars.username);
+            Console.Write(KernelVariables.username);
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("@");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write(OSVars.pcname + ":");
+            Console.Write(KernelVariables.pcname + ":");
             Console.ForegroundColor = ConsoleColor.DarkBlue;
-            Console.Write(Kernel.current_dir);
+            Console.Write(Environment.current_dir);
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("$");
             cmd(Console.ReadLine());
@@ -31,16 +31,16 @@ namespace Medli.Applications
             {
                 try
                 {
-                    if (Kernel.current_dir == Kernel.root_dir)
+                    if (Environment.current_dir == Environment.root_dir)
                     {
                         Console.WriteLine("Cannot go up any more levels!");
                     }
                     else
                     {
-                        var pos = Kernel.current_dir.LastIndexOf('\\');
+                        var pos = Environment.current_dir.LastIndexOf('\\');
                         if (pos >= 0)
                         {
-                            Kernel.current_dir = Kernel.current_dir.Substring(0, pos) + @"\";
+                            Environment.current_dir = Environment.current_dir.Substring(0, pos) + @"\";
                         }
                         /*                        
                         var dir = FSfunc.fs.GetDirectory(Kernel.current_dir);
@@ -76,9 +76,9 @@ namespace Medli.Applications
             {
                 try
                 {
-                    //Directory.Delete(Kernel.root_dir + @"\" + OSVars.username);
-                    Fsfunc.delfile(OSVars.usrinfo);
-                    Fsfunc.delfile(OSVars.pcinfo);
+                    //Directory.Delete(Kernel.root_dir + @"\" + KernelVariables.username);
+                    Fsfunc.delfile(KernelVariables.usrinfo);
+                    Fsfunc.delfile(KernelVariables.pcinfo);
                 }
                 catch (Exception ex)
                 {
@@ -107,13 +107,13 @@ namespace Medli.Applications
             */
             else if (command.StartsWith("run "))
             {
-                if (!File.Exists(Kernel.current_dir + cmd_args[1]))
+                if (!File.Exists(Environment.current_dir + cmd_args[1]))
                 {
                     invalidCommand(command.Remove(0, 4), 2);
                 }
                 else
                 {
-                    mdscript.Execute(Kernel.current_dir + cmd_args[1]);
+                    mdscript.Execute(Environment.current_dir + cmd_args[1]);
                 }
             }
             else if (command.StartsWith("rmf "))
@@ -319,7 +319,7 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             }
             else if (command == "ver")
             {
-                OSVars.Ver();
+                KernelVariables.Ver();
             }
             else
             {

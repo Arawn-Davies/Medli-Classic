@@ -16,13 +16,13 @@ namespace Medli.Applications
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write(OSVars.username);
+                Console.Write(KernelVariables.username);
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("@");
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(OSVars.pcname + ":");
+                Console.Write(KernelVariables.pcname + ":");
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
-                Console.Write(Kernel.current_dir);
+                Console.Write(Environment.current_dir);
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("$");
                 var cinput = Console.ReadLine();

@@ -12,9 +12,10 @@ namespace Medli.SysInternal
     /// </summary>
     public class KernelVariables
     {
-        public static string root = Kernel.root_dir;
-        
+        public static string root = Environment.root_dir;
+
         #region systemdir
+        
         /// <summary>
         /// etc system directory
         /// </summary>
@@ -26,52 +27,45 @@ namespace Medli.SysInternal
         /// <summary>
         /// sbin system directory
         /// </summary>
-        public static string sbindir = root  + "sbin";
-        /// <summary>
-        /// proc system directory
-        /// </summary>
-        public static string procdir = root  + "proc";
+        public static string sbindir = root  + @"sbin";
         /// <summary>
         /// usr system directory - not to be confused with /home user directorie
         /// </summary>
-        public static string usrdir = root  + "usr";
+        public static string usrdir = root  + @"usr\";
         /// <summary>
         /// home system directory - holds user directories except from root
         /// </summary>
-        public static string homedir = root + "home";
+        public static string homedir = root + @"home\";
         /// <summary>
         /// root user directory
         /// </summary>
-        public static string rootdir = root + "root";
+        public static string rootdir = root + @"root\";
         /// <summary>
         /// tmp system directory - stores tempory files and folders
         /// </summary>
-        public static string tmpdir = root + "tmp";
+        public static string tmpdir = root + @"tmp\";
         /// <summary>
         /// var system directory
         /// </summary>
-        public static string vardir = root + "var";
+        public static string vardir = root + @"var\";
         /// <summary>
         /// sys system directory
         /// </summary>
-        public static string sysdir = root  + "sys";
+        public static string sysdir = root  + @"sy\s";
         /// <summary>
         /// lib system directory
         /// </summary>
-        public static string libdir = root + "lib";
+        public static string libdir = root + @"lib\";
         /// <summary>
         /// opt system directory - for application libraries
         /// </summary>
-        public static string optdir = root + "opt";
+        public static string optdir = root + @"opt\";
         /// <summary>
         /// dev system directory
         /// </summary>
-        public static string devdir = root + "dev";
+        public static string devdir = root + @"dev\";
         #endregion
-    }
-    public class OSVars
-    {
-        #region osvars
+        #region KernelVariables
         /// <summary>
         /// Defines where the PC information is stored as a file
         /// with it's location stored as a string
@@ -125,7 +119,7 @@ namespace Medli.SysInternal
         /// Welcome line one - 
         /// gets displayed on the welcome screen at first boot
         /// </summary>
-        public static string wlcm1 = "Medli - Version " + OSVars.ver_no;
+        public static string wlcm1 = "Medli - Version " + KernelVariables.ver_no;
         /// <summary>
         /// Welcome line two -
         /// gets displayed after wlcm1 on the welcome screen at first boot
@@ -152,9 +146,9 @@ namespace Medli.SysInternal
             #region regsetup
             /*
             //Insert total asshattery here >>>
-            if (File.Exists(OSVars.reginfo))
+            if (File.Exists(KernelVariables.reginfo))
             {
-                string[] lines = File.ReadAllLines(OSVars.reginfo);
+                string[] lines = File.ReadAllLines(KernelVariables.reginfo);
                 foreach (string line in lines)
                 {
                     //     \/ Gotta be careful here hehehe \/
@@ -170,7 +164,7 @@ namespace Medli.SysInternal
             #endregion
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(OSVars.logo);
+            Console.WriteLine(KernelVariables.logo);
             Console.WriteLine("Powered by the C# Open Source Managed Operating System");
             Console.ForegroundColor = ConsoleColor.White;
 

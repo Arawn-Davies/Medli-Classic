@@ -25,7 +25,7 @@ namespace Medli.SysInternal
         {
             try
             {
-                foreach (var dir in Directory.GetDirectories(Kernel.current_dir))
+                foreach (var dir in Directory.GetDirectories(Environment.current_dir))
                 {
                     try
                     {
@@ -38,7 +38,7 @@ namespace Medli.SysInternal
                         Console.WriteLine(ex.Message);
                     }
                 }
-                foreach (var dir in Directory.GetFiles(Kernel.current_dir))
+                foreach (var dir in Directory.GetFiles(Environment.current_dir))
                 {
                     try
                     {
@@ -69,9 +69,9 @@ namespace Medli.SysInternal
         {
             try
             {
-                if (!Directory.Exists(Kernel.current_dir + @"\" + dirname))
+                if (!Directory.Exists(Environment.current_dir + @"\" + dirname))
                 {
-                    Directory.CreateDirectory(Kernel.current_dir + @"\" + dirname);
+                    Directory.CreateDirectory(Environment.current_dir + @"\" + dirname);
                 }
             }
             catch (Exception ex)
@@ -109,17 +109,17 @@ namespace Medli.SysInternal
         public static void cd(string input)
         {
             string path = input; //cd <- 2 chars
-            if (Directory.Exists(Kernel.current_dir + path))
+            if (Directory.Exists(Environment.current_dir + path))
             {
-                Kernel.current_dir = Kernel.current_dir + path;
+                Environment.current_dir = Environment.current_dir + path;
             }
             else if (Directory.Exists(path))
             {
-                Kernel.current_dir = path;
+                Environment.current_dir = path;
             }
             else
             {
-                Console.WriteLine("Folder does not exist " + Kernel.current_dir + @"\" + path);
+                Console.WriteLine("Folder does not exist " + Environment.current_dir + @"\" + path);
             }
         }
 
@@ -129,7 +129,11 @@ namespace Medli.SysInternal
         /// <param name="dirname"></param>
         public static void deldir(string dirname)
         {
-            Directory.Delete(Kernel.current_dir + @"\" + dirname);
+            if (dirname == "sys" || dirname == "bin" || dirname == "usr" || dirname == "home" || dirname == "root")
+            {
+                Console.WriteLine("This directory is a protected directory file.\nNon-root access is not permitted!");
+            }
+            Directory.Delete(Environment.current_dir + @"\" + dirname);
         }
 
         /// <summary>
@@ -138,7 +142,31 @@ namespace Medli.SysInternal
         /// <param name="filename"></param>
         public static void delfile(string filename)
         {
-            File.Delete(Kernel.current_dir + @"\" + filename);
+            if (filename.EndsWith(".sys") && KernelVariables.username != "root")
+            {
+                Console.WriteLine("This file is a protected system file.\nNon-root access is not permitted!");
+            }
+            else if (filename.EndsWith(".sys") && KernelVariables.username == "root")
+            {
+                Console.WriteLine("Deleting .sys files and other system files can have an unexpected and potentially catastrophic result.");
+                Console.WriteLine("Are you sure you wish to continue? y/n");
+                //Might work without
+                //var key = Console.ReadKey();
+                var key_pressed = Console.ReadKey().Key;
+                if (key_pressed == ConsoleKey.Y)
+                {
+                    File.Delete(Environment.current_dir + @"\" + filename);
+                }
+                else
+                {
+                    Console.WriteLine("Aborted.");
+                }
+            }
+            else
+            {
+                File.Delete(Environment.current_dir + @"\" + filename);
+            }
+            
         }
     }
 }

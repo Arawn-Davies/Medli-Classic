@@ -24,5 +24,11 @@
     <ProjectReference Include="..\Medli.GUI\Medli.GUI.csproj" />
     <ProjectReference Include="..\Medli.System\Medli.System.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="AIC Framework">
+      <HintPath>..\..\AIC Framework\AIC Framework\bin\Debug\netstandard2.0\AIC Framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>

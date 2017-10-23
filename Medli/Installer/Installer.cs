@@ -112,11 +112,11 @@ namespace Medli
                 Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating user directory... "); Directory.CreateDirectory(KernelVariables.homedir + @"\" + username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.CursorTop = 8;
                 mDebugger = new Cosmos.Debug.Kernel.Debugger("User", "Kernel");
-                mDebugger.Send(OSVars.usrinfo);
+                mDebugger.Send(KernelVariables.usrinfo);
                 //Not needed when using File.Append - creates file anyway if file doesn't exist.
-                //Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating users file...     "); File.Create(OSVars.usrinfo).Dispose(); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
+                //Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating users file...     "); File.Create(KernelVariables.usrinfo).Dispose(); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.CursorTop = 9;
-                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Writing username to file..."); File.AppendAllText(OSVars.usrinfo, username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
+                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Writing username to file..."); File.AppendAllText(KernelVariables.usrinfo, username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             catch
@@ -131,18 +131,18 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
             Console.CursorLeft = 0;
             Console.CursorTop = 24;
             Console.ReadKey();
-            OSVars.username = username;
+            KernelVariables.username = username;
             Console.BackgroundColor = color;
             Console.Clear();
             InitScreen(color);
             InstallerWriteLine("Please enter a machine name:");
             Console.CursorTop = 24;
-            OSVars.pcname = Console.ReadLine();
+            KernelVariables.pcname = Console.ReadLine();
             InitScreen(color);
             try
             {
-                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating machineinfo file...  "); File.Create(OSVars.pcinfo).Dispose(); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
-                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Writing machineinfo to file..."); File.WriteAllText(OSVars.pcinfo, OSVars.pcname); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
+                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating machineinfo file...  "); File.Create(KernelVariables.pcinfo).Dispose(); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
+                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Writing machineinfo to file..."); File.WriteAllText(KernelVariables.pcinfo, KernelVariables.pcname); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
                 Console.ForegroundColor = ConsoleColor.White;
             }
             catch
@@ -153,9 +153,9 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
             }
 
             //Console.WriteLine("Excellent! Please enter who this copy of Medli is registered to:");
-            //OSVars.regname = Console.ReadLine();
+            //KernelVariables.regname = Console.ReadLine();
             //File.Create(Kernel.current_dir + "reginfo.sys");
-            //File.WriteAllText(Kernel.current_dir + "reginfo.sys", OSVars.regname);
+            //File.WriteAllText(Kernel.current_dir + "reginfo.sys", KernelVariables.regname);
 
             Console.Clear();
             InitScreen(defaultcol);
@@ -182,7 +182,7 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
                 Fsfunc.mksysdir(KernelVariables.etcdir); InstallerWriteLine(@"\etc     done!");
                 Fsfunc.mksysdir(KernelVariables.bindir); InstallerWriteLine(@"\bin     done!");
                 Fsfunc.mksysdir(KernelVariables.sbindir); InstallerWriteLine(@"\sbin   done!");
-                Fsfunc.mksysdir(KernelVariables.procdir); InstallerWriteLine(@"\proc   done!");
+                //Fsfunc.mksysdir(KernelVariables.procdir); InstallerWriteLine(@"\proc   done!");
                 Fsfunc.mksysdir(KernelVariables.usrdir); InstallerWriteLine(@"\usr     done!");
                 Fsfunc.mksysdir(KernelVariables.homedir); InstallerWriteLine(@"\home   done!");
                 Fsfunc.mksysdir(KernelVariables.rootdir); InstallerWriteLine(@"\root   done!");
