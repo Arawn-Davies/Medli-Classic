@@ -27,7 +27,7 @@
   
   <ItemGroup>
     <Reference Include="AIC Framework">
-      <HintPath>..\..\AIC Framework\AIC Framework\bin\Debug\netstandard2.0\AIC Framework.dll</HintPath>
+      <HintPath>..\AIC Framework.dll</HintPath>
     </Reference>
   </ItemGroup>
 
