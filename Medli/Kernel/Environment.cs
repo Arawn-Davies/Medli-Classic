@@ -31,20 +31,28 @@ namespace Medli
         public static string root_dir = @"0:\";
 
         public static string rootpass = "default";
-        public static string rootpass_rockpotato = AIC_Framework.Crypto.MD5.hash(rootpass);
+        public static string rootpass_md5 = AIC_Framework.Crypto.MD5.hash(rootpass);
         public static string rpf = KernelVariables.rootdir + "rootpass.sys";
 
         public static string usrpass = "default";
-        public static string usrpass_rockpotato = AIC_Framework.Crypto.MD5.hash(usrpass);
+        public static void UpdateRootPassHash()
+        {
+            rootpass_md5 = AIC_Framework.Crypto.MD5.hash(rootpass);
+        }
+        public static void UpdateUserPassHash()
+        {
+            usrpass_md5 = AIC_Framework.Crypto.MD5.hash(usrpass);
+        }
+        public static string usrpass_md5 = AIC_Framework.Crypto.MD5.hash(usrpass);
         public static string upf = KernelVariables.homedir + KernelVariables.username + @"\pass.sys";
 
         public static void WriteUserPass()
         {
-            File.WriteAllText(upf, usrpass_rockpotato);
+            File.WriteAllText(upf, usrpass_md5);
         }
         public static void WriteRootPass()
         {
-            File.WriteAllText(rpf, rootpass_rockpotato);
+            File.WriteAllText(rpf, rootpass_md5);
         }
         public static string current_usr_dir = KernelVariables.homedir + KernelVariables.username;
     }

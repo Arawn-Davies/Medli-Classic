@@ -57,6 +57,7 @@ namespace Medli
         }
         public static void UserLogin()
         {
+            
             Console.Clear();
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.Black;
@@ -76,9 +77,11 @@ namespace Medli
             {
                 Console.Write("Password >");
                 string pass = Console.ReadLine();
+                if (Kernel.isInitLogin == true)
+                    MEnvironment.usrpass = File.ReadAllLines(MEnvironment.upf)[0];
                 if (usrlogon == "root")
                 {
-                    if (AIC_Framework.Crypto.MD5.hash(pass) == MEnvironment.rootpass_rockpotato)
+                    if (AIC_Framework.Crypto.MD5.hash(pass) == MEnvironment.rootpass_md5)
                     {
                         KernelVariables.username = usrlogon;
                     }
@@ -91,7 +94,9 @@ namespace Medli
                 }
                 else
                 {
-                    if (AIC_Framework.Crypto.MD5.hash(pass) == MEnvironment.usrpass_rockpotato)
+                    if (Kernel.isInitLogin == true)
+                        MEnvironment.usrpass = File.ReadAllLines(MEnvironment.upf)[0];
+                    if (AIC_Framework.Crypto.MD5.hash(pass) == MEnvironment.usrpass_md5)
                     {
                         KernelVariables.username = usrlogon;
                     }

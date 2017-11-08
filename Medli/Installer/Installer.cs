@@ -84,6 +84,7 @@ namespace Medli
             Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine("Medli Installer");
             Console.BackgroundColor = color;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.CursorLeft = 7;
             Console.CursorTop = 7;
         }

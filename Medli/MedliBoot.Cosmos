@@ -5,7 +5,7 @@
   <PropertyGroup>
     <BinFormat>Bin</BinFormat>
     <Profile>VMware</Profile>
-    <DebugEnabled>True</DebugEnabled>
+    <DebugEnabled>False</DebugEnabled>
     <DebugMode>Source</DebugMode>
     <TraceMode>User</TraceMode>
     <EnableGDB>False</EnableGDB>
@@ -20,7 +20,7 @@
     <VMware_Description>Use VMware Player or Workstation to deploy and debug.</VMware_Description>
     <VMware_Deployment>ISO</VMware_Deployment>
     <VMware_Launch>VMware</VMware_Launch>
-    <VMware_DebugEnabled>True</VMware_DebugEnabled>
+    <VMware_DebugEnabled>False</VMware_DebugEnabled>
     <VMware_DebugMode>Source</VMware_DebugMode>
     <VMware_VisualStudioDebugPort>Pipe: Cosmos\Serial</VMware_VisualStudioDebugPort>
     <VMware_PxeInterface>192.168.56.1</VMware_PxeInterface>
@@ -82,7 +82,7 @@
     <Bochs_Description>Use Bochs emulator to deploy and debug.</Bochs_Description>
     <Bochs_Deployment>ISO</Bochs_Deployment>
     <Bochs_Launch>Bochs</Bochs_Launch>
-    <Bochs_DebugEnabled>True</Bochs_DebugEnabled>
+    <Bochs_DebugEnabled>False</Bochs_DebugEnabled>
     <Bochs_DebugMode>Source</Bochs_DebugMode>
     <Bochs_VisualStudioDebugPort>Pipe: Cosmos\Serial</Bochs_VisualStudioDebugPort>
     <Bochs_PxeInterface>192.168.56.1</Bochs_PxeInterface>
@@ -90,8 +90,8 @@
     <Bochs_OutputPath>bin\Debug\net462\</Bochs_OutputPath>
     <Bochs_EnableGDB>False</Bochs_EnableGDB>
     <Bochs_StartCosmosGDB>false</Bochs_StartCosmosGDB>
-    <Bochs_EnableBochsDebug>True</Bochs_EnableBochsDebug>
-    <Bochs_StartBochsDebugGui>True</Bochs_StartBochsDebugGui>
+    <Bochs_EnableBochsDebug>False</Bochs_EnableBochsDebug>
+    <Bochs_StartBochsDebugGui>False</Bochs_StartBochsDebugGui>
     <VMware_EnableBochsDebug>False</VMware_EnableBochsDebug>
     <VMware_StartBochsDebugGui>False</VMware_StartBochsDebugGui>
     <ISO_EnableBochsDebug>False</ISO_EnableBochsDebug>
@@ -106,6 +106,26 @@
     <Bochs_Name>MedliBoot</Bochs_Name>
     <IgnoreDebugStubAttribute>False</IgnoreDebugStubAttribute>
     <VMware_IgnoreDebugStubAttribute>False</VMware_IgnoreDebugStubAttribute>
+    <Bochs_IgnoreDebugStubAttribute>False</Bochs_IgnoreDebugStubAttribute>
+    <TraceAssemblies>Cosmos</TraceAssemblies>
+    <VMware_TraceAssemblies>Cosmos</VMware_TraceAssemblies>
+    <IntelEdison_StackCorruptionDetectionEnabled>True</IntelEdison_StackCorruptionDetectionEnabled>
+    <IntelEdison_Name>MedliBoot</IntelEdison_Name>
+    <IntelEdison_Description>Connect to Intel Edison device to deploy and debug.</IntelEdison_Description>
+    <IntelEdison_Deployment>BinaryImage</IntelEdison_Deployment>
+    <IntelEdison_Launch>IntelEdison</IntelEdison_Launch>
+    <IntelEdison_DebugEnabled>True</IntelEdison_DebugEnabled>
+    <IntelEdison_DebugMode>Source</IntelEdison_DebugMode>
+    <IntelEdison_IgnoreDebugStubAttribute>False</IntelEdison_IgnoreDebugStubAttribute>
+    <IntelEdison_VisualStudioDebugPort>Pipe: Cosmos\Serial</IntelEdison_VisualStudioDebugPort>
+    <IntelEdison_PxeInterface>192.168.56.1</IntelEdison_PxeInterface>
+    <IntelEdison_VMwareEdition>Player</IntelEdison_VMwareEdition>
+    <IntelEdison_OutputPath>bin\Debug\net462\</IntelEdison_OutputPath>
+    <IntelEdison_TraceAssemblies>Cosmos</IntelEdison_TraceAssemblies>
+    <IntelEdison_EnableGDB>False</IntelEdison_EnableGDB>
+    <IntelEdison_StartCosmosGDB>false</IntelEdison_StartCosmosGDB>
+    <IntelEdison_EnableBochsDebug>False</IntelEdison_EnableBochsDebug>
+    <IntelEdison_StartBochsDebugGui>False</IntelEdison_StartBochsDebugGui>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="*" />

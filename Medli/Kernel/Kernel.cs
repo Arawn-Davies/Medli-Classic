@@ -27,7 +27,8 @@ namespace Medli
 { 
     public class Kernel : Sys.Kernel
     {
-        public static bool testing = false;
+        public static bool isInitLogin = true;
+        public static bool testing;
         
         /// <summary>
         /// Creates a new instance of the virtual filesystem called fs
@@ -102,6 +103,7 @@ namespace Medli
                     Console.Clear();
                     try
                     {
+                        isInitLogin = true;
                         UserManagement.UserLogin();
                         Console.WriteLine("Welcome back, " + KernelVariables.username + @"!");
                         MEnvironment.PressAnyKey();
