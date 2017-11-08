@@ -105,6 +105,7 @@ namespace Medli
                     {
                         isInitLogin = true;
                         UserManagement.UserLogin();
+                        isInitLogin = false;
                         Console.WriteLine("Welcome back, " + KernelVariables.username + @"!");
                         MEnvironment.PressAnyKey();
                     }

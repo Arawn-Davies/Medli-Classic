@@ -67,23 +67,25 @@ namespace Medli
             Console.WriteLine("You can either log in as an existing user or create a new one.\n");
             Console.Write("Username >");
             string usrlogon = Console.ReadLine();
-            if (!Directory.Exists(KernelVariables.homedir + usrlogon))
+            if (!Directory.Exists(KernelVariables.homedir + usrlogon) || !Directory.Exists(KernelVariables.rootdir))
             {
                 Console.WriteLine("User does not exist!");
-                Console.WriteLine("");
+                Console.WriteLine("Press any key to retry...");
+                Console.ReadKey(true);
                 UserLogin();
             }
-            else if (Directory.Exists(KernelVariables.homedir + usrlogon))
+            else if (Directory.Exists(KernelVariables.homedir + usrlogon) || Directory.Exists(KernelVariables.rootdir))
             {
                 Console.Write("Password >");
                 string pass = Console.ReadLine();
                 if (Kernel.isInitLogin == true)
-                    MEnvironment.usrpass = File.ReadAllLines(MEnvironment.upf)[0];
+                    MEnvironment.rootpass = File.ReadAllLines(MEnvironment.rpf)[0];
                 if (usrlogon == "root")
                 {
                     if (AIC_Framework.Crypto.MD5.hash(pass) == MEnvironment.rootpass_md5)
                     {
                         KernelVariables.username = usrlogon;
+                        MEnvironment.PressAnyKey();
                     }
                     else
                     {
