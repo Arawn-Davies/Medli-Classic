@@ -37,7 +37,7 @@ namespace Medli
         public static string usrpass = "default";
         public static void UpdateRootPassHash()
         {
-            rootpass_md5 = AIC_Framework.Crypto.MD5.hash(rootpass);
+            rootpass_md5 = AIC_Framework.Crypto.MD5.hash(rpf);
         }
         public static void UpdateUserPassHash()
         {

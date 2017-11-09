@@ -78,10 +78,12 @@ namespace Medli
             {
                 Console.Write("Password >");
                 string pass = Console.ReadLine();
-                if (Kernel.isInitLogin == true)
-                    MEnvironment.rootpass = File.ReadAllLines(MEnvironment.rpf)[0];
                 if (usrlogon == "root")
                 {
+                    if (Kernel.isInitLogin == true)
+                    {
+                        MEnvironment.rootpass_md5 = File.ReadAllLines(MEnvironment.rpf)[0];
+                    }
                     if (AIC_Framework.Crypto.MD5.hash(pass) == MEnvironment.rootpass_md5)
                     {
                         KernelVariables.username = usrlogon;
@@ -97,7 +99,9 @@ namespace Medli
                 else
                 {
                     if (Kernel.isInitLogin == true)
-                        MEnvironment.usrpass = File.ReadAllLines(MEnvironment.upf)[0];
+                    {
+                        MEnvironment.usrpass_md5 = File.ReadAllLines(MEnvironment.upf)[0];
+                    }
                     if (AIC_Framework.Crypto.MD5.hash(pass) == MEnvironment.usrpass_md5)
                     {
                         KernelVariables.username = usrlogon;

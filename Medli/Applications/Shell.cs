@@ -72,6 +72,11 @@ namespace Medli.Applications
                     ColorChanger.ChangeFGC(cmd_args[2]);
                 }
             }
+            else if (command.StartsWith("launch "))
+            {
+                Console.Clear();
+                AppLauncher.PreExecute(cmd_args[1]);
+            }
             else if (command == "reinstall")
             {
                 try

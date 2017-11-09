@@ -45,11 +45,10 @@ namespace Medli
         /// <summary>
         /// The default colour for the console
         /// </summary>
-        public static ConsoleColor defaultcol = ConsoleColor.Black;
+        public static ConsoleColor defaultcol = ConsoleColor.Blue;
         /// <summary>
         /// Defines the ConsoleColor color so it can be changed as a variable
         /// </summary>
-        public static ConsoleColor color;
         /// <summary>
         /// Defines the username string but leaves it as NULL 
         /// until set by the user in the installer
@@ -63,12 +62,12 @@ namespace Medli
         /// </summary>
         public static void MInit()
         {
-            InitScreen(defaultcol);
+            InitScreen();
             InstallerWriteLine("Medli was unable to find any info regarding your PC.");
             InstallerWriteLine("The Medli installer will now run.");
             PAKTC();
             Console.Clear();
-            InitScreen(defaultcol);
+            InitScreen();
             Run();
         }
         /// <summary>
@@ -76,14 +75,14 @@ namespace Medli
         /// setting the default colour, the title and cursor position
         /// </summary>
         /// <param name="color"></param>
-        public static void InitScreen(ConsoleColor color)
+        public static void InitScreen()
         {
-            Console.BackgroundColor = color;
+            Console.BackgroundColor = defaultcol;
             Console.Clear();
             Console.BackgroundColor = ConsoleColor.Gray;
-            Console.ForegroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Medli Installer");
-            Console.BackgroundColor = color;
+            Console.BackgroundColor = defaultcol;
             Console.ForegroundColor = ConsoleColor.White;
             Console.CursorLeft = 7;
             Console.CursorTop = 7;
@@ -93,32 +92,27 @@ namespace Medli
         /// </summary>
         public static void Run()
         {
-            InitScreen(color);
+            InitScreen();
             InstallerWriteLine("Welcome to the Medli installer.");
             PAKTC();
-            InitScreen(color);
-            Console.CursorTop = 24;
-            Console.CursorLeft = 0;
-            color = ConsoleColor.Blue;
-            Console.BackgroundColor = ConsoleColor.Blue;
-            InitScreen(color);
+            InitScreen();
             Mksysdir();
-            InitScreen(color);
+            InitScreen();
             InstallerWriteLine("Enter a username and password for Medli:");
             InstallerWriteLine("Please enter a username and password to use as a normal user,\nand a password for the root user.");
             Console.CursorTop = 22;
             Console.CursorLeft = 0;
-            Console.Write("Username:");
+            Console.Write("Username:      ");
             username = Console.ReadLine();
-            Console.Write("Password:");
+            Console.Write("Password:      ");
             userpass = Console.ReadLine();
-            Console.Write("Root password:");
+            Console.Write("Root password: ");
             rootpass = Console.ReadLine();
-            InitScreen(color);
+            InitScreen();
             try
             {
                 Console.CursorTop = 7;
-                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating user directory... "); Directory.CreateDirectory(KernelVariables.homedir + username + @"\"); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
+                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating user directory... "); Directory.CreateDirectory(KernelVariables.homedir + username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.CursorTop = 8;
                 mDebugger = new Cosmos.Debug.Kernel.Debugger("User", "Kernel");
                 mDebugger.Send(KernelVariables.usrinfo);
@@ -144,13 +138,12 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
             Console.CursorTop = 24;
             Console.ReadKey();
             KernelVariables.username = username;
-            Console.BackgroundColor = color;
             Console.Clear();
-            InitScreen(color);
+            InitScreen();
             InstallerWriteLine("Please enter a machine name:");
             Console.CursorTop = 24;
             KernelVariables.pcname = Console.ReadLine();
-            InitScreen(color);
+            InitScreen();
             try
             {
                 Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating machineinfo file...  "); File.Create(KernelVariables.pcinfo).Dispose(); Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("\t\tDone!");
@@ -170,7 +163,7 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
             //File.WriteAllText(Kernel.current_dir + "reginfo.sys", KernelVariables.regname);
 
             Console.Clear();
-            InitScreen(defaultcol);
+            InitScreen();
             InstallerWriteLine("Awesome - you're all set!");
             InstallerWriteLine("Press any key to start Medli!");
             Console.CursorTop = 24;
@@ -187,7 +180,7 @@ This may be due to an unformatted hard drive or some other error", "FAT Error");
         /// </summary>
         public static void Mksysdir()
         {
-            InitScreen(color);
+            InitScreen();
             InstallerWriteLine("Creating system directories...");
             try
             {
