@@ -247,6 +247,17 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             {
                 cpedit.Run(cmd_args[1]);
             }
+            else if (command.StartsWith("devenv "))
+            {
+                if (command.EndsWith(".ma"))
+                {
+                    MIDE.Run(cmd_args[1]);
+                }
+                else
+                {
+                    Console.WriteLine("The IDE may only be used to create (.ma) Medli application files.");
+                }
+            }
             else if (command == "cview")
             {
                 cpview.Run();

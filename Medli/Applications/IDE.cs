@@ -11,8 +11,11 @@ namespace Medli.Applications
     /// Cocoapad Editor class
     /// contains methods needed for the editor to function
     /// </summary>
-    class cpedit
+    class MIDE
     {
+        public static string AppTitle;
+        public static string AppDesc;
+        public static string AppAuthor;
         /// <summary>
         /// The current text inside the editor is stored in a string
         /// It gets transferred to the 'savedtext' string when saved.
@@ -32,9 +35,22 @@ namespace Medli.Applications
             Console.Clear();
             Console.CursorTop = 0;
             Console.BackgroundColor = ConsoleColor.Gray;
-            Console.WriteLine("|Cocoapad Editor|");
+            Console.WriteLine("|Medli Application IDE|");
             Console.BackgroundColor = ConsoleColor.Blue;
             Console.CursorTop = 3;
+        }
+        private static void AppInfo()
+        {
+            DrawScreen();
+            Console.WriteLine("Enter the application title:");
+            AppTitle = "Title=" + Console.ReadLine();
+            Console.WriteLine("Enter the application description:");
+            AppDesc = "Desc=" + Console.ReadLine();
+            Console.WriteLine("Enter the application author:");
+            AppAuthor = "Author=" + Console.ReadLine();
+            DrawScreen();
+            Console.WriteLine(AppTitle + "\n" + AppDesc + "\n" + AppAuthor);
+            text = AppTitle + Environment.NewLine + AppDesc + Environment.NewLine + AppAuthor + Environment.NewLine;
         }
         /// <summary>
         /// Main method for the Cocoapad edit
@@ -44,15 +60,18 @@ namespace Medli.Applications
         public static void Run(string file)
         {
             DrawScreen();
-            Console.WriteLine("Cocoapad is a multi line text editor you can use to create many files.");
-            Console.WriteLine("Once you have finished you can type '$SAVE' to save your file or '$END'");
-            Console.WriteLine("to close without saving. '$RESET' can be used to start the file again from\nfresh, but use with caution!");
-            Console.WriteLine("\nFilenames can currently only have 3 letter extensions but this will be fixed in the future.");
+            Console.WriteLine("The Medli Application IDE is an Integrated Development Environment");
+            Console.WriteLine("users can use to develop applications for Medli.");
+            Console.WriteLine("The same basic commands are used as Cocoapad Editor, but with a few");
+            Console.WriteLine("extra commands to allow for the creation and running of apps.\n");
+            Console.WriteLine("IDE commands:");Console.WriteLine("\n$END - Exits the IDE without saving, $SAVE - Saves the current file");
+            Console.WriteLine("$RESET - Resets the IDE and file to start again from fresh\n$RUN - Saves the file and executes it in the Medli Application Launcher");
             MEnvironment.PressAnyKey("Press any key to begin!");
             DrawScreen();
             text = "";
+            AppInfo();
             string line;
-            var num = 1;
+            var num = 4;
             while (running == true)
             {
                 Console.Write(num + ": ");
@@ -67,8 +86,8 @@ namespace Medli.Applications
                         File.Create(MEnvironment.current_dir + file);
                         File.WriteAllText(MEnvironment.current_dir + file, text);
                         savedtext = text;
-                        running = false;
                         Console.BackgroundColor = ConsoleColor.Black;
+                        running = false;
                         Shell.prompt();
                     }
                     else if (notsaved == "n")
@@ -81,14 +100,25 @@ namespace Medli.Applications
                 if (line == "$RESET")
                 {
                     text = "";
-                    DrawScreen();
+                    AppInfo();
                 }
                 if (line == "$SAVE")
                 {
-                    File.Create(MEnvironment.current_dir + @"\" + file);
                     File.WriteAllText(MEnvironment.current_dir + @"\" + file, text);
                     savedtext = text;
                     running = false;
+                    Shell.prompt();
+                }
+                if (line == "$RUN")
+                {
+                    File.WriteAllText(MEnvironment.current_dir + @"\" + file, text);
+                    savedtext = text;
+                    running = false;
+                    Console.Clear();
+                    AppLauncher.PreExecute(file);
+                    MEnvironment.PressAnyKey();
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.Clear();
                     Shell.prompt();
                 }
                 text = text + (Environment.NewLine + line);

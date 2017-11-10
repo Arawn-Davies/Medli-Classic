@@ -17,7 +17,11 @@ namespace Medli
         /// </summary>
         public static void PressAnyKey()
         {
-            Console.WriteLine("Press any key to continue...");
+            PressAnyKey("Press any key to continue...");
+        }
+        public static void PressAnyKey(string text)
+        {
+            Console.WriteLine(text);
             Console.ReadKey(true);
         }
         /// <summary>
