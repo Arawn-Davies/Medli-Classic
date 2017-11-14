@@ -7,8 +7,6 @@ namespace Medli
 {
     class UserManagement
     {
-
-        public static List<string> Users = new List<string>();
         public static void NewUser(string usrname, string pass, UserType type)
         {
             Directory.CreateDirectory(KernelVariables.homedir + usrname + MEnvironment.dir_ext);
@@ -18,7 +16,6 @@ namespace Medli
             Console.Write("     Done!");
             Console.ForegroundColor = ConsoleColor.White;
             KernelVariables.username = usrname;
-            Users.Add(usrname);
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey(true);
             Account.Accounts.Add(new Account(usrname, pass, type = UserType.Normal));
@@ -114,6 +111,9 @@ namespace Medli
             public string Name { get; set; }
             public string Password { get; set; }
             public string userhomedir { get; set; }
+
+            public string usrpass_md5 { get; set; }
+            public string upf = "pass.sys";
             public UserType Type { get; set; }
 
             /// <summary>
@@ -123,11 +123,13 @@ namespace Medli
             /// <param name="pass">The user password.</param>
             public Account(string nm, string pass, UserType type = UserType.Normal)
             {
-                this.Name = nm;
-                this.Password = pass;
-                this.Type = type;
-                this.userhomedir = KernelVariables.homedir + Name + MEnvironment.dir_ext;
-                Directory.CreateDirectory(this.userhomedir);
+                Name = nm;
+                Password = pass;
+                Type = type;
+                userhomedir = KernelVariables.homedir + Name + MEnvironment.dir_ext;
+                usrpass_md5 = AIC_Framework.Crypto.MD5.hash(Password);
+                Directory.CreateDirectory(userhomedir);
+                File.WriteAllText(userhomedir + upf, usrpass_md5);
             }
         }
     }

@@ -33,25 +33,26 @@ namespace Medli
         /// </summary>
         public static string root_dir = @"0:\";
 
-        public static string rootpass;
-        public static string rootpass_md5; //= AIC_Framework.Crypto.MD5.hash(rootpass);
+
         public static string usrpass;
         public static string usrpass_md5; //= AIC_Framework.Crypto.MD5.hash(usrpass);
+        public static string upf = KernelVariables.homedir + KernelVariables.username + "pass.sys";
 
         public static string rpf = KernelVariables.rootdir + "pass.sys";
-        public static string upf = KernelVariables.homedir + KernelVariables.username + "pass.sys";
+        public static string rootpass;
+        public static string rootpass_md5; //= AIC_Framework.Crypto.MD5.hash(rootpass);
 
 
         public static void UpdateRootPassHash()
         {
             rootpass_md5 = AIC_Framework.Crypto.MD5.hash(rpf);
         }
+
         public static void UpdateUserPassHash()
         {
             usrpass_md5 = AIC_Framework.Crypto.MD5.hash(upf);
         }
 
-        
         public static void WriteUserPass()
         {
             usrpass_md5 = AIC_Framework.Crypto.MD5.hash(usrpass);
