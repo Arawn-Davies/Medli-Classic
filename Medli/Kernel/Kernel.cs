@@ -71,7 +71,7 @@ namespace Medli
         /// </summary>
         protected override void Run()
         {
-            Shell.prompt();
+            ShellInfo.AdminShell.Run(ShellInfo.AdminShell.no_shell);
         }
         /// <summary>
         /// Runs necessary checks to see if computer has an existing installation

@@ -9,20 +9,6 @@ namespace Medli.Applications
 {
     class Shell
     { 
-        public static void prompt()
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(KernelVariables.username);
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("@");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write(KernelVariables.pcname + ":");
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
-            Console.Write(MEnvironment.current_dir);
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("$");
-            cmd(Console.ReadLine());
-        }
         public static void cmd(string input)
         {
             var command = input.ToLower();
@@ -232,11 +218,25 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             {
                 Fsfunc.mkdir(cmd_args[1]);
             }
-            else if (command == "shell2")
+            if (cmd_args[1] == "1")
             {
-                Console.Clear();
-                Shell2.Run();   
-                Console.Clear();
+                ShellInfo.shell1.Run(ShellInfo.shell1.no_shell);
+            }
+            if (cmd_args[1] == "2")
+            {
+                ShellInfo.shell2.Run(ShellInfo.shell2.no_shell);
+            }
+            if (cmd_args[1] == "3")
+            {
+                ShellInfo.shell3.Run(ShellInfo.shell3.no_shell);
+            }
+            if (cmd_args[1] == "4")
+            {
+                ShellInfo.shell4.Run(ShellInfo.shell4.no_shell);
+            }
+            else if (command == "switch_to")
+            {
+                Console.WriteLine("Please enter a terminal to switch to.");
             }
             else if (command.StartsWith("alias "))
             {
