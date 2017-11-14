@@ -188,6 +188,10 @@ namespace Medli.Applications
                     ErrorHandler.Init(1, "Medli received the 'panic userlvl' command, Nothing's gonna happen.", false, "");
                 }
             }
+            else if (command == "getvol")
+            {
+                Fsfunc.getVols();
+            }
             else if (command == "startm")
             {
                 MUI.Init();
@@ -217,7 +221,7 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
                 }
                 else
                 {
-                    Cowsay.Cow(cmd_args[1]);
+                    Cowsay.Cow(command.Substring(7));
                 }
             }
             else if (command == "mkdir")
@@ -260,7 +264,7 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             }
             else if (command == "cview")
             {
-                cpview.Run();
+                Console.WriteLine("cview Usage: cview <file>");
             }
             else if (command.StartsWith("cview "))
             {
@@ -276,14 +280,14 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             }
             else if (input.StartsWith("lock"))
             {
-                Console.Clear();
                 bool locked = true;
                 while (locked == true)
                 {
-                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    Console.BackgroundColor = ConsoleColor.Blue;
+                    Console.Clear();
                     Console.WriteLine("Insert correct password: ");
                     string pwd = Console.ReadLine();
-                    if (pwd == cmd_args[1])
+                    if (pwd == MEnvironment.usrpass)
                     {
                         Console.WriteLine("Correct - unlocking system");
                         Console.Clear();

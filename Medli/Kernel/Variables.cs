@@ -70,13 +70,13 @@ namespace Medli.SysInternal
         /// Defines where the PC information is stored as a file
         /// with it's location stored as a string
         /// </summary>
-        public static string pcinfo = KernelVariables.sysdir + "pcinfo.sys";
+        public static string pcinfo = sysdir + "pcinfo.sys";
 
         /// <summary>
         /// Defines where the user information is stored as a file,
         /// with it's location stored as a string
         /// </summary>
-        public static string usrinfo = KernelVariables.sysdir + "usrinfo.sys";
+        public static string usrinfo = sysdir + "usrinfo.sys";
 
         /// <summary>
         /// Won't be defined until registration is set up

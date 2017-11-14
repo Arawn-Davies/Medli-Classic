@@ -27,21 +27,22 @@ namespace Medli
 { 
     public class Kernel : Sys.Kernel
     {
-        public static bool isInitLogin = true;
-        public static bool testing;
+        public static bool testing = false;
         
         /// <summary>
         /// Creates a new instance of the virtual filesystem called fs
         /// </summary>
-        Cosmos.System.FileSystem.CosmosVFS fs;
+        public static Sys.FileSystem.CosmosVFS fs = new Cosmos.System.FileSystem.CosmosVFS();
         /// <summary>
         /// Initial kernel method, overrides the built-in Cosmos BeforeRun method
         /// </summary>
         protected override void BeforeRun()
         {
-            fs = new Cosmos.System.FileSystem.CosmosVFS();
+            
             VFSManager.RegisterVFS(fs);
             fs.Initialize();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
             KernelVariables.Ver();
             //This is just to identify the users machine, much later in Medli will this have any usage however
@@ -73,7 +74,7 @@ namespace Medli
             Shell.prompt();
         }
         /// <summary>
-        /// Runs necessary checks to see if computer is running an existing installation
+        /// Runs necessary checks to see if computer has an existing installation
         /// </summary>
         public static void PreInit()
         {
@@ -99,13 +100,12 @@ namespace Medli
                 }
                 if (File.Exists(KernelVariables.usrinfo))
                 {
-                    Bootscreen.Show("Medli OS", Bootscreen.Effect.Matrix, ConsoleColor.Red, 3);
                     Console.Clear();
                     try
                     {
-                        isInitLogin = true;
                         UserManagement.UserLogin();
-                        isInitLogin = false;
+                        AConsole.Fill(ConsoleColor.Black);
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("Welcome back, " + KernelVariables.username + @"!");
                         MEnvironment.PressAnyKey();
                     }

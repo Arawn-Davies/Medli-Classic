@@ -67,52 +67,49 @@ namespace Medli
             Console.WriteLine("You can either log in as an existing user or create a new one.\n");
             Console.Write("Username >");
             string usrlogon = Console.ReadLine();
-            if (!Directory.Exists(KernelVariables.homedir + usrlogon) || !Directory.Exists(KernelVariables.rootdir))
+            if (usrlogon == "root")
+            {
+                Console.Write("Password >");
+                Console.ForegroundColor = ConsoleColor.Black;
+                string pass = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
+                MEnvironment.rootpass_md5 = File.ReadAllLines(MEnvironment.rpf)[0];
+                if (AIC_Framework.Crypto.MD5.hash(pass) == MEnvironment.rootpass_md5)
+                {
+                    KernelVariables.username = "root";
+                    MEnvironment.PressAnyKey();
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect root password. ");
+                    MEnvironment.PressAnyKey();
+                    UserLogin();
+                }
+            }
+            else if (Directory.Exists(KernelVariables.homedir + usrlogon))
+            {
+                Console.Write("Password >");
+                Console.ForegroundColor = ConsoleColor.Black;
+                string pass = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
+                MEnvironment.usrpass_md5 = File.ReadAllLines(MEnvironment.upf)[0];
+                if (AIC_Framework.Crypto.MD5.hash(pass) == MEnvironment.usrpass_md5)
+                {
+                    KernelVariables.username = usrlogon;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect password.");
+                    MEnvironment.PressAnyKey();
+                    UserLogin();
+                }
+            }
+            else
             {
                 Console.WriteLine("User does not exist!");
                 Console.WriteLine("Press any key to retry...");
                 Console.ReadKey(true);
                 UserLogin();
-            }
-            else if (Directory.Exists(KernelVariables.homedir + usrlogon) || Directory.Exists(KernelVariables.rootdir))
-            {
-                Console.Write("Password >");
-                string pass = Console.ReadLine();
-                if (usrlogon == "root")
-                {
-                    if (Kernel.isInitLogin == true)
-                    {
-                        MEnvironment.rootpass_md5 = File.ReadAllLines(MEnvironment.rpf)[0];
-                    }
-                    if (AIC_Framework.Crypto.MD5.hash(pass) == MEnvironment.rootpass_md5)
-                    {
-                        KernelVariables.username = usrlogon;
-                        MEnvironment.PressAnyKey();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Incorrect root password. ");
-                        MEnvironment.PressAnyKey();
-                        UserLogin();
-                    }
-                }
-                else
-                {
-                    if (Kernel.isInitLogin == true)
-                    {
-                        MEnvironment.usrpass_md5 = File.ReadAllLines(MEnvironment.upf)[0];
-                    }
-                    if (AIC_Framework.Crypto.MD5.hash(pass) == MEnvironment.usrpass_md5)
-                    {
-                        KernelVariables.username = usrlogon;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Incorrect password.");
-                        MEnvironment.PressAnyKey();
-                        UserLogin();
-                    }
-                }
             }
         }
     }        

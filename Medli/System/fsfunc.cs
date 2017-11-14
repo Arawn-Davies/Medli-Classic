@@ -11,10 +11,21 @@ namespace Medli.SysInternal
     class Fsfunc
     {
         /// <summary>
-        /// Declares the variable 'fs' to be the Virtual Filesystem
-        /// Required assignment due to this class containing the file system functions
+        /// Retrieves a list of volumes currently connected to the system and prints out each one
         /// </summary>
-        public static Sys.FileSystem.CosmosVFS fs;
+        public static void getVols()
+        {
+            var vols = Kernel.fs.GetVolumes();
+            int volno = 0;
+            foreach (var vol in vols)
+            {
+                volno += 1;
+                Console.WriteLine("Volume " + volno);
+                Console.WriteLine("Volume name: " + vol.mName + "Size: " + vol.mSize + "\n" + "Path: " + vol.mFullPath);
+                Console.WriteLine(" ");
+            }
+        }
+
 
         /// <summary>
         /// dir() lists the contents of the current working directory

@@ -126,6 +126,8 @@
     <IntelEdison_StartCosmosGDB>false</IntelEdison_StartCosmosGDB>
     <IntelEdison_EnableBochsDebug>False</IntelEdison_EnableBochsDebug>
     <IntelEdison_StartBochsDebugGui>False</IntelEdison_StartBochsDebugGui>
+    <ISO_IgnoreDebugStubAttribute>False</ISO_IgnoreDebugStubAttribute>
+    <ISO_TraceAssemblies>Cosmos</ISO_TraceAssemblies>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="*" />

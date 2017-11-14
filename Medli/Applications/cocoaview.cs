@@ -4,20 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using AIC_Framework;
 
 namespace Medli.Applications
 {
     class cpview
     {
-        public static void Run()
+        private static void DrawScreen()
         {
-            Console.WriteLine("--|:Cocoapad Viewer:|--\n");
-            Console.Write(cpedit.savedtext);
-            Console.CursorTop = Console.CursorTop + 1;
-            Console.CursorLeft = 0;
+            AConsole.Fill(ConsoleColor.Blue);
+            Console.CursorTop = 0;
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.WriteLine(" Cocoapad Viewer ");
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.CursorTop = 3;
         }
         public static void ViewFile(string file)
         {
+            DrawScreen();
             try
             {
                 if (File.Exists(MEnvironment.current_dir + @"\" + file))
@@ -37,6 +41,7 @@ namespace Medli.Applications
             {
                 Console.WriteLine(ex.Message);
             }
+            MEnvironment.PressAnyKey();
         }
     }
 }

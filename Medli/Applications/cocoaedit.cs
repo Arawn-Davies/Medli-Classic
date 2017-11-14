@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AIC_Framework;
 using System.IO;
 
 namespace Medli.Applications
@@ -15,24 +16,18 @@ namespace Medli.Applications
     {
         /// <summary>
         /// The current text inside the editor is stored in a string
-        /// It gets transferred to the 'savedtext' string when saved.
         /// </summary>
         public static string text = "";
-        /// <summary>
-        /// Saved text is stored in a string
-        /// </summary>
-        public static string savedtext = "";
         /// <summary>
         /// Boolean to see whether Cocoapad is running or not
         /// </summary>
         public static bool running = true;
         private static void DrawScreen()
         {
-            Console.BackgroundColor = ConsoleColor.Blue;
-            Console.Clear();
+            AConsole.Fill(ConsoleColor.Blue);
             Console.CursorTop = 0;
             Console.BackgroundColor = ConsoleColor.Gray;
-            Console.WriteLine("|Cocoapad Editor|");
+            Console.WriteLine(" Cocoapad Editor ");
             Console.BackgroundColor = ConsoleColor.Blue;
             Console.CursorTop = 3;
         }
@@ -66,16 +61,11 @@ namespace Medli.Applications
                     {
                         File.Create(MEnvironment.current_dir + file);
                         File.WriteAllText(MEnvironment.current_dir + file, text);
-                        savedtext = text;
                         running = false;
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        Shell.prompt();
                     }
                     else if (notsaved == "n")
                     {
-                        Console.BackgroundColor = ConsoleColor.Black;
                         running = false;
-                        Shell.prompt();
                     }
                 }
                 if (line == "$RESET")
@@ -87,9 +77,7 @@ namespace Medli.Applications
                 {
                     File.Create(MEnvironment.current_dir + @"\" + file);
                     File.WriteAllText(MEnvironment.current_dir + @"\" + file, text);
-                    savedtext = text;
                     running = false;
-                    Shell.prompt();
                 }
                 text = text + (Environment.NewLine + line);
                 if (Console.CursorTop == 24)
@@ -97,6 +85,7 @@ namespace Medli.Applications
                     DrawScreen();
                 }
             }
+            AConsole.Fill(ConsoleColor.Black);
         }
     }
 }

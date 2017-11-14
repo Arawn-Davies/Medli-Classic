@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AIC_Framework;
 using System.IO;
 
 namespace Medli.Applications
@@ -18,24 +19,18 @@ namespace Medli.Applications
         public static string AppAuthor;
         /// <summary>
         /// The current text inside the editor is stored in a string
-        /// It gets transferred to the 'savedtext' string when saved.
         /// </summary>
         public static string text = "";
         /// <summary>
-        /// Saved text is stored in a string
-        /// </summary>
-        public static string savedtext = "";
-        /// <summary>
-        /// Boolean to see whether Cocoapad is running or not
+        /// Boolean to see whether CocoaEdit is running or not
         /// </summary>
         public static bool running = true;
         private static void DrawScreen()
         {
-            Console.BackgroundColor = ConsoleColor.Blue;
-            Console.Clear();
+            AConsole.Fill(ConsoleColor.Blue);
             Console.CursorTop = 0;
             Console.BackgroundColor = ConsoleColor.Gray;
-            Console.WriteLine("|Medli Application IDE|");
+            Console.WriteLine(" Medli Application IDE ");
             Console.BackgroundColor = ConsoleColor.Blue;
             Console.CursorTop = 3;
         }
@@ -79,22 +74,20 @@ namespace Medli.Applications
                 line = Console.ReadLine();
                 if (line == "$END")
                 {
-                    Console.WriteLine("Would you like to save first?");
-                    string notsaved = Console.ReadLine();
-                    if (notsaved == "y")
+                    if (text != File.ReadAllText(file))
                     {
-                        File.Create(MEnvironment.current_dir + file);
-                        File.WriteAllText(MEnvironment.current_dir + file, text);
-                        savedtext = text;
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        running = false;
-                        Shell.prompt();
-                    }
-                    else if (notsaved == "n")
-                    {
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        running = false;
-                        Shell.prompt();
+                        Console.WriteLine("Would you like to save first?");
+                        string notsaved = Console.ReadLine();
+                        if (notsaved == "y")
+                        {
+                            File.Create(MEnvironment.current_dir + file);
+                            File.WriteAllText(MEnvironment.current_dir + file, text);
+                            running = false;
+                        }
+                        else if (notsaved == "n")
+                        {
+                            running = false;
+                        }
                     }
                 }
                 if (line == "$RESET")
@@ -104,29 +97,33 @@ namespace Medli.Applications
                 }
                 if (line == "$SAVE")
                 {
+                    if (!text.EndsWith("EOF"))
+                    {
+                        text += "EOF";
+                    }
                     File.WriteAllText(MEnvironment.current_dir + @"\" + file, text);
-                    savedtext = text;
                     running = false;
-                    Shell.prompt();
+                    MEnvironment.PressAnyKey();
                 }
                 if (line == "$RUN")
                 {
+                    if (!text.EndsWith("EOF"))
+                    {
+                        text += "EOF";
+                    }
                     File.WriteAllText(MEnvironment.current_dir + @"\" + file, text);
-                    savedtext = text;
                     running = false;
                     Console.Clear();
                     AppLauncher.PreExecute(file);
-                    MEnvironment.PressAnyKey();
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.Clear();
-                    Shell.prompt();
+                    MEnvironment.PressAnyKey(); 
                 }
-                text = text + (Environment.NewLine + line);
+                text += (Environment.NewLine + line);
                 if (Console.CursorTop == 24)
                 {
                     DrawScreen();
                 }
             }
+            AConsole.Fill(ConsoleColor.Black);
         }
     }
 }

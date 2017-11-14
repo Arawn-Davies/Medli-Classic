@@ -10,26 +10,44 @@ namespace Medli.Applications
         public static string AppTitle;
         public static string AppDesc;
         public static string AppAuthor;
-        public static void app_author(string file)
+        public static void AppInfo(string file)
+        {
+            app_title(file);
+            app_desc(file);
+            app_author(file);
+        }
+        private static void app_author(string file)
         {
             string[] readlines = File.ReadAllLines(file);
             Console.WriteLine("Application Author:");
             AppAuthor = readlines[2].Substring(7);
             Console.WriteLine(AppAuthor);
         }
-        public static void app_desc(string file)
+        private static void app_desc(string file)
         {
             string[] readlines = File.ReadAllLines(file);
             Console.WriteLine("Application Description:");
             AppDesc = readlines[1].Substring(5);
             Console.WriteLine(AppDesc);
         }
-        public static void app_title(string file)
+        private static void app_title(string file)
         {
             string[] readlines = File.ReadAllLines(file);
             Console.WriteLine("Application Title:");
             AppTitle = readlines[0].Substring(6);
             Console.WriteLine(AppTitle);
+        }
+        public static void PreExecute(string file)
+        {
+            if (file.EndsWith(".ma"))
+            {
+                Verify(file);
+            }
+            else
+            {
+                Console.WriteLine("Not a valid Medli Application!");
+                Console.WriteLine("Medli Application filenames end in .ma");
+            }
         }
         private static void Verify(string file)
         {
@@ -66,18 +84,7 @@ namespace Medli.Applications
                 Console.WriteLine("Title expected: No application title on line 1");
             }
         }
-        public static void PreExecute(string file)
-        {
-            if (file.EndsWith(".ma"))
-            {
-                Verify(file);
-            }
-            else
-            {
-                Console.WriteLine("Not a valid Medli Application!");
-                Console.WriteLine("Medli Application filenames end in .ma");
-            }
-        }
+        
         private static void ClearDraw()
         {
             Console.CursorTop = 1;

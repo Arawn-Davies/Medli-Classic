@@ -64,6 +64,8 @@ namespace Medli.Command_db.Commands
             Console.WriteLine("echo             Prints text to the console");
             Console.WriteLine("shell2           Launches the new shell (W.I.P)");
             Console.WriteLine("run <file>       Executes the script passed as <file>");
+            Console.WriteLine("devenv <file>    Launches the Medli Application IDE");
+            Console.WriteLine("launch <file>    Launches the application ending in .ma");
             Console.WriteLine("cowsay <msg>     Launches the cowsay application");
         }
         public static void FSHelp()
@@ -74,6 +76,7 @@ namespace Medli.Command_db.Commands
             Console.WriteLine("cd               Changes the current directory");
             Console.WriteLine("mv <src> <dest>  Moves the source file to the destination");
             Console.WriteLine("clear            Clears the screen");
+            Console.WriteLine("getVol           Displays a list of detected disk volumes");
         }
         public static void pages(int pageno)
         {

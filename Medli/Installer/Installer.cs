@@ -112,18 +112,28 @@ namespace Medli
             try
             {
                 Console.CursorTop = 7;
-                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating user directory... "); Directory.CreateDirectory(KernelVariables.homedir + username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
+                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating user directory... ");
+                Directory.CreateDirectory(KernelVariables.homedir + username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.CursorTop = 8;
-                mDebugger = new Cosmos.Debug.Kernel.Debugger("User", "Kernel");
-                mDebugger.Send(KernelVariables.usrinfo);
-                MEnvironment.usrpass = userpass;
-                MEnvironment.rootpass = rootpass;
-                Console.ForegroundColor = ConsoleColor.White; InstallerWriteLine("Writing root password..."); MEnvironment.WriteRootPass(); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
-                //Not needed when using File.Append - creates file anyway if file doesn't exist.
-                //Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating users file...     "); File.Create(KernelVariables.usrinfo).Dispose(); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
-                Console.CursorTop = 9;
-                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Writing username to file..."); File.AppendAllText(KernelVariables.usrinfo, username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
+                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Writing username to file...");
+                File.AppendAllText(KernelVariables.usrinfo, username + Environment.NewLine);
+                Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
                 Console.ForegroundColor = ConsoleColor.White;
+                Console.CursorTop = 9;
+
+                Console.ForegroundColor = ConsoleColor.White; InstallerWriteLine("Writing user password...");
+                MEnvironment.usrpass = userpass;
+                MEnvironment.WriteUserPass();
+                MEnvironment.UpdateUserPassHash();
+                Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
+
+                Console.ForegroundColor = ConsoleColor.White; InstallerWriteLine("Writing root password...");
+                MEnvironment.rootpass = rootpass;
+                MEnvironment.WriteRootPass();
+                MEnvironment.UpdateRootPassHash();
+                Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
+                Console.CursorTop = 10;
+
             }
             catch
             {
