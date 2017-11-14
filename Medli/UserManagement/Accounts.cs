@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using Medli.SysInternal;
-using Medli;
 
 namespace Medli
 {
     class UserManagement
     {
+
         public static List<string> Users = new List<string>();
-        public static void NewUser(string usrname, string pass)
+        public static void NewUser(string usrname, string pass, UserType type)
         {
-            KernelVariables.username = usrname;
-            MEnvironment.usrpass = pass;
             Directory.CreateDirectory(KernelVariables.homedir + usrname + MEnvironment.dir_ext);
             Console.WriteLine("Created new user directory: " + KernelVariables.homedir + usrname + MEnvironment.dir_ext);
             MEnvironment.WriteUserPass();
@@ -26,8 +21,9 @@ namespace Medli
             Users.Add(usrname);
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey(true);
+            Account.Accounts.Add(new Account(usrname, pass, type = UserType.Normal));
         }
-        
+
         public static void PermCheck()
         {
             if (KernelVariables.username != MEnvironment.current_usr_dir)
@@ -57,7 +53,7 @@ namespace Medli
         }
         public static void UserLogin()
         {
-            
+
             Console.Clear();
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.Black;
@@ -112,5 +108,33 @@ namespace Medli
                 UserLogin();
             }
         }
-    }        
+        class Account
+        {
+            public static List<Account> Accounts;
+            public string Name { get; set; }
+            public string Password { get; set; }
+            public string userhomedir { get; set; }
+            public UserType Type { get; set; }
+
+            /// <summary>
+            /// Create an account.
+            /// </summary>
+            /// <param name="nm">The user name.</param>
+            /// <param name="pass">The user password.</param>
+            public Account(string nm, string pass, UserType type = UserType.Normal)
+            {
+                this.Name = nm;
+                this.Password = pass;
+                this.Type = type;
+                this.userhomedir = KernelVariables.homedir + Name + MEnvironment.dir_ext;
+                Directory.CreateDirectory(this.userhomedir);
+            }
+        }
+    }
+    public enum UserType
+    {
+        Guest = 0,
+        Normal = 1,
+        Root = 2,
+    }
 }
