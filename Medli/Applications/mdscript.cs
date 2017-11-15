@@ -11,7 +11,7 @@ namespace Medli.Applications
     /// Class for Medliscript (mdscript),
     /// a simple scripting language for the Medli command line shell
     /// </summary>
-    class mdscript
+    class Mdscript
     {
         /// <summary>
         /// Executes a script passed to the application,
@@ -28,7 +28,7 @@ namespace Medli.Applications
                     string[] lines = File.ReadAllLines(scriptname);
                     foreach (string line in lines)
                     {
-                        Shell.cmd(line);
+                        Shell.Cmd(line);
                         //Console.WriteLine("");
                     }
                 }

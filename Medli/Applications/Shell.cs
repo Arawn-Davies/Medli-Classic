@@ -104,7 +104,7 @@ namespace Medli.Applications
                 }
                 else
                 {
-                    mdscript.Execute(MEnvironment.current_dir + cmd_args[1]);
+                    Mdscript.Execute(MEnvironment.current_dir + cmd_args[1]);
                 }
             }
             else if (command.StartsWith("rmf "))

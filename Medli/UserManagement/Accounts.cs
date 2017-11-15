@@ -83,7 +83,7 @@ namespace Medli
                 string pass = Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.White;
                 MEnvironment.rootpass_md5 = File.ReadAllLines(MEnvironment.rpf)[0];
-                if (AIC_Framework.Crypto.MD5.hash(pass) == MEnvironment.rootpass_md5)
+                if (pass == MEnvironment.rootpass)
                 {
                     KernelVariables.username = "root";
                     MEnvironment.PressAnyKey();
@@ -102,7 +102,7 @@ namespace Medli
                 string pass = Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.White;
                 MEnvironment.usrpass_md5 = File.ReadAllLines(MEnvironment.upf)[0];
-                if (AIC_Framework.Crypto.MD5.hash(pass) == MEnvironment.usrpass_md5)
+                if (pass == MEnvironment.usrpass)
                 {
                     KernelVariables.username = usrlogon;
                 }
@@ -122,8 +122,7 @@ namespace Medli
             }
         }
 
-
-        class Account
+        public class Account
         {
             public static List<Account> Accounts;
             public string Name { get; set; }

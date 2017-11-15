@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Medli.System;
+using Medli;
 
 namespace Medli.Applications
 {
@@ -32,7 +33,7 @@ namespace Medli.Applications
             Console.Write(MEnvironment.current_dir);
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("$");
-            Shell.cmd(Console.ReadLine());
+            Shell.Cmd(Console.ReadLine());
         }
         public int no_shell;
         public MultiShell(int number_shell)
