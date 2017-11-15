@@ -7,18 +7,34 @@ namespace Medli
 {
     class UserManagement
     {
-        public static void NewUser(string usrname, string pass, UserType type)
+        public static void NewUser()
         {
-            Directory.CreateDirectory(KernelVariables.homedir + usrname + MEnvironment.dir_ext);
-            Console.WriteLine("Created new user directory: " + KernelVariables.homedir + usrname + MEnvironment.dir_ext);
-            MEnvironment.WriteUserPass();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("     Done!");
-            Console.ForegroundColor = ConsoleColor.White;
-            KernelVariables.username = usrname;
-            Console.WriteLine("\nPress any key to continue...");
-            Console.ReadKey(true);
-            Account.Accounts.Add(new Account(usrname, pass, type = UserType.Normal));
+            Console.WriteLine("Enter new account name:");
+            string usrname = Console.ReadLine();
+            Console.WriteLine("Enter the new account password:");
+            string pass = Console.ReadLine();
+            Console.WriteLine("Enter the new account type (guest, normal, root) :");
+            string user_type = Console.ReadLine();
+            CreateUser(usrname, pass, user_type);
+        }
+        public static void CreateUser(string usrname, string pass, string user_type)
+        {
+            if (user_type.ToLower() == "guest")
+            {
+                Account.Accounts.Add(new Account(usrname, pass, UserType.Guest));
+            }
+            else if (user_type.ToLower() == "normal")
+            {
+                Account.Accounts.Add(new Account(usrname, pass, UserType.Normal));
+            }
+            else if (user_type.ToLower() == "root")
+            {
+                Account.Accounts.Add(new Account(usrname, pass, UserType.Root));
+            }
+            else
+            {
+                Console.WriteLine("Invalid user type:" + user_type);
+            }
         }
 
         public static void PermCheck()
@@ -32,18 +48,18 @@ namespace Medli
 
             }
         }
-        public static void resetConsoleColor()
+        public static void ResetConsoleColor()
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
         }
-        public static void changepass()
+        public static void Changepass()
         {
             Console.Clear();
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.WriteLine("Change password:");
             Console.CursorTop = 5;
-            resetConsoleColor();
+            ResetConsoleColor();
             Console.WriteLine("Enter the new user password");
             string usrpass = Console.ReadLine();
             File.WriteAllText(KernelVariables.homedir + KernelVariables.username + @"\pass.sys", AIC_Framework.Crypto.MD5.hash(usrpass));
@@ -55,7 +71,7 @@ namespace Medli
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine("User Login:");
-            resetConsoleColor();
+            ResetConsoleColor();
             Console.CursorTop = 5;
             Console.WriteLine("You can either log in as an existing user or create a new one.\n");
             Console.Write("Username >");
@@ -105,14 +121,16 @@ namespace Medli
                 UserLogin();
             }
         }
+
+
         class Account
         {
             public static List<Account> Accounts;
             public string Name { get; set; }
             public string Password { get; set; }
-            public string userhomedir { get; set; }
+            public string Userhomedir { get; set; }
 
-            public string usrpass_md5 { get; set; }
+            public string Usrpass_md5 { get; set; }
             public string upf = "pass.sys";
             public UserType Type { get; set; }
 
@@ -126,10 +144,12 @@ namespace Medli
                 Name = nm;
                 Password = pass;
                 Type = type;
-                userhomedir = KernelVariables.homedir + Name + MEnvironment.dir_ext;
-                usrpass_md5 = AIC_Framework.Crypto.MD5.hash(Password);
-                Directory.CreateDirectory(userhomedir);
-                File.WriteAllText(userhomedir + upf, usrpass_md5);
+                Userhomedir = KernelVariables.homedir + Name + MEnvironment.dir_ext;
+                Usrpass_md5 = AIC_Framework.Crypto.MD5.hash(Password);
+                Directory.CreateDirectory(Userhomedir);
+                //Console.WriteLine("Created new user directory: " + userhomedir);
+                File.WriteAllText(Userhomedir + upf, Usrpass_md5);
+                File.AppendAllText(KernelVariables.usrinfo, Name + Environment.NewLine);
             }
         }
     }

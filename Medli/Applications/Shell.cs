@@ -9,7 +9,7 @@ namespace Medli.Applications
 {
     class Shell
     { 
-        public static void cmd(string input)
+        public static void Cmd(string input)
         {
             var command = input.ToLower();
             string[] cmd_args = input.Split(' ');
@@ -100,7 +100,7 @@ namespace Medli.Applications
             {
                 if (!File.Exists(MEnvironment.current_dir + cmd_args[1]))
                 {
-                    invalidCommand(command.Remove(0, 4), 2);
+                    InvalidCommand(command.Remove(0, 4), 2);
                 }
                 else
                 {
@@ -116,7 +116,7 @@ namespace Medli.Applications
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    invalidCommand(cmd_args[1], 2);
+                    InvalidCommand(cmd_args[1], 2);
                 }
             }
             else if (command.StartsWith("rmd "))
@@ -128,7 +128,7 @@ namespace Medli.Applications
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    invalidCommand(cmd_args[1], 2);
+                    InvalidCommand(cmd_args[1], 2);
                 }
             }
             else if (command == "getram")
@@ -249,7 +249,7 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             }
             else if (command.StartsWith("cedit "))
             {
-                cpedit.Run(cmd_args[1]);
+                Cpedit.Run(cmd_args[1]);
             }
             else if (command.StartsWith("devenv "))
             {
@@ -268,7 +268,7 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             }
             else if (command.StartsWith("cview "))
             {
-                cpview.ViewFile(cmd_args[1]);
+                Cpview.ViewFile(cmd_args[1]);
             }
             else if (command == "")
             {
@@ -316,29 +316,29 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             }
             else if (command == "help")
             {
-                GetHelp.full();
+                GetHelp.Full();
             }
             else if (command.StartsWith("help "))
             {
                 if (cmd_args[1] == "1" || cmd_args[1] == "app")
                 {
-                    GetHelp.pages(1);
+                    GetHelp.Pages(1);
                 }
                 else if (cmd_args[1] == "2" || cmd_args[1] == "fs")
                 {
-                    GetHelp.pages(2);
+                    GetHelp.Pages(2);
                 }
                 else if (cmd_args[1] == "3" || cmd_args[1] == "sys")
                 {
-                    GetHelp.pages(3);
+                    GetHelp.Pages(3);
                 }
                 else if (cmd_args[1] == "specific")
                 {
-                    GetHelp.specific(cmd_args[2]);
+                    GetHelp.Specific(cmd_args[2]);
                 }
                 else
                 {
-                    GetHelp.full();
+                    GetHelp.Full();
                 }
             }
             else if (command == "ver")
@@ -347,10 +347,10 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             }
             else
             {
-                invalidCommand(command, 1);
+                InvalidCommand(command, 1);
             }
         }
-        public static void invalidCommand(string args, int errorlvl)
+        public static void InvalidCommand(string args, int errorlvl)
         {
             if (errorlvl == 1)
             {

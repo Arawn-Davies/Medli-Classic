@@ -28,25 +28,25 @@ namespace Medli.Command_db.Commands
         {
             if (args == "1" || args == "apps")
             {
-                pages(1);
+                Pages(1);
             }
             else if (args == "2" || args == "fs")
             {
-                pages(2);
+                Pages(2);
             }
             else if (args == "3" || args == "sys")
             {
-                pages(3);
+                Pages(3);
             }
             else if (args == "full")
             {
-                full();
+                Full();
             }
             else if (args == "specific")
             {
                 Console.WriteLine("Enter specific command:");
                 string topic = Console.ReadLine();
-                GetHelp.specific(topic);
+                GetHelp.Specific(topic);
             }
         }
         public static void SysHelp()
@@ -78,7 +78,7 @@ namespace Medli.Command_db.Commands
             Console.WriteLine("clear            Clears the screen");
             Console.WriteLine("getVol           Displays a list of detected disk volumes");
         }
-        public static void pages(int pageno)
+        public static void Pages(int pageno)
         {
             if (pageno == 1)
             {
@@ -107,23 +107,23 @@ namespace Medli.Command_db.Commands
             else
             {
                 Console.Clear();
-                full();
+                Full();
             }
         }
         /// <summary>
         /// prints out all help pages after each other
         /// </summary>
-        public static void full()
+        public static void Full()
         {
-            pages(1);
-            pages(2);
-            pages(3);
+            Pages(1);
+            Pages(2);
+            Pages(3);
         }
         /// <summary>
         /// Gets the detailed help for a specific command given to the method
         /// </summary>
         /// <param name="topic"></param>
-        public static void specific(string topic)
+        public static void Specific(string topic)
         {
             if (topic == "mkdir")
             {
@@ -184,12 +184,12 @@ namespace Medli.Command_db.Commands
             }
             else if (topic == "")
             {
-                full();
+                Full();
             }
             else
             {
                 Console.WriteLine(topic + ": Not a valid command.");
-                full();
+                Full();
             }
         }
     }

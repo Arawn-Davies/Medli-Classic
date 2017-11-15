@@ -98,41 +98,22 @@ namespace Medli
             InitScreen();
             Mksysdir();
             InitScreen();
-            InstallerWriteLine("Enter a username and password for Medli:");
-            InstallerWriteLine("Please enter a username and password to use as a normal user,\nand a password for the root user.");
-            Console.CursorTop = 22;
-            Console.CursorLeft = 0;
-            Console.Write("Username:      ");
-            username = Console.ReadLine();
-            Console.Write("Password:      ");
-            userpass = Console.ReadLine();
-            Console.Write("Root password: ");
-            rootpass = Console.ReadLine();
-            InitScreen();
             try
             {
-                Console.CursorTop = 7;
-                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Creating user directory... ");
-                Directory.CreateDirectory(KernelVariables.homedir + username); Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
-                Console.CursorTop = 8;
-                Console.ForegroundColor = ConsoleColor.White; InstallerWrite("Writing username to file...");
-                File.AppendAllText(KernelVariables.usrinfo, username + Environment.NewLine);
-                Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.CursorTop = 9;
-
-                Console.ForegroundColor = ConsoleColor.White; InstallerWriteLine("Writing user password...");
-                MEnvironment.usrpass = userpass;
-                MEnvironment.WriteUserPass();
-                MEnvironment.UpdateUserPassHash();
-                Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
-
+                InstallerWrite("Enter new account name:");
+                string usrname = Console.ReadLine();
+                InstallerWrite("Enter the new account password:");
+                string pass = Console.ReadLine();
+                InstallerWrite("Enter the new account type (guest, normal, root) :");
+                string user_type = Console.ReadLine();
+                InstallerWrite("Enter the root password: ");
+                rootpass = Console.ReadLine();
+                UserManagement.CreateUser(usrname, pass, user_type);
                 Console.ForegroundColor = ConsoleColor.White; InstallerWriteLine("Writing root password...");
                 MEnvironment.rootpass = rootpass;
                 MEnvironment.WriteRootPass();
                 MEnvironment.UpdateRootPassHash();
                 Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
-                Console.CursorTop = 10;
 
             }
             catch

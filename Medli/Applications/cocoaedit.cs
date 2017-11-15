@@ -12,7 +12,7 @@ namespace Medli.Applications
     /// Cocoapad Editor class
     /// contains methods needed for the editor to function
     /// </summary>
-    class cpedit
+    class Cpedit
     {
         /// <summary>
         /// The current text inside the editor is stored in a string

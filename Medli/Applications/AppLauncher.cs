@@ -12,25 +12,25 @@ namespace Medli.Applications
         public static string AppAuthor;
         public static void AppInfo(string file)
         {
-            app_title(file);
-            app_desc(file);
-            app_author(file);
+            App_title(file);
+            App_desc(file);
+            App_author(file);
         }
-        private static void app_author(string file)
+        private static void App_author(string file)
         {
             string[] readlines = File.ReadAllLines(file);
             Console.WriteLine("Application Author:");
             AppAuthor = readlines[2].Substring(7);
             Console.WriteLine(AppAuthor);
         }
-        private static void app_desc(string file)
+        private static void App_desc(string file)
         {
             string[] readlines = File.ReadAllLines(file);
             Console.WriteLine("Application Description:");
             AppDesc = readlines[1].Substring(5);
             Console.WriteLine(AppDesc);
         }
-        private static void app_title(string file)
+        private static void App_title(string file)
         {
             string[] readlines = File.ReadAllLines(file);
             Console.WriteLine("Application Title:");
@@ -129,7 +129,7 @@ namespace Medli.Applications
                     {
                         ClearDraw();
                     }
-                    Shell.cmd(line);
+                    Shell.Cmd(line);
                 }
             }
         }

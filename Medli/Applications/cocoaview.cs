@@ -8,7 +8,7 @@ using AIC_Framework;
 
 namespace Medli.Applications
 {
-    class cpview
+    class Cpview
     {
         private static void DrawScreen()
         {
@@ -34,7 +34,7 @@ namespace Medli.Applications
                 }
                 else if (!File.Exists(MEnvironment.current_dir + @"\" + file))
                 {
-                    Shell.invalidCommand(file, 2);
+                    Shell.InvalidCommand(file, 2);
                 }
             }
             catch (Exception ex)
