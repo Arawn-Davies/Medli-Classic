@@ -79,18 +79,24 @@ namespace Medli
         /// <param name="color"></param>
         public static void InitScreen()
         {
+            
             Console.BackgroundColor = defaultcol;
             Console.Clear();
+            installerProgress.Draw();
+            installerProgress.Increment();
+            installerProgress.Increment();
+            installerProgress.Increment();
+            installerProgress.Increment();
+            installerProgress.Increment();
+            installerProgress.Increment();
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Medli Installer");
+            Console.WriteLine("Medli Installer ");
             Console.BackgroundColor = defaultcol;
             Console.ForegroundColor = ConsoleColor.White;
+
             Console.CursorLeft = 7;
             Console.CursorTop = 7;
-            installerProgress.Increment();
-            installerProgress.Draw();
-            installerProgress.
         }
         /// <summary>
         /// Main installer method, choose colour of installer, choose desired username and reports if a FAT error occurs
@@ -105,21 +111,22 @@ namespace Medli
             InitScreen();
             try
             {
-                InstallerWrite("Enter new account name:");
+                InstallerWrite("Enter new account name: ");
                 string usrname = Console.ReadLine();
-                InstallerWrite("Enter the new account password:");
+                InstallerWrite("Enter the new account password: ");
                 string pass = Console.ReadLine();
-                InstallerWrite("Enter the new account type (guest, normal, root) :");
+                InstallerWrite("Enter the new account type (guest, normal, root): ");
                 string user_type = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White; InstallerWriteLine("Creating user account...");
+                UserManagement.CreateUser(usrname, pass, user_type);
+                Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!"); Console.ForegroundColor = ConsoleColor.White;
                 InstallerWrite("Enter the root password: ");
                 rootpass = Console.ReadLine();
-                UserManagement.CreateUser(usrname, pass, user_type);
                 Console.ForegroundColor = ConsoleColor.White; InstallerWriteLine("Writing root password...");
                 MEnvironment.rootpass = rootpass;
                 MEnvironment.WriteRootPass();
                 MEnvironment.UpdateRootPassHash();
-                Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!");
-
+                Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!"); Console.ForegroundColor = ConsoleColor.White;
             }
             catch
             {
