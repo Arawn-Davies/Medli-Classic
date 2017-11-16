@@ -58,7 +58,6 @@ namespace Medli
                     KernelVariables.regname = line;
                 }
                 */
-
             PreInit();
             Console.Clear();
             KernelVariables.Ver();

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Cosmos.Debug;
 using Medli.SysInternal;
+using AIC_Framework;
 
 namespace Medli
 {
@@ -14,6 +15,7 @@ namespace Medli
     /// </summary>
     class Installer
     {
+        public static AConsole.ProgressBar installerProgress = new AConsole.ProgressBar(0, true);
         public static Cosmos.Debug.Kernel.Debugger mDebugger;
         /// <summary>
         /// Custom Write method for the installer console, sets the cursor position
@@ -86,6 +88,9 @@ namespace Medli
             Console.ForegroundColor = ConsoleColor.White;
             Console.CursorLeft = 7;
             Console.CursorTop = 7;
+            installerProgress.Increment();
+            installerProgress.Draw();
+            installerProgress.
         }
         /// <summary>
         /// Main installer method, choose colour of installer, choose desired username and reports if a FAT error occurs
