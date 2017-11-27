@@ -21,3 +21,4 @@ Use the command 'help' to view a list of commands and use 'help <command>' for m
 ### Work In Progress:
 
 Medli Graphical User Interface (MUI)
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
