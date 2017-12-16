@@ -47,16 +47,14 @@ namespace Medli.Applications
             {
                 Fsfunc.cd(cmd_args[1]);
             }
-            else if (command.StartsWith("ccolor "))
+            else if (command == "color")
             {
-                if (cmd_args[1] == "bgc")
-                {
-                    ColorChanger.ChangeBGC(cmd_args[2]);
-                }
-                else if (cmd_args[1] == "fgc")
-                {
-                    ColorChanger.ChangeFGC(cmd_args[2]);
-                }
+                Console.WriteLine("Usage: color <background> <foreground>");
+            }
+            else if (command.StartsWith("color "))
+            {
+                ColorChanger.ChangeBGC(cmd_args[2]);
+                ColorChanger.ChangeFGC(cmd_args[2]);
             }
             else if (command.StartsWith("launch "))
             {
@@ -113,19 +111,11 @@ namespace Medli.Applications
                     Mdscript.Execute(MEnvironment.current_dir + cmd_args[1]);
                 }
             }
-            else if (command.StartsWith("rmf "))
+            else if (command == "rm")
             {
-                try
-                {
-                    Fsfunc.delfile(cmd_args[1]);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    InvalidCommand(cmd_args[1], 2);
-                }
+                Console.WriteLine("Usage: rm <file or directory>");
             }
-            else if (command.StartsWith("rmd "))
+            else if (command.StartsWith("rm "))
             {
                 try
                 {
@@ -133,15 +123,22 @@ namespace Medli.Applications
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    InvalidCommand(cmd_args[1], 2);
+                    try
+                    {
+                        Fsfunc.delfile(cmd_args[1]);
+                    }
+                    catch
+                    {
+                        Console.WriteLine(ex.Message);
+                        InvalidCommand(cmd_args[1], 2);
+                    }
                 }
             }
             else if (command == "getram")
             {
                 Sysfunc.ram();
             }
-            else if (command.StartsWith("dir"))
+            else if (command == "dir")
             {
                 Fsfunc.dir();
             }
@@ -224,21 +221,32 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             {
                 Fsfunc.mkdir(cmd_args[1]);
             }
-            if (cmd_args[1] == "1")
+            else if (command == "switch_to")
             {
-                ShellInfo.shell1.Run(1);
+                Console.WriteLine("Please enter a terminal to switch to by using switch_to 'number 1-4'.");
             }
-            if (cmd_args[1] == "2")
+            else if (command.StartsWith("switch_to "))
             {
-                ShellInfo.shell1.Run(2);
-            }
-            if (cmd_args[1] == "3")
-            {
-                ShellInfo.shell1.Run(3);
-            }
-            if (cmd_args[1] == "4")
-            {
-                ShellInfo.shell1.Run(4);
+                if (cmd_args[1] == "1")
+                {
+                    ShellInfo.shell1.Run(1);
+                }
+                else if (cmd_args[1] == "2")
+                {
+                    ShellInfo.shell1.Run(2);
+                }
+                else if (cmd_args[1] == "3")
+                {
+                    ShellInfo.shell1.Run(3);
+                }
+                else if (cmd_args[1] == "4")
+                {
+                    ShellInfo.shell1.Run(4);
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a terminal to switch to by using switch_to 'number 1-4'.");
+                }
             }
             else if (command == "switch_to")
             {
@@ -275,10 +283,6 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             else if (command.StartsWith("cview "))
             {
                 Cpview.ViewFile(cmd_args[1]);
-            }
-            else if (command == "")
-            {
-
             }
             else if (input == "lock")
             {
@@ -350,6 +354,10 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             else if (command == "ver")
             {
                 KernelVariables.Ver();
+            }
+            else if (command == "")
+            {
+
             }
             else
             {

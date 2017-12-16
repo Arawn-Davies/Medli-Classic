@@ -59,8 +59,11 @@ namespace Medli.Applications
             Console.WriteLine("users can use to develop applications for Medli.");
             Console.WriteLine("The same basic commands are used as Cocoapad Editor, but with a few");
             Console.WriteLine("extra commands to allow for the creation and running of apps.\n");
-            Console.WriteLine("IDE commands:");Console.WriteLine("\n$END - Exits the IDE without saving, $SAVE - Saves the current file");
-            Console.WriteLine("$RESET - Resets the IDE and file to start again from fresh\n$RUN - Saves the file and executes it in the Medli Application Launcher");
+            Console.WriteLine("IDE commands:");
+            Console.WriteLine("$END - Exits the IDE without saving");
+            Console.WriteLine("$SAVE - Saves the current file");
+            Console.WriteLine("$RESET - Resets the IDE and file to start again from fresh");
+            Console.WriteLine("$RUN - Saves the file and executes it in the Medli Application Launcher");
             MEnvironment.PressAnyKey("Press any key to begin!");
             DrawScreen();
             text = "";
