@@ -42,6 +42,11 @@ namespace Medli.Applications
             else if (color == "0") {
                 Console.BackgroundColor = ConsoleColor.White; }
             #endregion
+            else
+            {
+                Console.WriteLine("Invalid color, valid options are 0 - 15");
+
+            }
         }
         public static void ChangeFGC(string color)
         {
@@ -79,6 +84,11 @@ namespace Medli.Applications
             else if (color == "p") {
                 Console.ForegroundColor = ConsoleColor.White; }
             #endregion
+            else
+            {
+                Console.WriteLine("Invalid color, valid options are a - p");
+
+            }
         }
     }
 }
