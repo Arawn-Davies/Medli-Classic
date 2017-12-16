@@ -63,6 +63,12 @@ namespace Medli.Applications
                 Console.Clear();
                 AppLauncher.PreExecute(cmd_args[1]);
             }
+            else if (command == "fsinit")
+            {
+                MEnvironment.PressAnyKey();
+                Console.Clear();
+                Init.InitMain();
+            }
             else if (command == "reinstall")
             {
                 try
@@ -157,7 +163,7 @@ namespace Medli.Applications
             }
             else if (command == "logout")
             {
-                UserManagement.UserLogin();
+                Accounts.UserManagement.UserLogin();
             }
             else if (command == "panic")
             {
@@ -220,19 +226,19 @@ sodomized-sheep for, you guessed it, a sodomized-sheep");
             }
             if (cmd_args[1] == "1")
             {
-                ShellInfo.shell1.Run(ShellInfo.shell1.no_shell);
+                ShellInfo.shell1.Run(1);
             }
             if (cmd_args[1] == "2")
             {
-                ShellInfo.shell2.Run(ShellInfo.shell2.no_shell);
+                ShellInfo.shell1.Run(2);
             }
             if (cmd_args[1] == "3")
             {
-                ShellInfo.shell3.Run(ShellInfo.shell3.no_shell);
+                ShellInfo.shell1.Run(3);
             }
             if (cmd_args[1] == "4")
             {
-                ShellInfo.shell4.Run(ShellInfo.shell4.no_shell);
+                ShellInfo.shell1.Run(4);
             }
             else if (command == "switch_to")
             {

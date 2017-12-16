@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace Medli
+namespace Medli.Accounts
 {
     class UserManagement
     {
@@ -121,35 +121,34 @@ namespace Medli
                 UserLogin();
             }
         }
+    }
+    public class Account
+    {
+        public static List<Account> Accounts;
+        public string Name { get; set; }
+        public string Password { get; set; }
+        public string Userhomedir { get; set; }
 
-        public class Account
+        public string Usrpass_md5 { get; set; }
+        public string upf = "pass.sys";
+        public UserType Type { get; set; }
+
+        /// <summary>
+        /// Create an account.
+        /// </summary>
+        /// <param name="nm">The user name.</param>
+        /// <param name="pass">The user password.</param>
+        public Account(string nm, string pass, UserType type = UserType.Normal)
         {
-            public static List<Account> Accounts;
-            public string Name { get; set; }
-            public string Password { get; set; }
-            public string Userhomedir { get; set; }
-
-            public string Usrpass_md5 { get; set; }
-            public string upf = "pass.sys";
-            public UserType Type { get; set; }
-
-            /// <summary>
-            /// Create an account.
-            /// </summary>
-            /// <param name="nm">The user name.</param>
-            /// <param name="pass">The user password.</param>
-            public Account(string nm, string pass, UserType type = UserType.Normal)
-            {
-                Name = nm;
-                Password = pass;
-                Type = type;
-                Userhomedir = KernelVariables.homedir + Name + MEnvironment.dir_ext;
-                Usrpass_md5 = AIC_Framework.Crypto.MD5.hash(Password);
-                Directory.CreateDirectory(Userhomedir);
-                //Console.WriteLine("Created new user directory: " + userhomedir);
-                File.WriteAllText(Userhomedir + upf, Usrpass_md5);
-                File.AppendAllText(KernelVariables.usrinfo, Name + Environment.NewLine);
-            }
+            Name = nm;
+            Password = pass;
+            Type = type;
+            Userhomedir = KernelVariables.homedir + Name + MEnvironment.dir_ext;
+            Usrpass_md5 = AIC_Framework.Crypto.MD5.hash(Password);
+            Directory.CreateDirectory(Userhomedir);
+            //Console.WriteLine("Created new user directory: " + userhomedir);
+            File.WriteAllText(Userhomedir + upf, Usrpass_md5);
+            File.AppendAllText(KernelVariables.usrinfo, Name + Environment.NewLine);
         }
     }
     public enum UserType

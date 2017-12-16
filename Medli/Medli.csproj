@@ -7,8 +7,11 @@
 
     <ItemGroup>
       <Compile Remove="MedliBoot\**" />
+      <Compile Remove="System\FileSystem\NoobFileSystem\**" />
       <EmbeddedResource Remove="MedliBoot\**" />
+      <EmbeddedResource Remove="System\FileSystem\NoobFileSystem\**" />
       <None Remove="MedliBoot\**" />
+      <None Remove="System\FileSystem\NoobFileSystem\**" />
     </ItemGroup>
 
   <ItemGroup>

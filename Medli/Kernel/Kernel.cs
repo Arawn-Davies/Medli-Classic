@@ -1,37 +1,38 @@
 ﻿/*
 Changelog
-0.2.1 - Added:              Included the AIC Framework, will introduce more features for Medli
-                            Introduced a class for environment methods, e.g. PressAnyKey();
+0.3.1 - Added:              Reworked usermanagement, created an IDE and new script system
         
-        Fixes/Changes       Began user management, requires lists which aren't fully plugged (if list contains(string))
-                            Will make proper use of home directories and start populating them.
-                            Unified OSVars and KernelVariables class to have one single class of variables, strings and methods
-                            Updated logo, made it slightly smaller
+        Fixes/Changes       Installer, worked on including AIC more, other stuff here and there
 
         What to see next:   
   
  */
+//Default using directives
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Cosmos.System.FileSystem.VFS;
+
+//Cosmos-specific using directives
 using Sys = Cosmos.System;
 using System.IO;
+using Cosmos.System.FileSystem.VFS;
+
+// Medli-specific using directives
 using Medli.System;
 using Medli.Applications;
-using Cosmos.Debug;
 using AIC_Framework;
+using Medli.Accounts;
 
 namespace Medli
 { 
     public class Kernel : Sys.Kernel
     {
-        public static bool testing = false;
+        public static bool testing = true;
         
         /// <summary>
         /// Creates a new instance of the virtual filesystem called fs
         /// </summary>
-        public static Sys.FileSystem.CosmosVFS fs = new Cosmos.System.FileSystem.CosmosVFS();
+        public static Sys.FileSystem.CosmosVFS fs = new Sys.FileSystem.CosmosVFS();
         /// <summary>
         /// Initial kernel method, overrides the built-in Cosmos BeforeRun method
         /// </summary>
@@ -44,6 +45,9 @@ namespace Medli
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
             KernelVariables.Ver();
+            //Creates the default user account.
+            Account.Accounts.Add(new Account("default", "default", UserType.Normal));
+
             //This is just to identify the users machine, much later in Medli will this have any usage however
             //i.e. not until networking is set up, FS Permissions are working etc...
             //If it wasn't able to find a machinename file, then it will try and create one.

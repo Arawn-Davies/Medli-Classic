@@ -82,7 +82,12 @@ namespace Medli
             
             Console.BackgroundColor = defaultcol;
             Console.Clear();
+            //TODO
             installerProgress.Draw();
+            installerProgress.Increment();
+            installerProgress.Increment();
+            installerProgress.Increment();
+            installerProgress.Increment();
             installerProgress.Increment();
             installerProgress.Increment();
             installerProgress.Increment();
@@ -109,30 +114,30 @@ namespace Medli
             InitScreen();
             Mksysdir();
             InitScreen();
-            try
-            {
+            
                 InstallerWrite("Enter new account name: ");
                 string usrname = Console.ReadLine();
+                KernelVariables.username = usrname;
                 InstallerWrite("Enter the new account password: ");
                 string pass = Console.ReadLine();
                 InstallerWrite("Enter the new account type (guest, normal, root): ");
                 string user_type = Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.White; InstallerWriteLine("Creating user account...");
-                UserManagement.CreateUser(usrname, pass, user_type);
+            try
+            {
+                Accounts.UserManagement.CreateUser(usrname, pass, user_type);
                 Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!"); Console.ForegroundColor = ConsoleColor.White;
                 InstallerWrite("Enter the root password: ");
-                rootpass = Console.ReadLine();
+                MEnvironment.rootpass = Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.White; InstallerWriteLine("Writing root password...");
-                MEnvironment.rootpass = rootpass;
-                MEnvironment.WriteRootPass();
-                MEnvironment.UpdateRootPassHash();
+                File.WriteAllText(MEnvironment.rpf, AIC_Framework.Crypto.MD5.hash(MEnvironment.rootpass));
+                //MEnvironment.WriteRootPass();
                 Console.ForegroundColor = ConsoleColor.Green; Console.Write("\t\tDone!"); Console.ForegroundColor = ConsoleColor.White;
             }
-            catch
+            catch (Exception ex)
             {
+                Bluescreen.Init(ex, true);
                 Console.ReadKey(true);
-                ErrorHandler.BlueScreen.Init(5, @"The Installer was unable to create the user directory and other files. 
-This may be due to an unformatted hard drive or some other error", "FAT Error");
             }
             Console.CursorTop = 10;
             Console.ForegroundColor = ConsoleColor.White;
