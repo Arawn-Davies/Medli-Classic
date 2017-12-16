@@ -53,8 +53,8 @@ namespace Medli.Applications
             }
             else if (command.StartsWith("color "))
             {
-                ColorChanger.ChangeBGC(cmd_args[2]);
-                ColorChanger.ChangeFGC(cmd_args[3]);
+                ColorChanger.ChangeBGC(cmd_args[1]);
+                ColorChanger.ChangeFGC(cmd_args[2]);
             }
             else if (command.StartsWith("launch "))
             {
