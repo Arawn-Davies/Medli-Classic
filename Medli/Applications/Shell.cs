@@ -127,8 +127,9 @@ namespace Medli.Applications
                     {
                         Fsfunc.delfile(cmd_args[1]);
                     }
-                    catch
+                    catch (Exception exfile)
                     {
+                        Console.WriteLine(exfile.Message);
                         Console.WriteLine(ex.Message);
                         InvalidCommand(cmd_args[1], 2);
                     }

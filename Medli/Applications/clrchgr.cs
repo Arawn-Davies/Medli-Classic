@@ -6,6 +6,28 @@ namespace Medli.Applications
 {
     class ColorChanger
     {
+        enum ConsoleColors
+        {
+            black = ConsoleColor.Black,
+            white = ConsoleColor.White,
+
+            darkred = ConsoleColor.DarkRed,
+            darkblue = ConsoleColor.DarkBlue,
+            darkcyan = ConsoleColor.DarkCyan,
+            darkmagenta = ConsoleColor.DarkMagenta,
+            darkgreen = ConsoleColor.DarkGreen,
+            darkgray = ConsoleColor.DarkGray,
+            darkyellow = ConsoleColor.DarkYellow,
+
+            red = ConsoleColor.Red,
+            blue = ConsoleColor.Blue,
+            green = ConsoleColor.Green,
+
+            yellow = ConsoleColor.Yellow,
+            cyan = ConsoleColor.Cyan,
+            magenta = ConsoleColor.Magenta,
+            gray = ConsoleColor.Gray,
+        }
         public static void ChangeBGC(string color)
         {
             #region BGColorChange
