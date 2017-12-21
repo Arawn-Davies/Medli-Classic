@@ -38,7 +38,26 @@ namespace Medli
         /// </summary>
         protected override void BeforeRun()
         {
-            
+            Serial.InitializeSerial();
+            Serial.Write_serial('W');
+            Serial.Write_serial('e');
+            Serial.Write_serial('l');
+            Serial.Write_serial('c');
+            Serial.Write_serial('o');
+            Serial.Write_serial('m');
+            Serial.Write_serial('e');
+			Serial.Write_serial('\n');
+			Serial.Write_serial('\r');
+			Serial.Write_serial('t');
+			Serial.Write_serial('o');
+			Serial.Write_serial('\n');
+			Serial.Write_serial('\r');
+			Serial.Write_serial('M');
+            Serial.Write_serial('e');
+            Serial.Write_serial('d');
+            Serial.Write_serial('l');
+            Serial.Write_serial('i');
+			
             VFSManager.RegisterVFS(fs);
             fs.Initialize();
             Console.ForegroundColor = ConsoleColor.White;

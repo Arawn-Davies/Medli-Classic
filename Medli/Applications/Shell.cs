@@ -117,6 +117,30 @@ namespace Medli.Applications
             }
             else if (command.StartsWith("rm "))
             {
+                if (cmd_args[1] == "-r")
+                {
+                    try
+                    {
+                        Fsfunc.deldir(cmd_args[2]);
+                    }
+                    catch (Exception exdir)
+                    {
+                        Console.WriteLine(exdir.Message);
+                        //InvalidCommand(cmd_args[2], 2);
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        Fsfunc.delfile(cmd_args[1]);
+                    }
+                    catch (Exception exfile)
+                    {
+                        Console.WriteLine(exfile.Message);
+                        //InvalidCommand(cmd_args[1], 2);
+                    }
+                }
                 try
                 {
                     Fsfunc.deldir(cmd_args[1]);

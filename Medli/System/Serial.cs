@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using AIC_Framework.IO;
+using System.IO;
 
 namespace Medli.System
 {
@@ -24,28 +25,42 @@ namespace Medli.System
             PortIO.outb(PORT + 2, 0xC7);
             PortIO.outb(PORT + 4, 0x0B);
         }
-        public int serial_received()
+        public int Serial_received()
         {
             return PortIO.inb(PORT + 5) & 1;
         }
 
-        public char read_serial()
+        public char Read_serial()
         {
-            while (serial_received() == 0) ;
+            while (Serial_received() == 0) ;
 
             return (char) PortIO.inb(PORT);
         }
 
-        public int EmptyTransmitCheck()
+        public static int EmptyTransmitCheck()
         {
             return PortIO.inb(PORT + 5) & 0x20;
         }
 
-        public void write_serial(char a)
+        public static void Write_serial(char a)
         {
             while (EmptyTransmitCheck() == 0) ;
- 
             PortIO.outb(PORT, (byte) a);
         }
-}
+        public static void Serial_WriteString(string text)
+        {
+            while (text != null)
+            {
+                foreach (char a in text)
+                {
+                    Write_serial(a);
+                }
+            }
+            //while (a != null)
+            //{
+            //    write_serial(a);
+            //    a = a + 1;
+            //}
+        }
+    }
 }
