@@ -13,9 +13,9 @@ namespace Medli.System.FileSystem.Physical
         /// Partitioning function for devices that present a choise of the device to partition.
         /// </summary>
         /// <param name="list">The list of the devices to choose from</param>
-        public static void CreatePartitions(IDE[] list)
+        public static void CreatePartitions(Medli.FileSystem.Physical.IDE[] list)
         {
-            IDE Device = null;
+            Medli.FileSystem.Physical.IDE Device = null;
             int partnum = 0;
             ulong DispCount = 0;
             Console.WriteLine("Welcome to the NoobOS Partitioning Tool");

@@ -18,7 +18,7 @@ namespace Medli.System
         public static void InitMain()
         {
             Console.WriteLine("Getting Disks...");
-            IDE[] IDEs = IDE.Devices.ToArray();
+            Medli.FileSystem.Physical.IDE[] IDEs = Medli.FileSystem.Physical.IDE.Devices.ToArray();
             Console.WriteLine("Number of IDE disks: " + IDEs.Length);
             Console.WriteLine("Looking for valid partitions...");
 

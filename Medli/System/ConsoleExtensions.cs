@@ -19,7 +19,7 @@ namespace Medli.System
             ConsoleColor bc = Console.BackgroundColor;
             Console.ForegroundColor = textcolor;
             Console.BackgroundColor = backcolor;
-            Sys.Global.Console.WriteChar(ch);
+            Console.Write(ch);
             Console.ForegroundColor = fc;
             Console.BackgroundColor = bc;
         }
@@ -71,7 +71,7 @@ namespace Medli.System
             ConsoleColor bc = Console.BackgroundColor;
             Console.ForegroundColor = textcolor;
             Console.BackgroundColor = backcolor;
-            Sys.Global.Console.WriteLine(str);
+            Console.WriteLine(str);
             Console.ForegroundColor = fc;
             Console.BackgroundColor = bc;
         }
